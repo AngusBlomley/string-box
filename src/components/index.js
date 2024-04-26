@@ -128,7 +128,7 @@ export default function Index() {
                         <h3 className="text-lg font-semibold h-8">Step 1.</h3>
                         <p className="my-2 h-20">You place an order on our website or send us your racquets by mail.</p>
                         <Image
-                            src="/images/CA3905EA.png"
+                            src="/images/service-images/deliver.png"
                             alt="logo"
                             width={200}
                             height={200}
@@ -141,7 +141,7 @@ export default function Index() {
                         <h3 className="text-lg font-semibold h-8">Step 2.</h3>
                         <p className="my-2 h-20">We receive your order or racquets and begin the stringing process.</p>
                         <Image
-                            src="/images/CA3905E8.png"
+                            src="/images/service-images/world.png"
                             alt="logo"
                             width={200}
                             height={200}
@@ -154,7 +154,7 @@ export default function Index() {
                         <h3 className="text-lg font-semibold h-8">Step 3.</h3>
                         <p className="my-2 h-20">Once strung, we securely package your racquets and ship them via a trusted courier.</p>
                         <Image
-                            src="/images/CA3905E9.png"
+                            src="/images/service-images/racquet.png"
                             alt="logo"
                             width={200}
                             height={200}
@@ -167,7 +167,7 @@ export default function Index() {
                         <h3 className="text-lg font-semibold h-8">Step 4.</h3>
                         <p className="my-2 h-20">You will receive a tracking number by email so you can follow the progress of your shipment.</p>
                         <Image
-                            src="/images/CA3905E8.jpg"
+                            src="/images/service-images/box.png"
                             alt="logo"
                             width={200}
                             height={200}
@@ -188,7 +188,7 @@ export default function Index() {
                             Less energy return to the ball, a 'firmer-feel' giving extreme potential. Best for fast swing-speeds.</p>
                         <div className="mt-4">
                             <Image
-                                src="/images/Polyester.png"
+                                src="/images/string-types/polyester.png"
                                 alt="logo"
                                 width={200}
                                 height={200}
@@ -207,7 +207,7 @@ export default function Index() {
                             Gut adds power, comfort, and max shock/vibration reduction.</p>
                         <div className="mt-4">
                             <Image
-                                src="/images/natural gut.png"
+                                src="/images/string-types/natural-gut.png"
                                 alt="logo"
                                 width={200}
                                 height={200}
@@ -224,7 +224,7 @@ export default function Index() {
                             Is not negatively effected by moisture.</p>
                         <div className="mt-4">
                             <Image
-                                src="/images/multi fiber.png"
+                                src="/images/string-types/multi-fiber.png"
                                 alt="logo"
                                 width={200}
                                 height={200}
@@ -241,7 +241,7 @@ export default function Index() {
                             A nice crisp feel for a player who seeks basics in performance and value. Numerous variations can be found.</p>
                         <div className="mt-4">
                             <Image
-                                src="/images/Solid core.PNG"
+                                src="/images/string-types/solid-core.png"
                                 alt="logo"
                                 width={200}
                                 height={200}
@@ -262,7 +262,7 @@ export default function Index() {
                 </div>
                 <div>
                     <Image
-                        src="/images/chino-rocha-dEyXftPAMO4-unsplash.jpg"
+                        src="/images/stock/chino-rocha-dEyXftPAMO4-unsplash.jpg"
                         alt="strings breaking"
                         width={330}
                         height={0}
