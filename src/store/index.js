@@ -1,18 +1,13 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-
-// Import reducers
+import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './reducers/userReducer';
-// Add more reducers as needed and import them here
 
-// Combine reducers
-const rootReducer = combineReducers({
-    // This will store our state as state.user
-    user: userReducer,
-    // Add other reducers here
+const store = configureStore({
+    reducer: {
+        user: userReducer,
+        // Add other reducers here
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(/* additional middleware here */),
+    // Optional: you can configure other store settings like `devTools`, `preloadedState`, etc.
 });
-
-// Create store
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export default store;

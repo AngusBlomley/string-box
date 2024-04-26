@@ -5,59 +5,10 @@ import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import ContactForm from "./contact";
 import Footer from "./footer";
-
-function toggleMenu(menuOpen, setMenuOpen) {
-    setMenuOpen(!menuOpen);
-}
+import Header from "./header";
+import store from "@/store";
 
 export default function Index() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [headerStyle, setHeaderStyle] = useState({ backgroundColor: 'transparent', color: 'white' });
-
-    useEffect(() => {
-        document.querySelectorAll('#menucontainer a').forEach(menuItem => {
-            menuItem.addEventListener('click', () => {
-                toggleMenu(menuOpen, setMenuOpen);
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(scrollLink => {
-            scrollLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(scrollLink.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    }, [menuOpen]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const header = document.querySelector('header');
-            const headerHeight = header.offsetHeight;
-            const scrollPosition = window.scrollY;
-
-            // Adjust the scroll threshold as needed
-            const scrollThreshold = 80;
-
-            if (scrollPosition > scrollThreshold) {
-                setHeaderStyle({ backgroundColor: 'black', color: 'white' });
-            } else {
-                setHeaderStyle({ backgroundColor: 'transparent', color: 'white' });
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     return (
         <main>
             <div className="px-40 max-lg:px-5">
@@ -71,40 +22,8 @@ export default function Index() {
                 />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black via-black/30 to-transparent -z-10"></div>
 
-                <header className="text-white flex items-center justify-between px-40 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5" style={{ ...headerStyle, transition: 'background-color 0.2s, color 0.2s' }}>
-                    <Link href="">
-                        <Image
-                            src="/images/logo/white-logo.svg"
-                            alt="logo"
-                            width={100}
-                            height={50}
-                            className="max-lg:ml-0 h-15"
-                        />
-                    </Link>
+                <Header />
 
-                    <div id="togglebutton" className="hamburger z-10 text-2xl absolute top-5 right-4 cursor-pointer block lg:hidden" onClick={() => toggleMenu(menuOpen, setMenuOpen)}>
-                        {menuOpen ? '✖' : '☰'}
-                    </div>
-
-                    <ul id="navlist" className="list-none lg:flex hidden">
-                        <li><a href="#home" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Home</a></li>
-                        <li><a href="#about" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Service</a></li>
-                        <li><a href="#education" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Store</a></li>
-                        <li><a href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</a></li>
-                        <li><a href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</a></li>
-                        <li><a href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</a></li>
-                    </ul>
-
-                    <div id="menucontainer" className={`menu p-10 fixed top-0 right-0 h-full bg-white overflow-hidden transition-transform duration-300 ${menuOpen ? 'transform translate-x-0' : 'transform translate-x-full'}`}>
-                        <ul id="navmenu" className="list-none mt-20 mr-2 text-left text-lg text-black">
-                            <li className="mb-2"><a href="#home" className="hover:text-blue-500">Home</a></li>
-                            <li className="mb-2"><a href="#about" className="hover:text-blue-500">About Me</a></li>
-                            <li className="mb-2"><a href="#work" className="hover:text-blue-500">Work</a></li>
-                            <li className="mb-2"><a href="#contact" className="hover:text-blue-500">Contact</a></li>
-                        </ul>
-                    </div>
-
-                </header>
                 <section>
                     <div className="mt-60 text-white text-8xl w-full mx-auto max-lg:text-5xl ">
                         <h1 className="">You Box It.</h1>
@@ -116,15 +35,21 @@ export default function Index() {
                             <br></br>Prevent injury, ensure your racquet is safe.</p>
                     </div>
 
-                    <button className="text-white border-2  my-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Visit The Store</button>
+                    <div className="flex flex-wrap mt-10">
+                        <a href="" className="lg:hidden text-white border-2 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Store</a>
+                        <a href="#contact" className="lg:hidden text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</a>
+                        <a href="#contact" className="lg:hidden text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</a>
 
-                    <button className="text-white border-2 ml-5  my-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact Us</button>
+                        <a href="" className="hidden lg:block text-white border-2 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Visit The Store</a>
+                        <a href="#contact" className="hidden lg:block text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</a>
+                        <a href="#contact" className="hidden lg:block text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact Us</a>
+                    </div>
 
                 </section>
 
             </div>
 
-            <div className="bg-white py-10 px-0 mt-60 w-full max-lg:p-0">
+            <section id="service" className="bg-white py-24 px-0 mt-60 w-full max-lg:p-0">
                 <h2 className="text-center text-3xl font-bold mb-10 max-lg:p-0">Fast Turn Around.</h2>
                 <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full">
                     {/**/}
@@ -179,7 +104,7 @@ export default function Index() {
                         />
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div className="px-0 py-10 mt-20 w-full max-lg:px-0">
                 <h2 className="text-center text-3xl font-bold mb-10">Choose Your String.</h2>
@@ -275,7 +200,7 @@ export default function Index() {
                 </div>
             </section>
 
-            <ContactForm />
+            <ContactForm id="contact" />
             <Footer />
         </main >
     );
