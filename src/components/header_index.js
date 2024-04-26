@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
+import Stringing from "@/pages/stringing";
+import Home from "@/pages";
 
 function toggleMenu(menuOpen, setMenuOpen) {
     setMenuOpen(!menuOpen);
@@ -59,7 +61,7 @@ export default function Header() {
 
     return (
         <header id="home" className="text-white flex items-center justify-between px-40 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5" style={{ ...headerStyle, transition: 'background-color 0.2s, color 0.2s' }}>
-            <Link href="">
+            <Link href="/" passHref>
                 <Image
                     src="/images/logo/white-logo.svg"
                     alt="logo"
@@ -74,23 +76,23 @@ export default function Header() {
             </div>
 
             <ul id="navlist" className="list-none lg:flex hidden">
-                <li><a href="#home" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Home</a></li>
-                <li><a href="#service" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Service</a></li>
-                <li><a href="#education" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Store</a></li>
-                <li><a href="#education" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</a></li>
-                <li><a href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</a></li>
-                <li><a href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</a></li>
-                <li><a href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</a></li>
+                <li><Link href="/" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Home</Link></li>
+                <li><Link href="#service" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Service</Link></li>
+                <li><Link href="/store" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Store</Link></li>
+                <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link></li>
+                <li><Link href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link></li>
+                <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</Link></li>
+                <li><Link href="/signup" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
             </ul>
 
             <div id="menucontainer" className={`menu p-10 fixed top-0 right-0 h-full bg-white overflow-hidden transition-transform duration-300 ${menuOpen ? 'transform translate-x-0' : 'transform translate-x-full'}`}>
                 <ul id="navmenu" className="list-none mt-20 mr-2 text-left text-lg text-black">
-                    <li className="mb-2"><a href="#home" className="hover:text-blue-500">Home</a></li>
-                    <li className="mb-2"><a href="#about" className="hover:text-blue-500">Service</a></li>
-                    <li className="mb-2"><a href="#work" className="hover:text-blue-500">Store</a></li>
-                    <li className="mb-2"><a href="#contact" className="hover:text-blue-500">Contact</a></li>
-                    <li className="mb-2"><a href="#contact" className="hover:text-blue-500">Login</a></li>
-                    <li className="mb-2"><a href="#contact" className="hover:text-blue-500">Sign Up</a></li>
+                    <li className="mb-2"><Link href="/" className="hover:text-blue-500">Home</Link></li>
+                    <li className="mb-2"><Link href="#service" className="hover:text-blue-500">Service</Link></li>
+                    <li className="mb-2"><Link href="/store" className="hover:text-blue-500">Store</Link></li>
+                    <li className="mb-2"><Link href="#contact" className="hover:text-blue-500">Contact</Link></li>
+                    <li className="mb-2"><Link href="/login" className="hover:text-blue-500">Login</Link></li>
+                    <li className="mb-2"><Link href="/signup" className="hover:text-blue-500">Sign Up</Link></li>
                 </ul>
             </div>
         </header>
