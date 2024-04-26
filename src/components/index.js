@@ -106,7 +106,7 @@ export default function Index() {
 
                 </header>
                 <section>
-                    <div className="mt-60 text-white text-8xl w-full mx-auto max-lg:text-5xl">
+                    <div className="mt-60 text-white text-8xl w-full mx-auto max-lg:text-5xl ">
                         <h1 className="">You Box It.</h1>
                         <h2 className="">We String It.</h2>
                     </div>
@@ -116,12 +116,16 @@ export default function Index() {
                             <br></br>Prevent injury, ensure your racquet is safe.</p>
                     </div>
 
+                    <button className="text-white border-2  my-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Visit The Store</button>
+
+                    <button className="text-white border-2 ml-5  my-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact Us</button>
+
                 </section>
 
             </div>
 
-            <div className="bg-white p-10 mt-80 w-full max-lg:p-5">
-                <h2 className="text-center text-3xl font-bold mb-10 max-lg:p-10">Fast Turn Around.</h2>
+            <div className="bg-white p-10 mt-60 w-full max-lg:p-0">
+                <h2 className="text-center text-3xl font-bold mb-10 max-lg:p-0">Fast Turn Around.</h2>
                 <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full">
                     {/**/}
                     <div className="flex-grow bg-white rounded-lg shadow-md p-6 min-w-[240px]">
@@ -178,10 +182,10 @@ export default function Index() {
             </div>
 
             <div className="px-10 py-10 mt-20 w-full max-lg:px-0 ">
-                <h2 className="text-center text-3xl font-bold mb-10 lg:mb-5">Choose Your String.</h2>
-                <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-ful ">
+                <h2 className="text-center text-3xl font-bold mb-10">Choose Your String.</h2>
+                <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full ">
                     {/* Step 1 */}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4">
+                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full max-lg:border-0">
                         <h3 className="text-lg font-semibold text-center">Polyester</h3>
                         <p className="flex-1">A longer 'dwell-time' (time ball is on the strings) creates maximum 'flatening' of the ball for more control. Energy return is less - allowing players to use stiffer, more powerful racquets for today's game.
                             <br></br><br></br>
@@ -198,7 +202,7 @@ export default function Index() {
                     </div>
 
                     {/**/}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4">
+                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
                         <h3 className="text-lg font-semibold h-8 text-center">Natural Gut</h3>
                         <p className="flex-1">Maximum ball-pocket depth helps retain more of the ball's incoming energy due to the ball retaining more of it's origional shape.
                             <br></br><br></br>
@@ -217,7 +221,7 @@ export default function Index() {
                     </div>
 
                     {/**/}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4">
+                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
                         <h3 className="text-lg font-semibold h-8 text-center">Multi Fiber</h3>
                         <p className="flex-1">Designed to perform like natural gut at a more affordable price.
                             <br></br><br></br>
@@ -234,7 +238,7 @@ export default function Index() {
                     </div>
 
                     {/**/}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 ">
+                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
                         <h3 className="text-lg font-semibold h-8 text-center">Solid Core</h3>
                         <p className="flex-1">Commonly referred to as synthetic gut, the core with outer-wraps returns less energy to the ball.
                             <br></br><br></br>
