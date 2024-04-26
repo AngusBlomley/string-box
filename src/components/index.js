@@ -252,8 +252,8 @@ export default function Index() {
                 </div >
             </div >
 
-            <section className="flex row-auto justify-center mt-40 mx-auto w-1/2">
-                <div className="w-1/3">
+            <section className="flex row-auto justify-center mt-40 mx-auto w-1/2 max-lg:w-full m-0">
+                <div className="w-1/3 max-lg:w-full mx-10">
                     <h2 className="text-3xl">How We String.</h2>
                     <br></br><br></br>
                     <p className="w-full">We are a professional racquet stringing company that supplies high-quality strings from top brands. At StringBox, we understand that every player has their own preferences when it comes to strings, which is why we offer a wide selection of professional strings to choose from. Whether you're looking for a specific brand or a certain type of string, we have what you need.
@@ -266,7 +266,7 @@ export default function Index() {
                         alt="strings breaking"
                         width={330}
                         height={0}
-                        className="mx-auto ml-10"
+                        className="mx-auto ml-10 max-lg:hidden"
                     />
                 </div>
             </section>
