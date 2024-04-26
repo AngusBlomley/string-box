@@ -124,7 +124,7 @@ export default function Index() {
 
             </div>
 
-            <div className="bg-white p-10 mt-60 w-full max-lg:p-0">
+            <div className="bg-white py-10 px-0 mt-60 w-full max-lg:p-0">
                 <h2 className="text-center text-3xl font-bold mb-10 max-lg:p-0">Fast Turn Around.</h2>
                 <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full">
                     {/**/}
@@ -181,11 +181,11 @@ export default function Index() {
                 </div>
             </div>
 
-            <div className="px-10 py-10 mt-20 w-full max-lg:px-0 ">
+            <div className="px-0 py-10 mt-20 w-full max-lg:px-0">
                 <h2 className="text-center text-3xl font-bold mb-10">Choose Your String.</h2>
                 <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full ">
                     {/* Step 1 */}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full max-lg:border-0">
+                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
                         <h3 className="text-lg font-semibold text-center">Polyester</h3>
                         <p className="flex-1">A longer 'dwell-time' (time ball is on the strings) creates maximum 'flatening' of the ball for more control. Energy return is less - allowing players to use stiffer, more powerful racquets for today's game.
                             <br></br><br></br>

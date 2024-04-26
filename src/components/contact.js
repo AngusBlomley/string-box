@@ -47,7 +47,7 @@ function ContactForm() {
     return (
         <section id="contact" className="mt-40 bg-gray-100 py-8 px-4">
             <div className="max-w-4xl mx-auto">
-                <form className="bg-white p-6 rounded-lg shadow-md" onSubmit={handleSubmit}>
+                <form className="bg-white p-6 rounded-lg shadow-md max-lg:shadow-none" onSubmit={handleSubmit}>
                     <h2 className="text-2xl font-semibold text-gray-800 mb-4">Get in touch.<br />Raise your game.</h2>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
