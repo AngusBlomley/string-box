@@ -82,7 +82,7 @@ export default function Header() {
                 <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link></li>
                 <li><Link href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link></li>
                 <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</Link></li>
-                <li><Link href="/signup" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
+                <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
             </ul>
 
             <div id="menucontainer" className={`menu p-10 fixed top-0 right-0 h-full bg-white overflow-hidden transition-transform duration-300 ${menuOpen ? 'transform translate-x-0' : 'transform translate-x-full'}`}>
@@ -92,7 +92,7 @@ export default function Header() {
                     <li className="mb-2"><Link href="/store" className="hover:text-blue-500">Store</Link></li>
                     <li className="mb-2"><Link href="#contact" className="hover:text-blue-500">Contact</Link></li>
                     <li className="mb-2"><Link href="/login" className="hover:text-blue-500">Login</Link></li>
-                    <li className="mb-2"><Link href="/signup" className="hover:text-blue-500">Sign Up</Link></li>
+                    <li className="mb-2"><Link href="/register" className="hover:text-blue-500">Sign Up</Link></li>
                 </ul>
             </div>
         </header>

@@ -6,7 +6,7 @@ import '../app/globals.css'
 import ContactForm from "./contact";
 import Footer from "./footer";
 import Header from "./header_index";
-import store from "@/store";
+import store from "@/store/store";
 
 export default function Index() {
     return (

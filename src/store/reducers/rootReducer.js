@@ -1,4 +1,4 @@
-// Example reducer
+import { combineReducers } from 'redux';
 const initialState = {
     isLoading: false,
     data: null,
@@ -28,5 +28,9 @@ function userReducer(state = initialState, action) {
             return state;
     }
 }
+const rootReducer = combineReducers({
+    user: userReducer,
+    // other reducers will go here
+});
 
-export default userReducer;
+export default rootReducer;
