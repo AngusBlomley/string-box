@@ -58,8 +58,8 @@ export default function Store() {
     return (
         <main className="bg-off-white font-[azo-sans-web,sans-serif]">
             <Header_global />
-            <div className="flex row mt-20 justify-between px-40">
-                <section className="mt-10 p-10 w-80 h-full border">
+            <div className="flex row mt-20 justify-between px-40 max-xl:p-10 max-lg:p-0">
+                <section className="mt-10 p-10 w-80 h-full border max-lg:hidden max-lg:p-0">
                     <div className="space-y-4">
                         <div>
                             <h3 className="text-lg font-semibold text-[#0d0d0d] mb-2">String Type</h3>
@@ -126,7 +126,7 @@ export default function Store() {
                         </div>
                     </div>
                 </section>
-                <section className="p-10 w-full">
+                <section className="p-10 w-full max-lg:p-4">
                     <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2">
                         {products.map(product => (
                             <ProductCard key={product.id} product={product} />
