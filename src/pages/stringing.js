@@ -69,6 +69,7 @@ export default function Stringing() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };

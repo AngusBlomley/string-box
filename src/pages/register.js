@@ -26,8 +26,8 @@ export default function SignUp() {
     return (
         <main>
             <Header_global />
-            <div className="flex items-center justify-center h-screen bg-gray-100">
-                <div className="flex row bg-white h-10/12 w-1/2 rounded-3xl p-10 justify-between max-xl:flex-col max-xl:p-0 max-xl:pb-10 max-md:w-screen">
+            <div className="flex items-center justify-center h-screen text-off-white">
+                <div className="flex row bg-midnight-blue h-10/12 w-1/2 rounded-3xl p-10 justify-between max-xl:flex-col max-xl:p-0 max-xl:pb-10 max-md:w-screen">
                     <div className="w-100 p-8 max-xl:mx-auto">
                         <h1 className="text-5xl">Create Account</h1>
                         <br></br>
@@ -81,6 +81,7 @@ export default function SignUp() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };
