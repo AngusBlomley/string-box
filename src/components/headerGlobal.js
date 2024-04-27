@@ -1,10 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
-import Stringing from "@/pages/stringing";
-import Home from "@/pages";
 
 function toggleMenu(menuOpen, setMenuOpen) {
     setMenuOpen(!menuOpen);
@@ -35,7 +34,7 @@ export default function Header_global() {
     }, [menuOpen]);
 
     return (
-        <header id="home" className="text-black flex items-center justify-between px-40 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5">
+        <header id="home" className="text-black bg-off-white flex items-center justify-between px-40 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5">
             <Link href="/" passHref>
                 <Image
                     src="/images/logo/black-logo.svg"
@@ -58,6 +57,16 @@ export default function Header_global() {
                 <li><Link href="/#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link></li>
                 <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</Link></li>
                 <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
+                <li><Link href="/checkout" className="flex row px-4 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
+                    {/*Insert Cart Item Amount Value Here*/}
+                    <img
+                        alt="Checkout Image"
+                        src="/images/icons/blackCart.png"
+                        height={24}
+                        width={24}
+                    /><span>Basket</span>
+                </Link>
+                </li>
             </ul>
 
             <div id="menucontainer" className={`menu p-10 fixed top-0 right-0 h-full bg-white overflow-hidden transition-transform duration-300 ${menuOpen ? 'transform translate-x-0' : 'transform translate-x-full'}`}>
@@ -68,6 +77,16 @@ export default function Header_global() {
                     <li className="mb-2"><Link href="/#contact" className="hover:text-blue-500">Contact</Link></li>
                     <li className="mb-2"><Link href="/login" className="hover:text-blue-500">Login</Link></li>
                     <li className="mb-2"><Link href="/register" className="hover:text-blue-500">Sign Up</Link></li>
+                    <li><Link href="/checkout" className="flex row hover:text-blue-500">
+                        {/*Insert Cart Item Amount Value Here*/}
+                        <img
+                            alt="Checkout Image"
+                            src="/images/icons/blackCart.png"
+                            height={24}
+                            width={24}
+                        /><span>Basket</span>
+                    </Link>
+                    </li>
                 </ul>
             </div>
         </header>
