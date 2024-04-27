@@ -56,11 +56,10 @@ export default function Store() {
     };
 
     return (
-        <main className="bg-[#eff0f3] font-[azo-sans-web,sans-serif]">
+        <main className="bg-off-white font-[azo-sans-web,sans-serif]">
             <Header_global />
             <div className="flex row mt-20 justify-between px-40">
-                <section className="mt-10 p-10 w-80">
-                    <h2 className="text-xl font-bold text-[#0d0d0d] mb-4">Filter</h2>
+                <section className="mt-10 p-10 w-80 h-full border">
                     <div className="space-y-4">
                         <div>
                             <h3 className="text-lg font-semibold text-[#0d0d0d] mb-2">String Type</h3>
@@ -122,15 +121,12 @@ export default function Store() {
                                         {brand}
                                     </label>
                                 ))}
-                                <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-700" type="submit">
-                                    Apply Filter
-                                </button>
+
                             </form>
                         </div>
                     </div>
                 </section>
                 <section className="p-10 w-full">
-                    <h2 className="text-xl font-bold text-[#0d0d0d] mb-4">Our Products</h2>
                     <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2">
                         {products.map(product => (
                             <ProductCard key={product.id} product={product} />

@@ -31,8 +31,8 @@ export default function Index() {
                     </div>
 
                     <div className="text-white mt-10 w-full mx-auto">
-                        <p>Re-stringing your racquet can improve performance and prolong its life.
-                            <br></br>Prevent injury, ensure your racquet is safe.</p>
+                        <p>Re-Stringing your racquet can improve performance and prolong its life.
+                            <br></br>With 40 years of professional hand stringing experience.</p>
                     </div>
 
                     <div className="flex flex-wrap mt-10">
@@ -49,7 +49,7 @@ export default function Index() {
 
             </div>
 
-            <section id="service" className="bg-white py-24 px-0 mt-60 w-full max-lg:p-0">
+            <section id="service" className=" bg-off-white py-24 px-0 mt-60 w-full max-lg:p-0">
                 <h2 className="text-center text-3xl font-bold mb-10 max-lg:p-0">Fast Turn Around.</h2>
                 <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full">
                     {/**/}
