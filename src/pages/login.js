@@ -3,7 +3,7 @@ import '../app/globals.css'
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../store/userSlice';
+import { loginUser } from '../store/actions/userActions';
 
 
 export default function LoginForm() {

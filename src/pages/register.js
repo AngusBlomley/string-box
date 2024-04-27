@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
+import { signupUser } from '../store/actions/userActions';
+
 
 export default function SignUp() {
     const [username, setUsername] = useState('');
@@ -17,10 +19,7 @@ export default function SignUp() {
             alert("Passwords do not match!");
             return;
         }
-        dispatch({
-            type: 'USER_SIGNUP',
-            payload: { username, email, password },
-        });
+        dispatch(signupUser({ email, password }));
     };
 
     return (
