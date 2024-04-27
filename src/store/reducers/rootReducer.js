@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import cartReducer from './cartReducer';
+
 const initialState = {
     isLoading: false,
     data: null,
@@ -28,9 +30,10 @@ function userReducer(state = initialState, action) {
             return state;
     }
 }
+
 const rootReducer = combineReducers({
     user: userReducer,
-    // other reducers will go here
+    cart: cartReducer
 });
 
 export default rootReducer;
