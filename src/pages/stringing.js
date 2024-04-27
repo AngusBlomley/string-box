@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import Footer from "@/components/footer";
-import Header_global from "@/components/header_global";
+import Header_global from "@/components/headerGlobal";
 
 export default function Stringing() {
 

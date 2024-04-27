@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Footer from "@/components/footer";
-import Header_global from "@/components/header_global";
+import Header_global from "@/components/headerGlobal";
 
 export default function SignUp() {
     const [username, setUsername] = useState('');

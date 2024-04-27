@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "name": "Tennis String 1",
+        "description": "High-quality polyester string",
+        "price": "19.99",
+        "imageUrl": "/images/products/string1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Tennis String 2",
+        "description": "Durable multi-fiber string",
+        "price": "21.99",
+        "imageUrl": "/images/products/string2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Tennis String 3",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Tennis String 4",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Tennis String 5",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Tennis String 6",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string6.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Tennis String 7",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string7.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Tennis String 8",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string8.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Tennis String 9",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string9.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Tennis String 10",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string10.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Tennis String 11",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string11.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Tennis String 12",
+        "description": "Versatile natural gut string",
+        "price": "25.99",
+        "imageUrl": "/images/products/string12.jpg"
+    }
+]
