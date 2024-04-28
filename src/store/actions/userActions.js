@@ -1,19 +1,35 @@
 import axios from 'axios';
+import { USER_LOGIN_SUCCESS } from './types';
+import { USER_SIGNUP_FAILURE } from './types';
+import { USER_SIGNUP_SUCCESS } from './types';
+import { USER_LOGIN_FAILURE } from './types';
+import { USER_LOGOUT } from './types';
 
-const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
-const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
-const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
 
+// In store/actions/authActions.js
 export const loginUser = (credentials) => async (dispatch) => {
     try {
         const response = await axios.post('/api/login', credentials);
-        dispatch(userLoggedIn(response.data));
+        if (response.data) {
+            dispatch({
+                type: USER_LOGIN_SUCCESS,
+                payload: response.data
+            });
+        } else {
+            throw new Error('Failed to login');
+        }
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAILURE,
-            payload: error.response ? error.response.data : { message: 'Login failed' },
+            payload: error.message || 'Unknown login error'
         });
     }
+};
+
+export const logoutUser = () => {
+    return {
+        type: USER_LOGOUT
+    };
 };
 
 // In userActions.js

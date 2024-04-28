@@ -8,7 +8,10 @@ import Image from 'next/image';
 export default function Cart() {
 
     const dispatch = useDispatch();
-    const cartItems = useSelector(state => state.cart.items);
+    // In Checkout or Cart component
+    const cartItems = useSelector((state) => state.cart.items);
+
+
 
     // Fetch cart products details
     const [cartProductDetails, setCartProductDetails] = useState([]);

@@ -37,7 +37,7 @@ export const signupUser = (userData) => async (dispatch) => {
     try {
         const response = await axios.post('/api/signup', userData);
         console.log("Signup response:", response.data);
-        dispatch(userSignedUp(response.data));  // Dispatch the success action
+        dispatch(userSignedUp(response.data));
     } catch (error) {
         console.error("Signup failed:", error);
         dispatch({

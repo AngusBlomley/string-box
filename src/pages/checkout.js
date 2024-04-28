@@ -7,6 +7,7 @@ import Header_global from "@/components/headerGlobal";
 import Cart from '@/components/cart';
 
 export default function Checkout() {
+    const cartItems = useSelector(state => state.cart.items);
     return (
         <main>
             <Header_global />

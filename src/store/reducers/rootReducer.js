@@ -1,39 +1,12 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
+import userReducer from './userReducer';
 import cartReducer from './cartReducer';
-
-const initialState = {
-    isLoading: false,
-    data: null,
-    error: null,
-};
-
-function userReducer(state = initialState, action) {
-    switch (action.type) {
-        case 'FETCH_USER_REQUEST':
-            return {
-                ...state,
-                isLoading: true,
-            };
-        case 'FETCH_USER_SUCCESS':
-            return {
-                ...state,
-                isLoading: false,
-                data: action.payload,
-            };
-        case 'FETCH_USER_FAILURE':
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload,
-            };
-        default:
-            return state;
-    }
-}
+// Import other reducers if you have them
 
 const rootReducer = combineReducers({
     user: userReducer,
-    cart: cartReducer
+    cart: cartReducer,
+
 });
 
 export default rootReducer;

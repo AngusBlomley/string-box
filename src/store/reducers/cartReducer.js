@@ -1,5 +1,5 @@
 const initialCartState = {
-    items: [], // This will hold an array of item IDs or item details
+    items: [],
 };
 
 function cartReducer(state = initialCartState, action) {

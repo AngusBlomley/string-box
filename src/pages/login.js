@@ -4,15 +4,31 @@ import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../store/actions/userActions';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    const isLoading = useSelector(state => state.user.isLoading);
+    const error = useSelector(state => state.user.error);
+    const router = useRouter();
 
-    const handleSubmit = async (event) => {
+    useEffect(() => {
+        if (user) {
+            router.push('/');
+        }
+    }, [user, router]);
+
+    const handleSubmit = (event) => {
         event.preventDefault();
+        if (!email || !password) {
+            alert('Please enter both email and password');
+            return;
+        }
         dispatch(loginUser({ email, password }));
     };
 
@@ -46,6 +62,7 @@ export default function LoginForm() {
                                 onChange={(e) => setPassword(e.target.value)}
                                 className="mt-5 w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded"
                             />
+                            {error && <p className="text-red-500">Error: {error}</p>}
                             <button
                                 type="submit"
                                 className="mt-5 w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
