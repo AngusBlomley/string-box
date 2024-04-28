@@ -1,21 +1,24 @@
 const initialState = {
-    isAuthenticated: false,
-    // ...other user state
+    user: null,
+    error: null,
 };
 
-const userReducer = (state = initialState, action) => {
+function userReducer(state = initialState, action) {
     switch (action.type) {
-        // Define cases for different action types
-        case 'LOG_IN':
+        case USER_SIGNUP_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: true,
-                // ...other changes to state
+                user: action.payload,
+                error: null
             };
-        // ...other action handlers
+        case 'USER_SIGNUP_FAILURE':
+            return {
+                ...state,
+                error: action.payload
+            };
         default:
             return state;
     }
-};
+}
 
 export default userReducer;

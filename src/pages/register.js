@@ -1,25 +1,46 @@
-// pages/signup.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
 import { signupUser } from '../store/actions/userActions';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 
 export default function SignUp() {
-    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
     const dispatch = useDispatch();
+    const router = useRouter();
 
-    const handleSignUp = (e) => {
+
+    const signupError = useSelector((state) => state.user.error);
+
+    const handleSignUp = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
+        setError('');
+
+        if (!email.includes('@')) {
+            setError('Please enter a valid email.');
             return;
         }
-        dispatch(signupUser({ email, password }));
+        if (password.length < 8) {
+            setError('Password must be at least 8 characters.');
+            return;
+        }
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        try {
+            await dispatch(signupUser({ email, password }));
+            router.push('/');
+        } catch (error) {
+
+        }
     };
 
     return (
@@ -34,16 +55,9 @@ export default function SignUp() {
                     </div>
                     <div className="flex justify-center">
                         <form className="p-8 w-10/12 max-xl:p-0" onSubmit={handleSignUp}>
-                            <input
-                                placeholder="Username"
-                                type="text"
-                                id="username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded"
-                            />
 
                             <input
+                                aria-label="Email"
                                 placeholder="Email"
                                 type="email"
                                 id="email"
@@ -53,6 +67,7 @@ export default function SignUp() {
                             />
 
                             <input
+                                aria-label="Password"
                                 placeholder="Password"
                                 type="password"
                                 id="password"
@@ -62,6 +77,7 @@ export default function SignUp() {
                             />
 
                             <input
+                                aria-label="Confirm Password"
                                 placeholder="Confirm Password"
                                 type="password"
                                 id="confirmPassword"
@@ -69,6 +85,10 @@ export default function SignUp() {
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 className="mt-5 w-full px-3 py-2 leading-tight text-gray-700 border rounded"
                             />
+
+                            {error && <div className="error-message">{error}</div>}
+
+                            {signupError && <div className="error-message">{signupError}</div>}
 
                             <button
                                 type="submit"

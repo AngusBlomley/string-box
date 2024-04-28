@@ -1,27 +1,38 @@
-export const logIn = (userData) => {
-    return {
-        type: 'LOG_IN',
-        payload: userData,
-    };
-    // Define other actions here
-};
+import axios from 'axios';
 
-// In your Redux Toolkit slice
-export const loginUser = (credentials) => async dispatch => {
+const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
+const USER_SIGNUP_FAILURE = 'USER_SIGNUP_FAILURE';
+const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
+
+export const loginUser = (credentials) => async (dispatch) => {
     try {
-        const { data } = await axios.post('/api/login', credentials);
-        dispatch(userLoggedIn(data));
+        const response = await axios.post('/api/login', credentials);
+        dispatch(userLoggedIn(response.data));
     } catch (error) {
-        // handle error
+        dispatch({
+            type: USER_LOGIN_FAILURE,
+            payload: error.response ? error.response.data : { message: 'Login failed' },
+        });
     }
 };
 
-export const signupUser = (userData) => async dispatch => {
+// In userActions.js
+export const signupUser = (userData) => async (dispatch) => {
+    console.log("Dispatching signup user with data:", userData);
     try {
-        const { data } = await axios.post('/api/signup', userData);
-        dispatch(userSignedUp(data));
-        // Redirect or authenticate user here
+        const response = await axios.post('/api/signup', userData);
+        console.log("Signup response:", response.data);
+        dispatch(userSignedUp(response.data));
     } catch (error) {
-        // handle error, dispatch failure action
+        console.error("Signup failed:", error);
+        dispatch({
+            type: USER_SIGNUP_FAILURE,
+            payload: error.response ? error.response.data : { message: 'Signup failed' },
+        });
     }
 };
+
+export const userSignedUp = (userData) => ({
+    type: USER_SIGNUP_SUCCESS,
+    payload: userData
+});
