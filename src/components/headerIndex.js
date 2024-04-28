@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
-import Stringing from "@/pages/stringing";
-import Home from "@/pages";
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../store/actions/userActions';
 
 function toggleMenu(menuOpen, setMenuOpen) {
     setMenuOpen(!menuOpen);
@@ -14,27 +14,54 @@ function toggleMenu(menuOpen, setMenuOpen) {
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [headerStyle, setHeaderStyle] = useState({ backgroundColor: 'transparent', color: 'white' });
+    const user = useSelector((state) => state.user.user);
+    const dispatch = useDispatch();
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        dispatch(logoutUser());
+    };
     useEffect(() => {
-        document.querySelectorAll('#menucontainer a').forEach(menuItem => {
-            menuItem.addEventListener('click', () => {
-                toggleMenu(menuOpen, setMenuOpen);
-            });
+        // Function to toggle menu state
+        function toggleMenu() {
+            setMenuOpen(!menuOpen);
+        }
+
+        // Attach click event listeners for menu toggle
+        const menuItems = document.querySelectorAll('#menucontainer a');
+        menuItems.forEach(menuItem => {
+            menuItem.addEventListener('click', toggleMenu);
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(scrollLink => {
-            scrollLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(scrollLink.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        // Function to handle smooth scrolling
+        function handleScroll(e) {
+            e.preventDefault();
+            const href = e.currentTarget.getAttribute('href');
+            const target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Attach click event listeners for smooth scrolling
+        const scrollLinks = document.querySelectorAll('a[href^="#"]');
+        scrollLinks.forEach(scrollLink => {
+            scrollLink.addEventListener('click', handleScroll);
         });
-    }, [menuOpen]);
+
+        // Cleanup function to remove event listeners
+        return () => {
+            menuItems.forEach(menuItem => {
+                menuItem.removeEventListener('click', toggleMenu);
+            });
+            scrollLinks.forEach(scrollLink => {
+                scrollLink.removeEventListener('click', handleScroll);
+            });
+        };
+    }, [menuOpen, setMenuOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -82,8 +109,19 @@ export default function Header() {
                 <li><Link href="/store" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Store</Link></li>
                 <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link></li>
                 <li><Link href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link></li>
-                <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</Link></li>
-                <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
+                {user ? (
+                    <>
+                        <li>
+                            <Link href="#" onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Logout</Link>
+                        </li>
+                        <li><Link href="/profile" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Profile</Link></li>
+                    </>
+                ) : (
+                    <>
+                        <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</Link></li>
+                        <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
+                    </>
+                )}
                 <li><Link href="/checkout" className="flex row px-4 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
                     {/*Insert Cart Item Amount Value Here*/}
                     <img
@@ -102,8 +140,21 @@ export default function Header() {
                     <li className="mb-2"><Link href="#service" className="hover:text-blue-500">Service</Link></li>
                     <li className="mb-2"><Link href="/store" className="hover:text-blue-500">Store</Link></li>
                     <li className="mb-2"><Link href="#contact" className="hover:text-blue-500">Contact</Link></li>
-                    <li className="mb-2"><Link href="/login" className="hover:text-blue-500">Login</Link></li>
-                    <li className="mb-2"><Link href="/register" className="hover:text-blue-500">Sign Up</Link></li>
+                    {user ? (
+                        <>
+                            <li className="mb-2">
+                                <a href="#" onClick={handleLogout} className="hover:text-blue-500">Logout</a>
+                            </li>
+                            <li className="mb-2">
+                                <span className="hover:text-blue-500"><Link href="/profile" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm"></Link>Profile</span>
+                            </li>
+                        </>
+                    ) : (
+                        <>
+                            <li className="mb-2"><Link href="/login" className="hover:text-blue-500">Login</Link></li>
+                            <li className="mb-2"><Link href="/register" className="hover:text-blue-500">Sign Up</Link></li>
+                        </>
+                    )}
                     <li><Link href="/checkout" className="flex row hover:text-blue-500">
                         {/*Insert Cart Item Amount Value Here*/}
                         <img
