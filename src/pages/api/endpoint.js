@@ -1,15 +1,24 @@
 import cors from 'cors';
+import runMiddleware from '../../store/middleware/runMiddleware';
 
-// Initialize CORS middleware
 const corsMiddleware = cors({
-    origin: 'http://example.com', // Allow requests from this origin
-    methods: ['GET', 'POST'], // Allow these HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers in the request
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 });
 
 export default async function handler(req, res) {
-    // Run CORS middleware
-    await corsMiddleware(req, res);
+    await runMiddleware(req, res, corsMiddleware);
 
-    // Your API route logic here...
+    if (req.method === 'POST') {
+        // Handle POST requests here
+        res.status(200).json({ message: 'POST request handled' });
+    } else if (req.method === 'GET') {
+        // Handle GET requests here
+        res.status(200).json({ message: 'GET request handled' });
+    } else {
+        // If the request method is not GET or POST, return a 405 Method Not Allowed error
+        res.setHeader('Allow', ['GET', 'POST']);
+        res.status(405).end(`Method ${req.method} Not Allowed`);
+    }
 }

@@ -1,27 +1,32 @@
 import auth from '../../store/middleware/auth';
 import dbConnect from '../../../lib/dbConnect';
+import corsMiddleware from '@/store/middleware/cors';
 
 export default async function handler(req, res) {
-    try {
-        // Establish a database connection
-        await dbConnect();
+    console.log("Handler start", req.method);
+    await corsMiddleware(req, res);
 
-        // Use the auth middleware to protect the route
-        auth(req, res, async () => {
-            // Check the HTTP method, e.g., if it's a GET request
-            if (req.method === 'GET') {
-                // Perform your logic here, e.g., get data from the database
-                const data = {}; // Replace with actual data retrieval logic
+    try {
+        await dbConnect();
+        console.log("Database connected");
+
+        await auth(req, res, async () => {
+            if (req.method === 'POST') {
+                console.log("POST method block");
+                console.log("Auth passed for POST");
+            } else if (req.method === 'GET') {
+                console.log("GET method block");
+                console.log("Auth passed for GET");
+                const data = {};
                 res.status(200).json(data);
             } else {
-                // If other methods are not supported, send a 405 Method Not Allowed
-                res.setHeader('Allow', ['GET']);
+                console.log("Method not allowed block reached");
+                res.setHeader('Allow', ['GET', 'POST']);
                 res.status(405).end(`Method ${req.method} Not Allowed`);
             }
         });
     } catch (error) {
-        // Handle any errors that occurred during the above process
-        console.error(error);
+        console.error("Error caught in handler:", error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }

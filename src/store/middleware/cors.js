@@ -1,14 +1,16 @@
+// store/middleware/cors.js
 import Cors from 'cors';
 import initMiddleware from './init-middleware';
 
-// Initialize CORS middleware with your desired options
-const cors = initMiddleware(
+// Initialize the cors middleware
+const corsMiddleware = initMiddleware(
     Cors({
-        // Only allow requests with specified methods
-        methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-        // Configure your CORS settings here, such as allowed origins
+        // Options passed to cors:
         origin: process.env.ALLOWED_ORIGINS.split(","),
+        methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true, // Enable if your frontend is on a different domain and you need cookies
     })
 );
 
-export default cors;
+export default corsMiddleware;

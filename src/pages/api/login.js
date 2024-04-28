@@ -12,9 +12,9 @@ export default async function handler(req, res) {
     const { email, password } = req.body;
 
     try {
-        await connectToServer(); // Ensures the DB connection
+        await connectToServer();
         const db = getDb();
-        const usersCollection = db.collection('users'); // Rename variable to avoid confusion with User model
+        const usersCollection = db.collection('users');
 
         const user = await usersCollection.findOne({ email });
         if (!user) {
@@ -27,9 +27,9 @@ export default async function handler(req, res) {
         }
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        return res.status(200).json({ token, userId: user._id.toString() }); // Convert ObjectId to string
+        return res.status(200).json({ token, userId: user._id.toString() });
     } catch (error) {
-        console.error(error); // Log detailed error
+        console.error(error);
         return res.status(500).json({ message: 'Logging in failed.', error: error.message });
     }
 }
