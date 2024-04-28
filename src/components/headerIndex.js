@@ -88,7 +88,7 @@ export default function Header() {
 
 
     return (
-        <header id="home" className="text-white flex items-center justify-between px-40 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5" style={{ ...headerStyle, transition: 'background-color 0.2s, color 0.2s' }}>
+        <header id="home" className="text-white flex items-center justify-between px-40 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5 z-50" style={{ ...headerStyle, transition: 'background-color 0.2s, color 0.2s' }}>
             <Link href="/" passHref>
                 <Image
                     src="/images/logo/white-logo.svg"

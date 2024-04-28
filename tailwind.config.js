@@ -18,8 +18,18 @@ module.exports = {
         'tennis-ball-yellow': '#DDEE23',
         'midnight-blue': '#2A3756',
         'off-white': '#F7F9F9'
+      },
+      fontFamily: {
+        'karla': ['Karla', 'sans-serif'],
+        'rubik': ['Rubik', 'sans-serif'],
+        'hiraKakuW8': ['hiraKaku', 'sans-serif'],
+        'hiraKakuW6': ['hiraKaku', 'sans-serif'],
+        'hiraKakuW3': ['hiraKaku', 'sans-serif'],
+        'KozGoPr6NRegular': ['KozGoPr6NRegular', 'sans-serif']
       }
-    },
+    }
   },
   plugins: [],
 };
+
+

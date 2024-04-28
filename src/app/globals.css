@@ -11,3 +11,79 @@
     text-wrap: balance;
   }
 }
+
+/*KozGoPr6NRegular*/
+@font-face {
+  font-family: 'KozGoPr6NRegular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/KozGoPr6NRegular.woff') format('woff');
+  }
+
+/*Kaku*/
+@font-face {
+  font-family: 'hiraKaku';
+  src: url('/fonts/HiraKakuPro-W3.otf') format('truetype');
+  font-weight: 300; /* Normal */
+  font-style: normal;
+}
+@font-face {
+  font-family: 'hiraKaku';
+  src: url('/fonts/HiraKakuPro-W6.otf') format('truetype');
+  font-weight: 400; /* Normal */
+  font-style: normal;
+}
+@font-face {
+  font-family: 'hiraKaku';
+  src: url('/fonts/HiraKakuStd-W8.otf') format('truetype');
+  font-weight: 700; /* Normal */
+  font-style: normal;
+}
+
+
+/* Karla Font Faces */
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-Regular.ttf') format('truetype');
+  font-weight: 400; /* Normal */
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-Bold.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-Italic.ttf') format('truetype');
+  font-weight: 400; /* Normal */
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-BoldItalic.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: italic;
+}
+
+/* Rubik Font Faces */
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/Rubik-Regular.ttf') format('truetype');
+  font-weight: 400; /* Normal */
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/Rubik-Medium.ttf') format('truetype');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/Rubik-Bold.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+/* Add all other Rubik variations... */

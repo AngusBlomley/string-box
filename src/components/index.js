@@ -9,6 +9,7 @@ import Header from "./headerIndex";
 import store from "@/store/store";
 
 export default function Index() {
+
     return (
         <main>
             <div className="px-40 max-lg:px-5">
@@ -25,17 +26,17 @@ export default function Index() {
                 <Header />
 
                 <section>
-                    <div className="mt-60 text-white text-8xl w-full mx-auto max-lg:text-5xl ">
-                        <h1 className="">You Box It.</h1>
-                        <h2 className="">We String It.</h2>
+                    <div className=" leading-snug mt-60 font-hiraKakuW8 font-bold text-white text-4xl w-full mx-auto max-lg:text-5xl">
+                        <h1>You Box It.</h1>
+                        <h2>We String It.</h2>
                     </div>
 
-                    <div className="text-white mt-10 w-full mx-auto">
+                    <div className=" font-karla text-white mt-10 w-full mx-auto">
                         <p>Re-Stringing your racquet can improve performance and prolong its life.
                             <br></br>With 40 years of professional hand stringing experience.</p>
                     </div>
 
-                    <div className="flex flex-wrap mt-10">
+                    <div className="font-karla flex flex-wrap mt-10">
                         <Link href="store" className="lg:hidden text-white border-2 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Store</Link>
                         <Link href="/stringing" className="lg:hidden text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link>
                         <Link href="#contact" className="lg:hidden text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link>
@@ -49,159 +50,98 @@ export default function Index() {
 
             </div>
 
-            <section id="service" className=" bg-off-white py-24 px-0 mt-60 w-full max-lg:p-0">
-                <h2 className="text-center text-3xl font-bold mb-10 max-lg:p-0">Fast Turn Around.</h2>
-                <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full">
-                    {/**/}
-                    <div className="flex-grow bg-white rounded-lg shadow-md p-6 min-w-[240px]">
-                        <h3 className="text-lg font-semibold h-8">Step 1.</h3>
-                        <p className="my-2 h-20">You place an order on our website or send us your racquets by mail.</p>
-                        <Image
-                            src="/images/service-images/deliver.png"
-                            alt="logo"
-                            width={200}
-                            height={200}
-                            className="mx-auto mt-5"
-                        />
-                    </div>
+            <section id="service" className="relative py-24 px-0 mt-60 w-full overflow-hidden">
+                <div className="absolute left-1/2 transform -translate-x-60 translate-y-24 bg-clay-red w-10 h-56 max-lg:-translate-x-36 max-lg:h-36 max-lg:translate-y-28"></div>
+                <h2 className="absolute left-1/2 transform -translate-x-56 translate-y-56 font-hiraKaku font-bold z-10 text-midnight-blue text-center text-7xl mb-10 max-lg:-translate-x-36 max-lg:text-6xl max-lg:translate-y-44">SERVICE</h2>
+                <div className="font-karla flex flex-col lg:flex-row justify-center gap-4 mt-80 w-10/12 max-lg:w-full">
+                    <div className="flex mt-20 max-lg:flex-col">
+                        <div className="flex-grow">
+                            <div className="border-b-2 border-black pl-96 max-lg:px-10 max-lg:m-0"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 1</h3></div>
+                            <div className="ml-96 max-lg:px-10 max-lg:m-0"><p className="leading-8 my-2 h-20 font-KozGoPr6NRegular">You place an order on our website or send us your racquets by mail.</p></div>
+                            <Image
+                                alt=""
+                                src="/images/stock/racquets.webp"
+                                height={0}
+                                width={1500}
+                                className="mt-20 max-lg:hidden"
+                            />
+                            <Image
+                                alt=""
+                                src="/images/stock/stringing.png"
+                                height={0}
+                                width={800}
+                                className="mt-10 max-lg:hidden"
+                            />
+                        </div>
+                        <div className="flex-grow  min-w-[240px] max-sm:pb-10">
+                            <div className="border-b-2 border-black ml-16 w-80 max-lg:px-10 max-lg:m-0 max-lg:w-full"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 2</h3></div>
+                            <p className="font-KozGoPr6NRegular leading-8 my-2 h-20 w-80 ml-16 max-lg:px-10 max-lg:m-0 max-lg:w-full">We receive your order or racquets and begin the stringing process.</p>
 
-                    {/**/}
-                    <div className="flex-grow bg-white rounded-lg shadow-md p-6 min-w-[240px]">
-                        <h3 className="text-lg font-semibold h-8">Step 2.</h3>
-                        <p className="my-2 h-20">We receive your order or racquets and begin the stringing process.</p>
-                        <Image
-                            src="/images/service-images/world.png"
-                            alt="logo"
-                            width={200}
-                            height={200}
-                            className="mx-auto mt-5"
-                        />
+                        </div>
                     </div>
+                    <div className="flex mt-60 -ml-64 max-lg:flex-col max-lg:p-0 max-lg:m-0 max-lg:w-full max-lg:mt-0">
+                        <div className="flex-grow mt-14 min-w-[500px] max-lg:min-w-[240px] max-lg:mt-0 max-sm:pb-10">
+                            <div className="border-b-2 border-black ml-16 w-80 max-lg:px-10 max-lg:m-0 max-lg:w-full"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 3</h3></div>
+                            <p className="font-KozGoPr6NRegular leading-8 my-2 h-20 w-80 ml-16 max-lg:px-10 max-lg:m-0 max-lg:w-full ">Once strung, we securely package your racquets and ship them via a trusted courier.</p>
+                            <Image
+                                alt=""
+                                src="/images/stock/gripping.webp"
+                                height={0}
+                                width={345}
+                                className="mt-72 ml-16 max-lg:hidden"
+                            />
+                        </div>
 
-                    {/**/}
-                    <div className="flex-grow bg-white rounded-lg shadow-md p-6 min-w-[240px]">
-                        <h3 className="text-lg font-semibold h-8">Step 3.</h3>
-                        <p className="my-2 h-20">Once strung, we securely package your racquets and ship them via a trusted courier.</p>
-                        <Image
-                            src="/images/service-images/racquet.png"
-                            alt="logo"
-                            width={200}
-                            height={200}
-                            className="mx-auto mt-5"
-                        />
-                    </div>
-
-                    {/**/}
-                    <div className="flex-grow bg-white rounded-lg shadow-md p-6 min-w-[240px]">
-                        <h3 className="text-lg font-semibold h-8">Step 4.</h3>
-                        <p className="my-2 h-20">You will receive a tracking number by email so you can follow the progress of your shipment.</p>
-                        <Image
-                            src="/images/service-images/box.png"
-                            alt="logo"
-                            width={200}
-                            height={200}
-                            className="mx-auto mt-5"
-                        />
+                        <div className="flex-none max-sm:pb-10">
+                            <div className="border-b-2 mt-14 border-black max-lg:px-10 max-lg:mt-0"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 4</h3></div>
+                            <div className=""><p className="font-KozGoPr6NRegular leading-8 my-2 h-20 w-80 max-lg:px-10 max-lg:m-0 max-lg:w-full max-lg:mt-0 max-xl:w-24">You will receive a tracking number by email so you can follow the progress of your shipment.</p></div>
+                            <Image
+                                alt=""
+                                src="/images/stock/grips.webp"
+                                height={0}
+                                width={625}
+                                className="mt-72 max-lg:hidden"
+                            />
+                        </div>
                     </div>
                 </div>
+                <div className="absolute w-full h-1/4 bg-tennis-ball-yellow bottom-16 -z-10 max-lg:px-10 max-lg:bottom-24 max-sm:h-96"></div>
             </section>
 
-            <div className="px-0 py-10 mt-20 w-full max-lg:px-0">
-                <h2 className="text-center text-3xl font-bold mb-10">Choose Your String.</h2>
-                <div className="flex flex-col lg:flex-row justify-center gap-4 mt-20 mx-auto w-4/5 max-lg:w-full ">
-                    {/* Step 1 */}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
-                        <h3 className="text-lg font-semibold text-center">Polyester</h3>
-                        <p className="flex-1">A longer 'dwell-time' (time ball is on the strings) creates maximum 'flatening' of the ball for more control. Energy return is less - allowing players to use stiffer, more powerful racquets for today's game.
-                            <br></br><br></br>
-                            Less energy return to the ball, a 'firmer-feel' giving extreme potential. Best for fast swing-speeds.</p>
-                        <div className="mt-4">
-                            <Image
-                                src="/images/string-types/polyester.png"
-                                alt="logo"
-                                width={200}
-                                height={200}
-                                className="mx-auto mt-20"
-                            />
-                        </div>
-                    </div>
-
-                    {/**/}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
-                        <h3 className="text-lg font-semibold h-8 text-center">Natural Gut</h3>
-                        <p className="flex-1">Maximum ball-pocket depth helps retain more of the ball's incoming energy due to the ball retaining more of it's origional shape.
-                            <br></br><br></br>
-                            Most efficient return of energy received.
-                            <br></br><br></br>
-                            Gut adds power, comfort, and max shock/vibration reduction.</p>
-                        <div className="mt-4">
-                            <Image
-                                src="/images/string-types/natural-gut.png"
-                                alt="logo"
-                                width={200}
-                                height={200}
-                                className="mx-auto mt-20"
-                            />
-                        </div>
-                    </div>
-
-                    {/**/}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
-                        <h3 className="text-lg font-semibold h-8 text-center">Multi Fiber</h3>
-                        <p className="flex-1">Designed to perform like natural gut at a more affordable price.
-                            <br></br><br></br>
-                            Is not negatively effected by moisture.</p>
-                        <div className="mt-4">
-                            <Image
-                                src="/images/string-types/multi-fiber.png"
-                                alt="logo"
-                                width={200}
-                                height={200}
-                                className="mx-auto mt-20"
-                            />
-                        </div>
-                    </div>
-
-                    {/**/}
-                    <div className="flex flex-col bg-white border-2 rounded-lg shadow-md p-6 w-full lg:w-1/4 max-lg:border-0">
-                        <h3 className="text-lg font-semibold h-8 text-center">Solid Core</h3>
-                        <p className="flex-1">Commonly referred to as synthetic gut, the core with outer-wraps returns less energy to the ball.
-                            <br></br><br></br>
-                            A nice crisp feel for a player who seeks basics in performance and value. Numerous variations can be found.</p>
-                        <div className="mt-4">
-                            <Image
-                                src="/images/string-types/solid-core.png"
-                                alt="logo"
-                                width={200}
-                                height={200}
-                                className="mx-auto mt-20"
-                            />
-                        </div>
-                    </div>
-                </div >
-            </div >
-
-            <section className="flex row-auto justify-center mt-40 mx-auto w-1/2 max-lg:w-full m-0">
-                <div className="w-1/3 max-lg:w-full mx-10">
-                    <h2 className="text-3xl">How We String.</h2>
-                    <br></br><br></br>
-                    <p className="w-full">We are a professional racquet stringing company that supplies high-quality strings from top brands. At StringBox, we understand that every player has their own preferences when it comes to strings, which is why we offer a wide selection of professional strings to choose from. Whether you're looking for a specific brand or a certain type of string, we have what you need.
+            <section className="px-28 py-10 mt-20 w-full max-lg:px-0">
+                <div className="flex flex-row">
+                    <Image
+                        alt="strings-breaking"
+                        src="/images/stock/asset1.webp"
+                        height={0}
+                        width={900}
+                    />
+                    <div className="ml-24 bg-clay-red w-14 h-96 max-lg:-translate-x-36 max-lg:h-36 max-lg:translate-y-28"></div>
+                    <h2 className=" leading-normal -ml-5 font-hiraKaku font-bold z-10 text-midnight-blue text-7xl mb-10 max-lg:-translate-x-36 max-lg:text-6xl max-lg:translate-y-44">HOW<br></br>WE<br></br>STRING</h2>
+                    <Image
+                        alt="strings-breaking"
+                        src="/images/stock/asset2.webp"
+                        height={0}
+                        width={900}
+                        className="absolute right-36 mt-96"
+                    />
+                </div>
+                <div className="flex flex-row">
+                    <Image
+                        alt="strings-breaking"
+                        src="/images/stock/asset3.webp"
+                        height={0}
+                        width={800}
+                        className="mt-20"
+                    />
+                    <p className="w-1/4 mt-96 ml-40"><br></br><br></br>We are a professional racquet stringing company that supplies high-quality strings from top brands. At StringBox, we understand that every player has their own preferences when it comes to strings, which is why we offer a wide selection of professional strings to choose from. Whether you're looking for a specific brand or a certain type of string, we have what you need.
                         <br></br><br></br>
                         In addition to our selection of professional strings, we also offer a unique service where you can send us your own strings or request a specific type of string that we don't carry in stock. This allows you to get exactly what you want, tailored to your specific needs.</p>
-                </div>
-                <div>
-                    <Image
-                        src="/images/stock/chino-rocha-dEyXftPAMO4-unsplash.jpg"
-                        alt="strings breaking"
-                        width={330}
-                        height={0}
-                        className="mx-auto ml-10 max-lg:hidden"
-                    />
                 </div>
             </section>
 
             <ContactForm id="contact" />
             <Footer />
-        </main >
+        </main>
     );
 }
