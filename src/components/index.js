@@ -8,6 +8,7 @@ import Footer from "./footer";
 import Header from "./headerIndex";
 import store from "@/store/store";
 import Service from "./service";
+import StringTypes from "./stringTypes";
 
 export default function Index() {
 
@@ -49,11 +50,9 @@ export default function Index() {
                 </section>
             </div>
 
-
-
             <Service id="service" />
 
-            <section className="relative px-56 py-10 mt-20 w-full max-xl:p-5 max-2xl:p-20 max-lg:p-10 max-lg:mt-0 2xl:mb-20">
+            <section className="relative px-56 py-10 mt-20 w-full max-xl:p-5 max-2xl:p-20 max-lg:p-10 max-lg:mt-0 2xl:mb-20 pb-0">
                 <Image
                     alt="strings-breaking"
                     src="/images/stock/asset2.webp"
@@ -86,6 +85,7 @@ export default function Index() {
                 </div>
             </section>
 
+            <StringTypes id="string-types" />
             <ContactForm id="contact" />
             <Footer />
         </main>

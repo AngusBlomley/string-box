@@ -26,6 +26,9 @@ module.exports = {
         'hiraKakuW6': ['hiraKaku', 'sans-serif'],
         'hiraKakuW3': ['hiraKaku', 'sans-serif'],
         'KozGoPr6NRegular': ['KozGoPr6NRegular', 'sans-serif']
+      },
+      spacing: {
+        '1500': '1500px',
       }
     }
   },

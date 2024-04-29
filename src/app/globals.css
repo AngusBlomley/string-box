@@ -86,4 +86,10 @@
   font-weight: 700; /* Bold */
   font-style: normal;
 }
-/* Add all other Rubik variations... */
+
+.custom-width {
+  width: 1500px; /* Set the fixed width */
+}
+.custom-height {
+  height: 1500px; /* Set the fixed height */
+}

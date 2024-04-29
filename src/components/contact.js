@@ -45,34 +45,62 @@ function ContactForm() {
     };
 
     return (
-        <section id="contact" className="mt-0 bg-gray-100 py-8 px-4">
-            <div className="max-w-4xl mx-auto">
-                <form className="bg-white p-6 rounded-lg shadow-md max-lg:shadow-none" onSubmit={handleSubmit}>
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Get in touch.<br />Raise your game.</h2>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                        <input type="text" name="name" placeholder="Your name..."
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            value={formData.name} onChange={handleChange} />
+        <section id="contact" className="mt-36">
+            <div className="">
+                <Image
+                    alt="tennis"
+                    src="/images/stock/balance.webp"
+                    width={1000}
+                    height={1000}
+                    className='mx-0 max-lg:hidden'
+                />
+                <Image
+                    alt="contact"
+                    src="/images/svg/contact.svg"
+                    width={1500}
+                    height={500}
+                    className='absolute right-0 transform -translate-y-20 -z-10'
+                />
+
+            </div>
+            <div className='px-36 max-lg:p-5'>
+                <div className="flex justify-start items-center mb-10 relative">
+                    <div className="h-40 w-10 bg-clay-red mr-72 absolute z-0"></div>
+                    <h2 className="mt-20 text-7xl font-hiraKakuW8 font-bold text-midnight-blue text-center z-10 relative max-lg:pr-10 max-lg:text-5xl max-lg:ml-2">
+                        CONTACT
+                    </h2>
+                </div>
+                <form className=" flex flex-row bg-white p-6 rounded-lg max-lg:p-0 max-lg:flex-col" onSubmit={handleSubmit}>
+                    <div className='w-3/5 px-5 max-lg:w-full'>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-lg font-bold mb-2">Name</label>
+                            <input type="text" name="name" placeholder="Your name..."
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                value={formData.name} onChange={handleChange} />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-lg font-bold mb-2">E-Mail</label>
+                            <input type="text" name="email" placeholder="Your email..."
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                value={formData.email} onChange={handleChange} />
+                        </div>
+                        <button type="submit" className="block mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-lg:hidden">
+                            Send
+                        </button>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">E-Mail</label>
-                        <input type="text" name="email" placeholder="Your email..."
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            value={formData.email} onChange={handleChange} />
+                    <div className='w-full px-5 max-lg:mt-10'>
+                        <div className="mb-6">
+                            <label className="block text-gray-700 text-lg font-bold mb-2">Message</label>
+                            <textarea name="message" placeholder="Your message..."
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style={{ height: '200px' }}
+                                value={formData.message} onChange={handleChange}></textarea>
+                        </div>
+                        <button type="submit" className="hidden mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-lg:block">
+                            Send
+                        </button>
                     </div>
-                    <div className="mb-6">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Message</label>
-                        <textarea name="message" placeholder="Your message..."
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style={{ height: '200px' }}
-                            value={formData.message} onChange={handleChange}></textarea>
-                    </div>
-                    <button type="submit" className=" w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        Send
-                    </button>
                 </form>
             </div>
-
         </section>
     );
 }
