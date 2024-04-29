@@ -108,33 +108,34 @@ export default function Index() {
                 <div className="absolute w-full h-1/4 bg-tennis-ball-yellow bottom-16 -z-10 max-lg:px-10 max-lg:bottom-24 max-sm:h-96"></div>
             </section>
 
-            <section className="px-28 py-10 mt-20 w-full max-lg:px-0">
+            <section className="relative px-56 py-10 mt-20 w-full max-xl:p-5 max-2xl:p-20 max-lg:p-10 max-lg:mt-0 2xl:mb-20">
+                <Image
+                    alt="strings-breaking"
+                    src="/images/stock/asset2.webp"
+                    height={700}
+                    width={700}
+                    className="absolute right-56 mt-96 w-5/12 max-2xl:right-40 max-lg:hidden"
+                />
                 <div className="flex flex-row">
                     <Image
                         alt="strings-breaking"
                         src="/images/stock/asset1.webp"
-                        height={0}
-                        width={900}
+                        height={700}
+                        width={700}
+                        className="w-6/12 h-full max-lg:hidden"
                     />
-                    <div className="ml-24 bg-clay-red w-14 h-96 max-lg:-translate-x-36 max-lg:h-36 max-lg:translate-y-28"></div>
-                    <h2 className=" leading-normal -ml-5 font-hiraKaku font-bold z-10 text-midnight-blue text-7xl mb-10 max-lg:-translate-x-36 max-lg:text-6xl max-lg:translate-y-44">HOW<br></br>WE<br></br>STRING</h2>
-                    <Image
-                        alt="strings-breaking"
-                        src="/images/stock/asset2.webp"
-                        height={0}
-                        width={900}
-                        className="absolute right-36 mt-96"
-                    />
+                    <div className="ml-24 bg-clay-red w-14 h-96 max-lg:ml-0"></div>
+                    <h2 className="leading-normal -ml-5 font-hiraKaku font-bold text-midnight-blue text-7xl mb-10">HOW<br></br>WE<br></br>STRING</h2>
                 </div>
                 <div className="flex flex-row">
                     <Image
                         alt="strings-breaking"
                         src="/images/stock/asset3.webp"
-                        height={0}
-                        width={800}
-                        className="mt-20"
+                        height={700}
+                        width={700}
+                        className="mt-20 w-6/12 h-full max-lg:hidden"
                     />
-                    <p className="w-1/4 mt-96 ml-40"><br></br><br></br>We are a professional racquet stringing company that supplies high-quality strings from top brands. At StringBox, we understand that every player has their own preferences when it comes to strings, which is why we offer a wide selection of professional strings to choose from. Whether you're looking for a specific brand or a certain type of string, we have what you need.
+                    <p className="w-1/3 mt-96 ml-20 max-2xl:ml-10 max-2xl:mt-80 max-lg:mt-0 max-lg:ml-0 max-lg:w-full"><br></br><br></br>We are a professional racquet stringing company that supplies high-quality strings from top brands. At StringBox, we understand that every player has their own preferences when it comes to strings, which is why we offer a wide selection of professional strings to choose from. Whether you're looking for a specific brand or a certain type of string, we have what you need.
                         <br></br><br></br>
                         In addition to our selection of professional strings, we also offer a unique service where you can send us your own strings or request a specific type of string that we don't carry in stock. This allows you to get exactly what you want, tailored to your specific needs.</p>
                 </div>
