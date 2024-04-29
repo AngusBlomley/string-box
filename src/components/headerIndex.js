@@ -88,13 +88,13 @@ export default function Header() {
 
 
     return (
-        <header id="home" className="text-white flex items-center justify-between px-40 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5 z-50" style={{ ...headerStyle, transition: 'background-color 0.2s, color 0.2s' }}>
+        <header id="home" className="text-white flex items-center justify-between px-36 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5 z-50" style={{ ...headerStyle, transition: 'background-color 0.2s, color 0.2s' }}>
             <Link href="/" passHref>
                 <Image
-                    src="/images/logo/white-logo.svg"
+                    src="/images/logo/logo-white.svg"
                     alt="logo"
-                    width={100}
-                    height={50}
+                    width={120}
+                    height={100}
                     className="max-lg:ml-0 h-15"
                 />
             </Link>
@@ -104,25 +104,26 @@ export default function Header() {
             </div>
 
             <ul id="navlist" className="list-none lg:flex hidden">
-                <li><Link href="/" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Home</Link></li>
-                <li><Link href="#service" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Service</Link></li>
-                <li><Link href="/store" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Store</Link></li>
-                <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link></li>
-                <li><Link href="#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link></li>
+                <li><Link href="/" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Home</Link></li>
+                <li><Link href="#service" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Service</Link></li>
+                <li><Link href="/store" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Store</Link></li>
+                <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Re-String</Link></li>
+                <li><Link href="#contact" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Contact</Link></li>
+                <li className="hover:bg-blue-500 duration-200 rounded-sm border-r-2 mx-4 py-3"></li>
                 {user ? (
                     <>
                         <li>
-                            <Link href="#" onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Logout</Link>
+                            <Link href="#" onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Logout</Link>
                         </li>
-                        <li><Link href="/profile" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Profile</Link></li>
+                        <li><Link href="/profile" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Profile</Link></li>
                     </>
                 ) : (
                     <>
-                        <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</Link></li>
-                        <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
+                        <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Login</Link></li>
+                        <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm">Sign Up</Link></li>
                     </>
                 )}
-                <li><Link href="/checkout" className="flex row px-4 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
+                <li><Link href="/checkout" className="flex row px-3 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
                     {/*Insert Cart Item Amount Value Here*/}
                     <img
                         alt="Checkout Image"
@@ -146,7 +147,7 @@ export default function Header() {
                                 <a href="#" onClick={handleLogout} className="hover:text-blue-500">Logout</a>
                             </li>
                             <li className="mb-2">
-                                <span className="hover:text-blue-500"><Link href="/profile" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm"></Link>Profile</span>
+                                <span className="hover:text-blue-500"><Link href="/profile" className="hover:bg-blue-500 duration-200 px-3 py-2 rounded-sm"></Link>Profile</span>
                             </li>
                         </>
                     ) : (

@@ -4,25 +4,13 @@ import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
-import { useDispatch } from 'react-redux';
+import ProfileIndex from "@/components/profileIndex";
 
-export default function Login() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
-
-    const handleLogin = (e) => {
-        e.preventDefault();
-        dispatch({
-            type: 'USER_LOGIN',
-            payload: { username, password },
-        });
-    };
-
+export default function Profile() {
     return (
         <main>
             <Header_global />
-
+            <ProfileIndex />
         </main>
     );
 };

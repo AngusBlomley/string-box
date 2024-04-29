@@ -1,12 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import Image from 'next/image';
+import '../app/globals.css'
+import useFadeLeft from './animations';
 
 function StringTypes() {
 
+    useFadeLeft();
 
     return (
-        <section id="string-types" className="py-0 w-full">
+        <section id="string-types" className="py-0 w-9/12 mx-auto mt-36">
             <div className="ml-56 mb-10 mt-0 relative max-lg:ml-10 max-lg:my-0 max-lg:mt-20">
                 <div className="h-40 w-10 bg-clay-red mr-72 absolute -z-10 -top-20"></div>
                 <h2 className="ml-5 mt-0 text-7xl font-hiraKaku font-bold text-midnight-blue z-10 relative">
@@ -14,7 +17,7 @@ function StringTypes() {
                 </h2>
             </div>
 
-            <div className="relative border-b-2 border-l-2 border-black mx-36 leading-normal pb-10 px-24 mt-40 grid grid-cols-4 gap-y-10 border-b-cyan-950 border-5 max-lg:grid-cols-1 max-lg:mx-0 max-lg:my-0 max-lg:py-0 max-lg:pl-20 max-lg:pr-10">
+            <div className="relative border-b-8 border-l-8 border-black mx-36 leading-normal pb-10 px-24 mt-0 grid grid-cols-4 gap-y-10 border-5 max-lg:grid-cols-1 max-lg:mx-0 max-lg:my-0 max-lg:py-0 max-lg:pl-20 max-lg:pr-10">
 
                 <Image
                     alt="grid"
