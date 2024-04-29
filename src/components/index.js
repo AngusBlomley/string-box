@@ -7,6 +7,7 @@ import ContactForm from "./contact";
 import Footer from "./footer";
 import Header from "./headerIndex";
 import store from "@/store/store";
+import Service from "./service";
 
 export default function Index() {
 
@@ -25,8 +26,8 @@ export default function Index() {
 
                 <Header />
 
-                <section>
-                    <div className=" leading-snug mt-60 font-hiraKakuW8 font-bold text-white text-4xl w-full mx-auto max-lg:text-5xl">
+                <section className="h-screen flex flex-col align-center justify-center">
+                    <div className="leading-snug font-hiraKakuW8 font-bold text-white text-5xl w-full mx-auto max-lg:text-4xl">
                         <h1>You Box It.</h1>
                         <h2>We String It.</h2>
                     </div>
@@ -45,68 +46,12 @@ export default function Index() {
                         <Link href="/stringing" className="hidden lg:block text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link>
                         <Link href="#contact" className="hidden lg:block text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact Us</Link>
                     </div>
-
                 </section>
-
             </div>
 
-            <section id="service" className="relative py-24 px-0 mt-60 w-full overflow-hidden">
-                <div className="absolute left-1/2 transform -translate-x-60 translate-y-24 bg-clay-red w-10 h-56 max-lg:-translate-x-36 max-lg:h-36 max-lg:translate-y-28"></div>
-                <h2 className="absolute left-1/2 transform -translate-x-56 translate-y-56 font-hiraKaku font-bold z-10 text-midnight-blue text-center text-7xl mb-10 max-lg:-translate-x-36 max-lg:text-6xl max-lg:translate-y-44">SERVICE</h2>
-                <div className="font-karla flex flex-col lg:flex-row justify-center gap-4 mt-80 w-10/12 max-lg:w-full">
-                    <div className="flex mt-20 max-lg:flex-col">
-                        <div className="flex-grow">
-                            <div className="border-b-2 border-black pl-96 max-lg:px-10 max-lg:m-0"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 1</h3></div>
-                            <div className="ml-96 max-lg:px-10 max-lg:m-0"><p className="leading-8 my-2 h-20 font-KozGoPr6NRegular">You place an order on our website or send us your racquets by mail.</p></div>
-                            <Image
-                                alt=""
-                                src="/images/stock/racquets.webp"
-                                height={0}
-                                width={1500}
-                                className="mt-20 max-lg:hidden"
-                            />
-                            <Image
-                                alt=""
-                                src="/images/stock/stringing.png"
-                                height={0}
-                                width={800}
-                                className="mt-10 max-lg:hidden"
-                            />
-                        </div>
-                        <div className="flex-grow  min-w-[240px] max-sm:pb-10">
-                            <div className="border-b-2 border-black ml-16 w-80 max-lg:px-10 max-lg:m-0 max-lg:w-full"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 2</h3></div>
-                            <p className="font-KozGoPr6NRegular leading-8 my-2 h-20 w-80 ml-16 max-lg:px-10 max-lg:m-0 max-lg:w-full">We receive your order or racquets and begin the stringing process.</p>
 
-                        </div>
-                    </div>
-                    <div className="flex mt-60 -ml-64 max-lg:flex-col max-lg:p-0 max-lg:m-0 max-lg:w-full max-lg:mt-0">
-                        <div className="flex-grow mt-14 min-w-[500px] max-lg:min-w-[240px] max-lg:mt-0 max-sm:pb-10">
-                            <div className="border-b-2 border-black ml-16 w-80 max-lg:px-10 max-lg:m-0 max-lg:w-full"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 3</h3></div>
-                            <p className="font-KozGoPr6NRegular leading-8 my-2 h-20 w-80 ml-16 max-lg:px-10 max-lg:m-0 max-lg:w-full ">Once strung, we securely package your racquets and ship them via a trusted courier.</p>
-                            <Image
-                                alt=""
-                                src="/images/stock/gripping.webp"
-                                height={0}
-                                width={345}
-                                className="mt-72 ml-16 max-lg:hidden"
-                            />
-                        </div>
 
-                        <div className="flex-none max-sm:pb-10">
-                            <div className="border-b-2 mt-14 border-black max-lg:px-10 max-lg:mt-0"><h3 className="font-hiraKakuW8 font-bold text-2xl h-8 w-36 pb-10">Step 4</h3></div>
-                            <div className=""><p className="font-KozGoPr6NRegular leading-8 my-2 h-20 w-80 max-lg:px-10 max-lg:m-0 max-lg:w-full max-lg:mt-0 max-xl:w-24">You will receive a tracking number by email so you can follow the progress of your shipment.</p></div>
-                            <Image
-                                alt=""
-                                src="/images/stock/grips.webp"
-                                height={0}
-                                width={625}
-                                className="mt-72 max-lg:hidden"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div className="absolute w-full h-1/4 bg-tennis-ball-yellow bottom-16 -z-10 max-lg:px-10 max-lg:bottom-24 max-sm:h-96"></div>
-            </section>
+            <Service id="service" />
 
             <section className="relative px-56 py-10 mt-20 w-full max-xl:p-5 max-2xl:p-20 max-lg:p-10 max-lg:mt-0 2xl:mb-20">
                 <Image
