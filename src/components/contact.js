@@ -45,13 +45,13 @@ function ContactForm() {
     };
 
     return (
-        <section id="contact" className="mt-36">
+        <section id="contact" className="mt-10 max-lg:mt-10">
             <div className="">
                 <Image
                     alt="tennis"
                     src="/images/stock/balance.webp"
-                    width={1000}
-                    height={1000}
+                    width={800}
+                    height={800}
                     className='mx-0 max-lg:hidden'
                 />
                 <Image
@@ -59,14 +59,14 @@ function ContactForm() {
                     src="/images/svg/contact.svg"
                     width={1500}
                     height={500}
-                    className='absolute right-0 transform -translate-y-20 -z-10'
+                    className='absolute right-0 transform -translate-y-20 -z-10 '
                 />
 
             </div>
             <div className='px-36 max-lg:p-5'>
                 <div className="flex justify-start items-center mb-10 relative">
-                    <div className="h-40 w-10 bg-clay-red mr-72 absolute z-0"></div>
-                    <h2 className="mt-20 text-7xl font-hiraKakuW8 font-bold text-midnight-blue text-center z-10 relative max-lg:pr-10 max-lg:text-5xl max-lg:ml-2">
+                    <div className="h-44 w-10 bg-clay-red mr-72 absolute -z-10 max-lg:h-36"></div>
+                    <h2 className="mt-20 text-7xl font-hiraKakuW8 font-bold text-midnight-blue text-center z-10 relative max-lg:pr-10 max-lg:text-4xl max-lg:ml-6">
                         CONTACT
                     </h2>
                 </div>
