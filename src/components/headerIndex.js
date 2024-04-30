@@ -6,14 +6,12 @@ import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../store/actions/userActions';
-
-function toggleMenu(menuOpen, setMenuOpen) {
-    setMenuOpen(!menuOpen);
-}
+import { handleHeaderScroll, toggleMenu, handleMenuClicks, updateHeaderOnScroll } from './animations';
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [headerStyle, setHeaderStyle] = useState({ backgroundColor: 'transparent', color: 'white' });
+    const [logoSize, setLogoSize] = useState({ width: 180, height: 150, marginTop: 36 });
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
 
@@ -21,70 +19,19 @@ export default function Header() {
         e.preventDefault();
         dispatch(logoutUser());
     };
-    useEffect(() => {
-        // Function to toggle menu state
-        function toggleMenu() {
-            setMenuOpen(!menuOpen);
-        }
-
-        // Attach click event listeners for menu toggle
-        const menuItems = document.querySelectorAll('#menucontainer a');
-        menuItems.forEach(menuItem => {
-            menuItem.addEventListener('click', toggleMenu);
-        });
-
-        // Function to handle smooth scrolling
-        function handleScroll(e) {
-            e.preventDefault();
-            const href = e.currentTarget.getAttribute('href');
-            const target = document.querySelector(href);
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Attach click event listeners for smooth scrolling
-        const scrollLinks = document.querySelectorAll('a[href^="#"]');
-        scrollLinks.forEach(scrollLink => {
-            scrollLink.addEventListener('click', handleScroll);
-        });
-
-        // Cleanup function to remove event listeners
-        return () => {
-            menuItems.forEach(menuItem => {
-                menuItem.removeEventListener('click', toggleMenu);
-            });
-            scrollLinks.forEach(scrollLink => {
-                scrollLink.removeEventListener('click', handleScroll);
-            });
-        };
-    }, [menuOpen, setMenuOpen]);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const header = document.querySelector('header');
-            const headerHeight = header.offsetHeight;
-            const scrollPosition = window.scrollY;
-
-            // Adjust the scroll threshold as needed
-            const scrollThreshold = 80;
-
-            if (scrollPosition > scrollThreshold) {
-                setHeaderStyle({ backgroundColor: 'black', color: 'white' });
-            } else {
-                setHeaderStyle({ backgroundColor: 'transparent', color: 'white' });
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        const scrollHandler = handleHeaderScroll(setHeaderStyle, setLogoSize);
+        window.addEventListener('scroll', scrollHandler);
+        updateHeaderOnScroll(setHeaderStyle, setLogoSize);
+        return () => window.removeEventListener('scroll', scrollHandler);
     }, []);
+
+    useEffect(() => {
+        const cleanupMenuClicks = handleMenuClicks(() => toggleMenu(menuOpen, setMenuOpen));
+        return cleanupMenuClicks;
+    }, [menuOpen]);
+
 
 
     return (
@@ -93,9 +40,10 @@ export default function Header() {
                 <Image
                     src="/images/logo/logo-white.svg"
                     alt="logo"
-                    width={120}
-                    height={100}
-                    className="max-lg:ml-0 h-15"
+                    width={logoSize.width}
+                    height={logoSize.height}
+                    style={{ marginTop: logoSize.marginTop }}
+                    className="max-lg:ml-0 duration-200"
                 />
             </Link>
 

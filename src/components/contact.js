@@ -45,33 +45,30 @@ function ContactForm() {
     };
 
     return (
-        <section id="contact" className="mt-10 max-lg:mt-10">
-            <div className="">
-                <Image
-                    alt="tennis"
-                    src="/images/stock/balance.webp"
-                    width={800}
-                    height={800}
-                    className='mx-0 max-lg:hidden'
-                />
-                <Image
-                    alt="contact"
-                    src="/images/svg/contact.svg"
-                    width={1500}
-                    height={500}
-                    className='absolute right-0 transform -translate-y-20 -z-10 '
-                />
-
-            </div>
+        <section id="contact" className="section max-lg:mt-10 mx-auto">
             <div className='px-36 max-lg:p-5'>
-                <div className="flex justify-start items-center mb-10 relative">
-                    <div className="h-44 w-10 bg-clay-red mr-72 absolute -z-10 max-lg:h-36"></div>
-                    <h2 className="mt-20 text-7xl font-hiraKakuW8 font-bold text-midnight-blue text-center z-10 relative max-lg:pr-10 max-lg:text-4xl max-lg:ml-6">
+                <div className="flex justify-center items-end mb-10 relative">
+                    <div className="h-36 w-10 -mr-8 bg-clay-red -z-10 max-lg:h-36"></div>
+                    <Image
+                        alt="contact"
+                        src="/images/svg/contact.svg"
+                        width={1200}
+                        height={500}
+                        className=' absolute w-7/12'
+                    />
+                    <h2 className="mt-20 text-5xl font-hiraKakuW8 font-bold text-midnight-blue text-center z-10 relative max-lg:pr-10 max-lg:text-4xl max-lg:ml-6">
                         CONTACT
                     </h2>
+                    <Image
+                        alt="tennis"
+                        src="/images/stock/balance.webp"
+                        width={500}
+                        height={500}
+                        className='mx-0 mt-36 ml-48 max-lg:hidden'
+                    />
                 </div>
-                <form className=" flex flex-row bg-white p-6 rounded-lg max-lg:p-0 max-lg:flex-col" onSubmit={handleSubmit}>
-                    <div className='w-3/5 px-5 max-lg:w-full'>
+                <form className="mx-auto flex flex-row justify-center w-8/12 bg-white p-6 rounded-lg max-lg:p-0 max-lg:flex-col" onSubmit={handleSubmit}>
+                    <div className='full px-5 max-lg:w-full'>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-lg font-bold mb-2">Name</label>
                             <input type="text" name="name" placeholder="Your name..."

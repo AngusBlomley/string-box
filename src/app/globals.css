@@ -88,16 +88,23 @@
 }
 
 .custom-width {
-  width: 1500px; /* Set the fixed width */
+  width: 1500px;
 }
 .custom-height {
-  height: 1500px; /* Set the fixed height */
+  height: 1500px;
 }
+
+.section {
+  padding-top: 80px;
+  margin-top: -80px;
+  box-sizing: border-box;
+}
+
 
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-75px);
   }
   to {
     opacity: 1;

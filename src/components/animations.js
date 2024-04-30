@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import Link from "next/link";
 
 export default function useFadeLeft() {
 
@@ -26,4 +26,38 @@ export default function useFadeLeft() {
             }
         };
     }, []);
+};
+
+export const updateHeaderOnScroll = (setHeaderStyle, setLogoSize) => {
+    const scrollPosition = window.scrollY;
+    const scrollThreshold = 80;
+
+    if (scrollPosition > scrollThreshold) {
+        setHeaderStyle({ backgroundColor: 'black', color: 'white' });
+        setLogoSize({ width: 120, height: 100, marginTop: 0 });
+    } else {
+        setHeaderStyle({ backgroundColor: 'transparent', color: 'white' });
+        setLogoSize({ width: 180, height: 150, marginTop: 36 });
+    }
+};
+
+export const handleHeaderScroll = (setHeaderStyle, setLogoSize) => {
+    return () => updateHeaderOnScroll(setHeaderStyle, setLogoSize);
+};
+
+export const toggleMenu = (menuOpen, setMenuOpen) => {
+    setMenuOpen(!menuOpen);
+};
+
+export const handleMenuClicks = (toggleMenu) => {
+    const menuItems = document.querySelectorAll('#menucontainer a');
+    menuItems.forEach(menuItem => {
+        menuItem.addEventListener('click', () => toggleMenu());
+    });
+
+    return () => {
+        menuItems.forEach(menuItem => {
+            menuItem.removeEventListener('click', () => toggleMenu());
+        });
+    };
 };

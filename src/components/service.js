@@ -9,7 +9,7 @@ export default function Service() {
     useFadeLeft();
 
     return (
-        <section id="service" className="py-0 mx-auto w-8/12 px-0 max-lg:m-5">
+        <section id="service" className="section py-0 mx-auto w-8/12 px-0 max-lg:m-5">
             <div className="lg:hidden">
                 <h2 className="observe-fade-in mt-10 text-6xl font-hiraKaku font-bold text-midnight-blue z-10">
                     SERVICE
@@ -26,9 +26,9 @@ export default function Service() {
                     <p className="font-KozGoPr6NRegular pt-4">We receive your order or racquets and begin the stringing process.</p>
                 </div>
 
-                <div className="max-xl:hidden">
-                    <div className="absolute h-10 w-64 ml-36 mt-20 bg-clay-red -z-10"></div>
-                    <h2 className="observe-fade-in mt-10 ml-8 text-6xl font-hiraKaku font-bold text-midnight-blue z-10">
+                <div className="max-lg:hidden">
+                    <div className="h-10 w-1/2 ml-36 mt-20 bg-clay-red -z-10"></div>
+                    <h2 className="observe-fade-in -mt-20 ml-8 text-6xl font-hiraKaku font-bold text-midnight-blue z-10">
                         SERVICE
                     </h2>
                 </div>
@@ -56,7 +56,7 @@ export default function Service() {
 
                 <div className="max-lg:w-80 max-lg:mx-auto">
                     <h3 className="font-hiraKakuW8 font-bold text-lg border-b-2 border-black pb-4">Step 4</h3>
-                    <p className="font-KozGoPr6NRegular pt-4 w-72">You will receive a tracking number by email so you can follow the progress of your shipment.</p>
+                    <p className="font-KozGoPr6NRegular pt-4 w-64">You will receive a tracking number by email so you can follow the progress of your shipment.</p>
                 </div>
 
                 <div>
