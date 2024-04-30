@@ -9,7 +9,7 @@ export default function Service() {
     useFadeLeft();
 
     return (
-        <section id="service" className="section py-0 mx-auto w-8/12 px-0 max-lg:m-5">
+        <section id="service" className="section py-0 mx-auto w-8/12 max-lg:w-full px-0 max-lg:m-5">
             <div className="lg:hidden">
                 <h2 className="observe-fade-in mt-10 text-6xl font-hiraKaku font-bold text-midnight-blue z-10">
                     SERVICE
@@ -17,11 +17,11 @@ export default function Service() {
             </div>
             <div className="leading-normal mt-20 grid grid-cols-3 gap-10 max-lg:grid-cols-1">
                 <div className="h-40">
-                    <div className="flex justify-end border-b-2 border-black pb-4 max-lg:justify-center max-lg:w-80 max-lg:mx-auto"><h3 className=" w-72 font-hiraKakuW8 font-bold text-lg">Step 1</h3></div>
-                    <div className="flex justify-end max-lg:justify-center"><p className="font-KozGoPr6NRegular pt-4 w-72">You place an order on our website or send us your racquets by mail.</p></div>
+                    <div className="flex justify-end border-b-2 border-black pb-4 max-lg:justify-start max-lg:full"><h3 className=" w-72 font-hiraKakuW8 font-bold text-lg">Step 1</h3></div>
+                    <div className="flex justify-end max-lg:justify-start"><p className="font-KozGoPr6NRegular pt-4 w-72">You place an order on our website or send us your racquets by mail.</p></div>
                 </div>
 
-                <div className=" mx-auto max-lg:w-80">
+                <div className=" mx-auto max-lg:mx-0">
                     <h3 className="font-hiraKakuW8 font-bold text-lg border-b-2 border-black pb-4">Step 2</h3>
                     <p className="font-KozGoPr6NRegular pt-4">We receive your order or racquets and begin the stringing process.</p>
                 </div>
@@ -49,14 +49,14 @@ export default function Service() {
                     />
                 </div>
 
-                <div className=" mx-auto mb-20 max-lg:w-80">
+                <div className=" mx-auto mb-20 max-lg:mx-0">
                     <h3 className="font-hiraKakuW8 font-bold text-lg border-b-2 border-black pb-4">Step 3</h3>
                     <p className="font-KozGoPr6NRegular pt-4">Once strung, we securely package your racquets and ship them via a trusted courier.</p>
                 </div>
 
-                <div className="max-lg:w-80 max-lg:mx-auto">
+                <div className="max-lg:mx-0">
                     <h3 className="font-hiraKakuW8 font-bold text-lg border-b-2 border-black pb-4">Step 4</h3>
-                    <p className="font-KozGoPr6NRegular pt-4 w-64">You will receive a tracking number by email so you can follow the progress of your shipment.</p>
+                    <p className="font-KozGoPr6NRegular pt-4 w-64 max-lg:w-full">You will receive a tracking number by email so you can follow the progress of your shipment.</p>
                 </div>
 
                 <div>

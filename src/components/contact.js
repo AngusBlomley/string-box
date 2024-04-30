@@ -45,10 +45,10 @@ function ContactForm() {
     };
 
     return (
-        <section id="contact" className="section max-lg:mt-10 mx-auto">
-            <div className='px-36 max-lg:p-5'>
-                <div className="flex justify-center items-end mb-10 relative">
-                    <div className="h-36 w-10 -mr-8 bg-clay-red -z-10 max-lg:h-36"></div>
+        <section id="contact" className="section flex justify-center max-md:mt-10">
+            <div>
+                <div className="flex justify-between items-end mb-10 relative max-md:justify-start max-md:ml-10">
+                    <div className="h-36 w-14 -mr-8 bg-clay-red -z-10 max-md:h-36 max-md:-mr-12"></div>
                     <Image
                         alt="contact"
                         src="/images/svg/contact.svg"
@@ -56,43 +56,43 @@ function ContactForm() {
                         height={500}
                         className=' absolute w-7/12'
                     />
-                    <h2 className="mt-20 text-5xl font-hiraKakuW8 font-bold text-midnight-blue text-center z-10 relative max-lg:pr-10 max-lg:text-4xl max-lg:ml-6">
+                    <h2 className="mt-20 text-5xl font-hiraKakuW8 font-bold text-midnight-blue text-center z-10 relative max-md:pr-10 max-md:text-5xl max-md:ml-6 max-md:-translate-y-3">
                         CONTACT
                     </h2>
                     <Image
                         alt="tennis"
                         src="/images/stock/balance.webp"
-                        width={500}
-                        height={500}
-                        className='mx-0 mt-36 ml-48 max-lg:hidden'
+                        width={400}
+                        height={400}
+                        className='ml-10 mt-36 max-md:hidden'
                     />
                 </div>
-                <form className="mx-auto flex flex-row justify-center w-8/12 bg-white p-6 rounded-lg max-lg:p-0 max-lg:flex-col" onSubmit={handleSubmit}>
-                    <div className='full px-5 max-lg:w-full'>
+                <form className="flex flex-row justify-center mt-20 w-full max-md:flex-col" onSubmit={handleSubmit}>
+                    <div className='px-5 w-full'>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-lg font-bold mb-2">Name</label>
+                            <label className="block text-gray-700 font-bold mb-2">Name</label>
                             <input type="text" name="name" placeholder="Your name..."
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 value={formData.name} onChange={handleChange} />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-lg font-bold mb-2">E-Mail</label>
+                            <label className="block text-gray-700 font-bold mb-2">E-Mail</label>
                             <input type="text" name="email" placeholder="Your email..."
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 value={formData.email} onChange={handleChange} />
                         </div>
-                        <button type="submit" className="block mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-lg:hidden">
+                        <button type="submit" className="block mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-md:hidden">
                             Send
                         </button>
                     </div>
-                    <div className='w-full px-5 max-lg:mt-10'>
+                    <div className='w-full px-5 max-md:mt-10'>
                         <div className="mb-6">
-                            <label className="block text-gray-700 text-lg font-bold mb-2">Message</label>
+                            <label className="block text-gray-700 font-bold mb-2">Message</label>
                             <textarea name="message" placeholder="Your message..."
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" style={{ height: '200px' }}
                                 value={formData.message} onChange={handleChange}></textarea>
                         </div>
-                        <button type="submit" className="hidden mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-lg:block">
+                        <button type="submit" className="hidden mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-md:block">
                             Send
                         </button>
                     </div>

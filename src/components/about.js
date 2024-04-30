@@ -15,7 +15,7 @@ export default function About() {
                 src="/images/stock/asset2.webp"
                 height={500}
                 width={500}
-                className="absolute top-1/2 left-1/2 transform -translate-x-20 -translate-y-48 max-lg:hidden"
+                className="absolute top-1/2 left-1/2 transform -translate-x-20 -translate-y-56 max-lg:hidden"
             />
 
             <div className="flex flex-row justify-center max-lg:justify-start">
@@ -37,7 +37,7 @@ export default function About() {
                     width={365}
                     className="mt-10 shadow-2xl max-lg:hidden"
                 />
-                <p className="w-96 mt-56 ml-10 max-lg:mt-0 max-lg:ml-0 max-lg:w-full"><br></br><br></br>We are a professional racquet stringing company that supplies high-quality strings from top brands. At StringBox, we understand that every player has their own preferences when it comes to strings, which is why we offer a wide selection of professional strings to choose from. Whether you're looking for a specific brand or a certain type of string, we have what you need.
+                <p className="w-96 mt-48 mb-4 ml-10 max-lg:mt-0 max-lg:ml-0 max-lg:w-full"><br></br><br></br>We are a professional racquet stringing company that supplies high-quality strings from top brands. At StringBox, we understand that every player has their own preferences when it comes to strings, which is why we offer a wide selection of professional strings to choose from. Whether you're looking for a specific brand or a certain type of string, we have what you need.
                     <br></br><br></br>
                     In addition to our selection of professional strings, we also offer a unique service where you can send us your own strings or request a specific type of string that we don't carry in stock. This allows you to get exactly what you want, tailored to your specific needs.</p>
             </div>
