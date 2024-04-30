@@ -23,16 +23,17 @@ export default function Stringing() {
         <main>
             <Header_global />
             <div className="flex items-center justify-center h-screen bg-gray-100">
-                <div className="flex bg-white shadow-lg h-10/12 w-5/12 justify-between max-xl:flex-col max-xl:p-0 max-xl:pb-10 max-md:w-screen">
+                <div className="flex bg-white shadow-lg justify-between max-md:justify-center">
 
                     <div className="flex justify-center">
                         <Image
                             alt="string"
-                            src="/images/stock/chino-rocha-q9dswAd5Pc0-unsplash.jpg"
+                            src="/images/stock/asset3.webp"
                             width={400}
                             height={400}
+                            className="max-md:hidden"
                         />
-                        <form onSubmit={handleSubmit} className="space-y-4 ml-10">
+                        <form onSubmit={handleSubmit} className="space-y-4 p-10">
                             <h2 className="text-xl font-semibold text-gray-800 mb-4">String Preference</h2>
                             <h3 className="text-md text-gray-600 mb-8">Choose your preference</h3>
                             <div>
@@ -69,7 +70,6 @@ export default function Stringing() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </main>
     );
 };

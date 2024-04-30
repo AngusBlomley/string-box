@@ -9,7 +9,7 @@ function StringTypes() {
     useFadeLeft();
 
     return (
-        <section id="string-types" className="py-0 w-9/12 mx-auto mt-36 max-lg:mx-0 max-lg:mt-5 max-lg:w-full">
+        <section id="string-types" className="py-0 w-9/12 mx-auto mt-36 max-lg:mx-0 max-lg:mt-5 max-xl:w-full">
             <div className="ml-20 mb-10 mt-0 relative max-lg:ml-10 max-lg:my-0 max-lg:mt-0">
                 <div className="h-40 w-14 bg-clay-red absolute -z-10 -top-0 max-lg:-top-8 max-lg:h-40"></div>
                 <h2 className="leading-snug ml-8 mt-0 text-5xl font-hiraKakuW8 font-bold text-midnight-blue z-10 relative max-lg:text-5xl max-lg:mt-10 max-lg:-mb-20 max-lg:leading-snug ">
@@ -54,7 +54,7 @@ function StringTypes() {
                 <div></div>
                 <div></div>
                 <div></div>
-                <div className='w-96 max-lg:w-full'>
+                <div className='w-full max-lg:w-full'>
                     <div className='h-7 w-7 bg-clay-red rounded-3xl -mb-7 -ml-10'></div>
                     <h1 className='font-hiraKakuW8 font-extrabold text-lg text-midnight-blue'>Polyester</h1>
                     <ul className='list-disc list-outside'>

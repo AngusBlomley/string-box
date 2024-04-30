@@ -103,7 +103,6 @@ export default function ProfileIndex() {
                                 Sign In
                             </button>
                         </form>
-
                     </div>
                 </div>
             </div>

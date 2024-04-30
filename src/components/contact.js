@@ -45,7 +45,7 @@ function ContactForm() {
     };
 
     return (
-        <section id="contact" className="section flex justify-center max-md:mt-10">
+        <section id="contact" className="section flex justify-center max-md:mt-10 max-md:block">
             <div>
                 <div className="flex justify-between items-end mb-10 relative max-md:justify-start max-md:ml-10">
                     <div className="h-36 w-14 -mr-8 bg-clay-red -z-10 max-md:h-36 max-md:-mr-12"></div>
