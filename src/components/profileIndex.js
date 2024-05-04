@@ -1,108 +1,105 @@
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
-
+import Image from 'next/image';
+import Link from 'next/link';
 export default function ProfileIndex() {
 
     return (
         <main>
-            <div className="flex items-center justify-center h-screen bg-off-white font-hiraKakuW8">
-                <div className="flex row h-full w-10/12 pt-44 justify-between max-xl:flex-col max-xl:p-0 max-xl:pb-10 max-md:w-screen">
-                    <h1 className="text-5xl text-stone-800">Profile Settings</h1>
+            <div className="h-screen bg-off-white font-hiraKakuW8 text-stone-800 flex flex-col justify-center items-center max-lg:h-full max-lg:pb-20">
+                <div className=''>
+                    <h1 className="text-5xl ml-10 mb-20 max-lg:mt-40 max-sm:text-center max-sm:mb-10 max-sm:ml-0 max-lg:text-4xl">Profile Settings</h1>
+                    <div className='grid grid-rows-2 grid-cols-3 gap-x-16 gap-y-24 px-10 max-lg:grid-cols-2 max-lg:gap-y-10 max-sm:grid-cols-1'>
 
-                    <div className="flex justify-center pt-20">
-                        <form className="p-8 w-10/12">
-                            <label htmlFor="name" className="inline-block text-gray-700 text-sm font-bold mb-2">
-                                Name:
-                            </label>
-                            <input
-                                placeholder="Name"
-                                type="text"
-                                id="name"
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded"
-                            />
+                        <Link href="./profileDetails">
+                            <div className='h-40 p-4 border-2 border-gray duration-200 hardShadow'>
+                                <div className='flex row'>
+                                    <div>
+                                        <h3 className='text-2xl'>My Details</h3>
+                                        <p className='text-gray-500 font-KozGoPr6NRegular mt-4'>Username, Password, Email</p>
+                                    </div>
+                                    <Image
+                                        src="/images/icons/bxs-user-detail-black.png"
+                                        alt="Personal Details" 
+                                        width={24}
+                                        height={0}
+                                        className='w-12 h-12 mx-4'
+                                    />
+                                </div>
+                            </div>
+                        </Link>
 
-                            <label htmlFor="mobile" className="block text-gray-700 text-sm font-bold mb-2 mt-4">
-                                Mobile:
-                            </label>
-                            <input
-                                placeholder="Mobile"
-                                type="tel"
-                                id="mobile"
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded"
-                            />
+                        <Link href="./profilePersonalDetails">
+                            <div className='h-40 p-4 border-2 border-gray duration-200 hardShadow'>
+                                <div className='flex row'>
+                                    <div>
+                                        <h3 className='text-2xl'>Personal Details</h3>
+                                        <p className='text-gray-500 font-KozGoPr6NRegular mt-4'>Username, Password, Email</p>
+                                    </div>
+                                    <Image
+                                        src="/images/icons/bxs-user-detail-black.png"
+                                        alt="Personal Details" 
+                                        width={24}
+                                        height={0}
+                                        className='w-12 h-12 mx-4'
+                                    />
+                                </div>
+                            </div>
+                        </Link>
 
-                            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2 mt-4">
-                                Email:
-                            </label>
-                            <input
-                                placeholder="Email"
-                                type="email"
-                                id="email"
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded"
-                            />
+                        <Link href="./profilePersonalDetails">
+                            <div className='h-40 p-4 border-2 border-gray duration-200 hardShadow'>
+                                <div className='flex row'>
+                                    <div>
+                                        <h3 className='text-2xl'>Personal Details</h3>
+                                        <p className='text-gray-500 font-KozGoPr6NRegular mt-4'>Username, Password, Email</p>
+                                    </div>
+                                    <Image
+                                        src="/images/icons/bxs-user-detail-black.png"
+                                        alt="Personal Details" 
+                                        width={24}
+                                        height={0}
+                                        className='w-12 h-12 mx-4'
+                                    />
+                                </div>
+                            </div>
+                        </Link>
 
-                            <label htmlFor="country-region" className="block text-gray-700 text-sm font-bold mb-2 mt-4">
-                                Country/Region:
-                            </label>
-                            <select
-                                id="country-region"
-                                className="block w-full px-3 py-2 border rounded leading-tight text-gray-700"
-                            >
-                                <option value="">Select a country</option>
-                                <option value="usa">United States</option>
-                                <option value="canada">Canada</option>
-                                <option value="uk">United Kingdom</option>
-                                <option value="australia">Australia</option>
-                                {/* Populate this list with all countries */}
-                            </select>
+                        <Link href="./profilePersonalDetails">
+                            <div className='h-40 p-4 border-2 border-gray duration-200 hardShadow'>
+                                <div className='flex row'>
+                                    <div>
+                                        <h3 className='text-2xl'>Personal Details</h3>
+                                        <p className='text-gray-500 font-KozGoPr6NRegular mt-4'>Username, Password, Email</p>
+                                    </div>
+                                    <Image
+                                        src="/images/icons/bxs-user-detail-black.png"
+                                        alt="Personal Details" 
+                                        width={24}
+                                        height={0}
+                                        className='w-12 h-12 mx-4'
+                                    />
+                                </div>
+                            </div>
+                        </Link>
 
-                            <label htmlFor="postcode" className="block text-gray-700 text-sm font-bold mb-2 mt-4">
-                                Post Code:
-                            </label>
-                            <input
-                                placeholder="Post Code"
-                                type="text"
-                                id="postcode"
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded"
-                            />
-
-                            <label htmlFor="address1" className="block text-gray-700 text-sm font-bold mb-2 mt-4">
-                                Address 1:
-                            </label>
-                            <input
-                                placeholder="Address 1"
-                                type="text"
-                                id="address1"
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded"
-                            />
-
-                            <label htmlFor="address2" className="block text-gray-700 text-sm font-bold mb-2 mt-4">
-                                Address 2:
-                            </label>
-                            <input
-                                placeholder="Address 2"
-                                type="text"
-                                id="address2"
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded"
-                            />
-
-                            <label htmlFor="town-city" className="block text-gray-700 text-sm font-bold mb-2 mt-4">
-                                Town / City:
-                            </label>
-                            <input
-                                placeholder="Town / City"
-                                type="text"
-                                id="town-city"
-                                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded mb-4"
-                            />
-
-                            <button
-                                type="submit"
-                                className="mt-5 w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                            >
-                                Sign In
-                            </button>
-                        </form>
+                        <Link href="./profilePersonalDetails">
+                            <div className='h-40 p-4 border-2 border-gray duration-200 hardShadow'>
+                                <div className='flex row'>
+                                    <div>
+                                        <h3 className='text-2xl'>Personal Details</h3>
+                                        <p className='text-gray-500 font-KozGoPr6NRegular mt-4'>Username, Password, Email</p>
+                                    </div>
+                                    <Image
+                                        src="/images/icons/bxs-user-detail-black.png"
+                                        alt="Personal Details" 
+                                        width={24}
+                                        height={0}
+                                        className='w-12 h-12 mx-4'
+                                    />
+                                </div>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

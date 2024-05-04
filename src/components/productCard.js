@@ -13,7 +13,7 @@ function ProductCard({ product }) {
             <h3 className="text-lg font-semibold">{product.name}</h3>
             <p className="text-sm text-gray-600 mb-2">{product.description}</p>
             <p className="text-lg font-bold">{product.price}</p>
-            <button className="mt-auto bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <button className="bg-blue-500 text-white w-full px-4 py-2 rounded hover:bg-blue-700">
                 Add to Cart
             </button>
         </div>

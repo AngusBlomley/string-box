@@ -127,7 +127,7 @@ export default function Store() {
                     </div>
                 </section>
                 <section className="p-10 w-full max-lg:p-4">
-                    <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2">
+                    <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2 bg-white">
                         {products.map(product => (
                             <ProductCard key={product.id} product={product} />
                         ))}

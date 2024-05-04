@@ -11,6 +11,7 @@ export default function Profile() {
         <main>
             <Header_global />
             <ProfileIndex />
+            <Footer />
         </main>
     );
 };

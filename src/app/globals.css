@@ -117,3 +117,11 @@
   animation-duration: 1s;
   animation-fill-mode: both;
 }
+
+.hardShadow {
+  box-shadow: 5px 5px 0 0 #888888;
+}
+
+.hardShadow:hover {
+  box-shadow: 10px 10px 0 0 #444;
+}

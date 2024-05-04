@@ -1,86 +1,85 @@
 [
     {
         "id": 1,
-        "name": "Tennis String 1",
+        "name": "Babolat RPM Blast",
         "description": "High-quality polyester string",
-        "price": "19.99",
-        "imageUrl": "/images/products/string1.jpg"
+        "price": "£19.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 2,
-        "name": "Tennis String 2",
+        "name": "Hyper G 300x",
         "description": "Durable multi-fiber string",
-        "price": "21.99",
-        "imageUrl": "/images/products/string2.jpg"
-    },
-    {
+        "price": "£21.99",
+        "imageUrl": "/images/products/hyper_g_300x.jpg"
+    },{
         "id": 3,
-        "name": "Tennis String 3",
+        "name": "Wilson Natural Gut",
         "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string3.jpg"
+        "price": "£25.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 4,
-        "name": "Tennis String 4",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string4.jpg"
+        "name": "Technifibre X-One",
+        "description": "Responsive synthetic blend",
+        "price": "£23.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 5,
-        "name": "Tennis String 5",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string5.jpg"
+        "name": "Luxilon Alu Power",
+        "description": "Soft feel for maximum comfort",
+        "price": "£20.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 6,
-        "name": "Tennis String 6",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string6.jpg"
+        "name": "Head Lynx Edge",
+        "description": "Optimized for power players",
+        "price": "£26.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 7,
-        "name": "Tennis String 7",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string7.jpg"
+        "name": "Solinco Tour Bite",
+        "description": "Lightweight for better playability",
+        "price": "£18.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 8,
-        "name": "Tennis String 8",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string8.jpg"
+        "name": "Yonex Poly Tour Pro",
+        "description": "Enhanced durability and control",
+        "price": "£24.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 9,
-        "name": "Tennis String 9",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string9.jpg"
+        "name": "Volkl Cyclone",
+        "description": "High tension stability",
+        "price": "£22.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 10,
-        "name": "Tennis String 10",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string10.jpg"
+        "name": "Prince Synthetic Gut",
+        "description": "Designed for spin and precision",
+        "price": "£27.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 11,
-        "name": "Tennis String 11",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string11.jpg"
+        "name": "Gamma Live Wire",
+        "description": "Exceptional feel and response",
+        "price": "£24.50",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     },
     {
         "id": 12,
-        "name": "Tennis String 12",
-        "description": "Versatile natural gut string",
-        "price": "25.99",
-        "imageUrl": "/images/products/string12.jpg"
+        "name": "Dunlop Silk Pro",
+        "description": "Superior playability and resilience",
+        "price": "£29.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
     }
 ]

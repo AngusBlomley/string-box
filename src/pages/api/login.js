@@ -1,5 +1,4 @@
 import { connectToServer, getDb } from '../../../lib/dbConnect';
-import User from '../../models/user';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 

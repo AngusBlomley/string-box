@@ -78,34 +78,36 @@ export default function Header_global() {
                 {menuOpen ? '✖' : '☰'}
             </div>
 
-            <ul id="navlist" className="text-black list-none lg:flex hidden">
-                <li><Link href="/" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Home</Link></li>
-                <li><Link href="/#service" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Service</Link></li>
-                <li><Link href="/store" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Store</Link></li>
-                <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link></li>
-                <li><Link href="/#contact" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link></li>
+            <ul id="navlist" className="list-none lg:flex hidden">
+                <li><Link href="/" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Home</Link></li>
+                <li><Link href="/#service" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Service</Link></li>
+                <li><Link href="/store" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Store</Link></li>
+                <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Re-String</Link></li>
+                <li><Link href="/#contact" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Contact</Link></li>
+                <li className="border-r-2 border-black mx-4 py-3"></li>
                 {user ? (
                     <>
                         <li>
-                            <Link href="#" onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Logout</Link>
+                            <Link href="#" onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Logout</Link>
                         </li>
-                        <li><Link href="/profile" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Profile</Link></li>
+                        <li><Link href="/profile" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Profile</Link></li>
                     </>
                 ) : (
                     <>
-                        <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Login</Link></li>
-                        <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-4 py-2 rounded-sm">Sign Up</Link></li>
+                        <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Login</Link></li>
+                        <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Sign Up</Link></li>
                     </>
                 )}
-                <li><Link href="/checkout" className="flex row px-4 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
+                <li>
+                    <Link href="/checkout" className="flex row px-2 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
                     {/*Insert Cart Item Amount Value Here*/}
-                    <img
-                        alt="Checkout Image"
-                        src="/images/icons/blackCart.png"
-                        height={24}
-                        width={24}
-                    /><span>Basket</span>
-                </Link>
+                        <img
+                            alt="Checkout Image"
+                            src="/images/icons/blackCart.png"
+                            height={24}
+                            width={24}
+                        /><span>Basket</span>
+                    </Link>
                 </li>
             </ul>
 
