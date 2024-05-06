@@ -61,7 +61,7 @@ export default function Cart() {
                                     />
                                     <div>
                                         <h3 className="text-lg font-semibold">{product.name}</h3>
-                                        <p className="text-sm text-gray-600">{product.description}</p>
+                                        <p className="text-sm text-gray-600">{product.message}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center">
