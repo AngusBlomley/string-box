@@ -98,7 +98,7 @@ export default function ProfileDetails() {
                         <div className=' flex items-center border-stone-800 border-r-2 text-center'>
                             <ul>
                                 <li>
-                                    <Link style={{fontWeight: '700'}} href="./profileDetails">
+                                    <Link href="./profileDetails">
                                         My Details
                                     </Link>
                                 </li><br/>
@@ -118,7 +118,7 @@ export default function ProfileDetails() {
                                     </Link>
                                 </li><br/>
                                 <li>
-                                    <Link href="./profilePayment">
+                                    <Link style={{fontWeight: '700'}} href="./profilePayment">
                                         Payment
                                     </Link>
                                 </li><br/>

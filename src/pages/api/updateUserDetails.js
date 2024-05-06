@@ -1,5 +1,5 @@
 import User from '../../models/user';
-import connectToDb from '../../lib/dbConnect';
+import connectToDb from '../../../lib/dbConnect';
 import bcrypt from 'bcryptjs';
 
 export default async function handler(req, res) {
@@ -17,7 +17,6 @@ export default async function handler(req, res) {
             user.name = name ?? user.name;
             user.email = email ?? user.email;
             user.mobile = mobile ?? user.mobile;
-            user.address = address ?? user.address;
             if (password) {
                 user.password = await bcrypt.hash(password, 12);  // Re-hash the new password
             }

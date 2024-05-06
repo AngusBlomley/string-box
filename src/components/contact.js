@@ -34,19 +34,17 @@ function ContactForm() {
     // Mock API call function
     const mockApiCall = (data) => {
         console.log("Sending data to the backend:", data);
-        // Simulate a successful response after a delay
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve({ status: 200, message: 'Email sent successfully!' });
-                // Uncomment to simulate an error
-                // reject({ status: 500, message: 'Failed to send email' });
+                reject({ status: 500, message: 'Failed to send email' });
             }, 1000);
         });
     };
 
     return (
-        <section id="contact" className="section flex justify-center max-md:mt-10 max-md:block">
-            <div>
+        <section id="contact" className="section flex justify-center mb-40 max-md:mt-10 max-md:block">
+            <div className='w-8/12'>
                 <div className="flex justify-between items-end mb-10 relative max-md:justify-start max-md:ml-10">
                     <div className="h-36 w-14 -mr-8 bg-clay-red -z-10 max-md:h-36 max-md:-mr-12"></div>
                     <Image

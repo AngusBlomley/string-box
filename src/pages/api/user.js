@@ -1,8 +1,17 @@
 import User from '../../models/user';
-import connectToDb from '../../lib/dbConnect';
+import connectToDb from '../../../lib/dbConnect';
+import mongoose from 'mongoose';
+
 
 export default async function handler(req, res) {
-    await connectToDb();
+    await connectToDb().catch(error => {
+        console.error('Database connection failed', error);
+        return res.status(500).json({ message: 'Database connection failed', error });
+    });
+    
+    if (!req.query.userId || !mongoose.Types.ObjectId.isValid(req.query.userId)) {
+        return res.status(400).json({ message: 'Invalid userId provided' });
+    }
 
     if (req.method === 'GET') {
         try {

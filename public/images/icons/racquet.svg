@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.39 82.39">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <g>
+      <g>
+        <rect class="cls-2" x="17.46" y="32.84" width="9.61" height="54.56" rx="2.33" ry="2.33" transform="translate(49.04 1.86) rotate(45)"/>
+        <path class="cls-1" d="m3.4,81.16l-2.17-2.17c-1.64-1.64-1.64-4.32,0-5.96l33.95-33.95c1.64-1.64,4.32-1.64,5.96,0l2.17,2.17c1.64,1.64,1.64,4.32,0,5.96L9.36,81.16c-1.64,1.64-4.32,1.64-5.96,0Zm36.42-40.75c-.91-.91-2.39-.91-3.3,0L2.56,74.36c-.91.91-.91,2.39,0,3.3l2.17,2.17c.91.91,2.39.91,3.3,0l33.95-33.95c.91-.91.91-2.39,0-3.3l-2.17-2.17Z"/>
+      </g>
+      <g>
+        <ellipse class="cls-2" cx="52.7" cy="29.69" rx="30.39" ry="25.02" transform="translate(-5.56 45.96) rotate(-45)"/>
+        <path class="cls-1" d="m29.88,52.51c-10.49-10.49-8.78-29.26,3.8-41.84,12.58-12.58,31.35-14.29,41.84-3.8,10.49,10.49,8.78,29.26-3.8,41.84-12.58,12.58-31.35,14.29-41.84,3.8ZM72.86,9.53c-9.02-9.02-25.41-7.32-36.52,3.8-11.12,11.12-12.82,27.5-3.8,36.52,9.02,9.02,25.41,7.32,36.52-3.8,11.12-11.12,12.82-27.5,3.8-36.52Z"/>
+      </g>
+      <rect class="cls-1" x="28.16" y="28.84" width="49.25" height="1.88" transform="translate(-5.6 46.05) rotate(-45)"/>
+      <rect class="cls-1" x="29.3" y="22.48" width="34.25" height="1.88" transform="translate(-2.96 39.69) rotate(-45)"/>
+      <rect class="cls-1" x="34.19" y="17" width="13.5" height="1.88" transform="translate(-.69 34.21) rotate(-45)"/>
+      <rect class="cls-1" x="42.03" y="35.21" width="34.25" height="1.88" transform="translate(-8.23 52.41) rotate(-45)"/>
+      <rect class="cls-1" x="57.88" y="40.69" width="13.5" height="1.88" transform="translate(-10.5 57.89) rotate(-45)"/>
+      <rect class="cls-1" x="51.9" y="9.91" width="1.88" height="39.85" transform="translate(-5.62 46.1) rotate(-45)"/>
+      <rect class="cls-1" x="62.34" y="2.17" width="1.88" height="34.25" transform="translate(4.89 50.4) rotate(-45)"/>
+      <rect class="cls-1" x="41.58" y="22.92" width="1.88" height="34.25" transform="translate(-15.86 41.8) rotate(-45)"/>
+      <rect class="cls-1" x="9.85" y="59.65" width="9.15" height="16.6" transform="translate(52.28 9.7) rotate(45)"/>
+    </g>
+  </g>
+</svg>

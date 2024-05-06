@@ -1,39 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import productsData from '../../public/data/products.json';
-import Footer from "@/components/footer";
-import Header_global from "@/components/headerGlobal";
 import Image from 'next/image';
 
-export default function Cart() {
+export default function Cart() {    
 
     const dispatch = useDispatch();
-    // In Checkout or Cart component
     const cartItems = useSelector((state) => state.cart.items);
-
-
-
-    // Fetch cart products details
     const [cartProductDetails, setCartProductDetails] = useState([]);
-    useEffect(() => {
-        const details = cartItems.map(itemId =>
-            productsData.find(product => product.id === itemId)
-        );
-        setCartProductDetails(details);
-    }, [cartItems]);
-
-    // Calculate total
     const [total, setTotal] = useState(0);
+
     useEffect(() => {
+        console.log("Cart items from Redux:", cartItems);
+        const details = cartItems.map(item => {
+            const product = productsData.find(p => p.id === item.id);
+            console.log("Product found:", product);
+            return product || item;
+        });
+        console.log("Mapped product details:", details);
+        setCartProductDetails(details.filter(product => product.id));
+    }, [cartItems]);
+    
+    
+    
+    useEffect(() => {
+        console.log("Final cart product details for rendering:", cartProductDetails);
         const newTotal = cartProductDetails.reduce((acc, product) => acc + product.price * product.quantity, 0);
         setTotal(newTotal);
     }, [cartProductDetails]);
+    
 
     const handleCheckout = () => {
         // Implement checkout functionality here
         alert('Proceed to payment!');
     };
 
+    const updateQuantity = (index, quantity) => {
+        const updatedDetails = [...cartProductDetails];
+        updatedDetails[index] = {
+            ...updatedDetails[index],
+            quantity: Number(quantity),
+        };
+        setCartProductDetails(updatedDetails);
+    }
+    
     return (
         <main>
             <div className="flex items-center justify-center min-h-screen bg-gray-100 p-10">
@@ -43,8 +53,10 @@ export default function Cart() {
                             <div key={index} className="flex items-center justify-between mb-4 p-4 border-b">
                                 <div className="flex items-center">
                                     <Image
-                                        src={product.image}
-                                        alt={product.name}
+                                        src={product.image || '/images/icons/raquet.svg'}
+                                        alt={product.name || 'item'}
+                                        width={100}
+                                        height={50}
                                         className="h-20 w-20 object-cover rounded-full mr-4"
                                     />
                                     <div>
@@ -53,7 +65,7 @@ export default function Cart() {
                                     </div>
                                 </div>
                                 <div className="flex items-center">
-                                    <span className="text-lg font-semibold">${product.price}</span>
+                                    <span className="text-lg font-semibold">£{product.price}</span>
                                     <input
                                         type="number"
                                         min="1"
@@ -82,13 +94,3 @@ export default function Cart() {
         </main>
     )
 };
-
-// Helper function to update quantity
-function updateQuantity(index, quantity) {
-    const updatedDetails = [...cartProductDetails];
-    updatedDetails[index] = {
-        ...updatedDetails[index],
-        quantity: Number(quantity),
-    };
-    setCartProductDetails(updatedDetails);
-}

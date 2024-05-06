@@ -58,7 +58,7 @@ export default function Store() {
     return (
         <main className="bg-off-white font-[azo-sans-web,sans-serif]">
             <Header_global />
-            <div className="flex row mt-20 justify-between px-40 max-xl:p-10 max-lg:p-0">
+            <div className="flex row mt-20 mb-20 justify-between px-40 max-xl:p-10 max-lg:p-0">
                 <section className="mt-10 p-10 w-80 h-full border max-lg:hidden max-lg:p-0">
                     <div className="space-y-4">
                         <div>

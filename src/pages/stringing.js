@@ -1,9 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
+import { addToCart } from '../store/actions/cartActions';
+import { useDispatch } from "react-redux";
 
 export default function Stringing() {
 
@@ -11,13 +12,31 @@ export default function Stringing() {
     const [pattern, setPattern] = useState('standard');
     const [crossing, setCrossing] = useState('main_top');
     const [message, setMessage] = useState('');
+    const dispatch = useDispatch();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Process the form values
-        console.log({ tension, pattern, crossing, message });
-        // Add further logic to add items to cart
+const handleSubmit = (event) => {
+    event.preventDefault();
+    const stringPreferences = {
+        id: new Date().getTime(),
+        tension,
+        pattern,
+        crossing,
+        message,
+        image: '/images/icons/racquet.svg',
+        name: `Custom String - ${pattern}`,
+        price: 25,
+        quantity: 1
     };
+
+    console.log('Dispatching to cart:', stringPreferences);
+    dispatch(addToCart(stringPreferences));
+
+    // Reset form fields
+    setTension('50');
+    setPattern('standard');
+    setCrossing('main_top');
+    setMessage('');
+};
 
     return (
         <main>
@@ -29,11 +48,11 @@ export default function Stringing() {
                         <Image
                             alt="string"
                             src="/images/stock/asset3.webp"
-                            width={400}
+                            width={460}
                             height={400}
                             className="max-md:hidden"
                         />
-                        <form onSubmit={handleSubmit} className="space-y-4 p-10">
+                        <form onSubmit={handleSubmit} className="w-[500px] space-y-4 p-10 max-sm:w-screen">
                             <h2 className="text-xl font-semibold text-gray-800 mb-4">String Preference</h2>
                             <h3 className="text-md text-gray-600 mb-8">Choose your preference</h3>
                             <div>
@@ -43,7 +62,9 @@ export default function Stringing() {
                                     <option value="52">52 lbs</option>
                                     <option value="54">54 lbs</option>
                                     <option value="56">56 lbs</option>
-                                    <option value="58">58 lbs</option>
+                                    <option value="58">58lbs</option>
+                                    <option value="60">60lbs</option>
+                                    <option value="62">62lbs</option>
                                 </select>
                             </div>
                             <div>
@@ -63,13 +84,14 @@ export default function Stringing() {
                             </div>
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message:</label>
-                                <textarea id="message" name="message" placeholder="Special requests, messages, notes." rows="5" value={message} onChange={e => setMessage(e.target.value)} className="border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"></textarea>
+                                <textarea id="message" name="message" placeholder="Special requests, messages, notes. Custom string pattern." rows="5" value={message} onChange={e => setMessage(e.target.value)} className="border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"></textarea>
                             </div>
                             <button type="submit" className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">Add to cart</button>
                         </form>
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };

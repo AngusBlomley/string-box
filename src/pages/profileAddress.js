@@ -98,12 +98,12 @@ export default function ProfileDetails() {
                         <div className=' flex items-center border-stone-800 border-r-2 text-center'>
                             <ul>
                                 <li>
-                                    <Link style={{fontWeight: '700'}} href="./profileDetails">
+                                    <Link href="./profileDetails">
                                         My Details
                                     </Link>
                                 </li><br/>
                                 <li>
-                                    <Link href="./profileAddress">
+                                    <Link style={{fontWeight: '700'}} href="./profileAddress">
                                         Address
                                     </Link>
                                 </li><br/>
@@ -129,11 +129,12 @@ export default function ProfileDetails() {
                             <form className="w-full" onSubmit={handleSubmit}>
                                 <div className="flex flex-col space-y-4">
                                     {[
-                                        { id: "name", type: "text", label: "Name:", placeholder: "Name" },
-                                        { id: "mobile", type: "tel", label: "Mobile:", placeholder: "Mobile" },
-                                        { id: "email", type: "email", label: "Email:", placeholder: "Email" },
-                                        { id: "password", type: "password", label: "Password:", placeholder: "Password" },
-                                        { id: "confirmPassword", type: "password", label: "Confirm Password:", placeholder: "Confirm Password" }
+                                        { id: "country", type: "", label: "Country:", placeholder: "Select Country" },
+                                        { id: "address1", type: "text", label: "Address1:", placeholder: "Address 1" },
+                                        { id: "Address2", type: "text", label: "Address2:", placeholder: "Address 2" },
+                                        { id: "County", type: "text", label: "County:", placeholder: "County" },
+                                        { id: "city", type: "text", label: "City:", placeholder: "City" },
+                                        { id: "postcode", type: "text", label: "Postcode:", placeholder: "Postcode" }
                                     ].map((field, index) => (
                                         <div key={index} className="flex flex-col mb-3">
                                             {field.id !== 'password' && field.id !== 'confirmPassword' && (
@@ -168,7 +169,7 @@ export default function ProfileDetails() {
                                     type="submit"
                                     className="w-full mt-10 px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                                 >
-                                    Save Info and Change Password
+                                Save
                                 </button>
                             </form>
                         </div>
