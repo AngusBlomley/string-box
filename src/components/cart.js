@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import productsData from '../../public/data/products.json';
+import { removeFromCart } from '../store/actions/cartActions';
 import Image from 'next/image';
 
 export default function Cart() {    
-
     const dispatch = useDispatch();
-    const cartItems = useSelector((state) => state.cart.items);
+    const cartItems = useSelector(state => state.cart.items);
     const [cartProductDetails, setCartProductDetails] = useState([]);
     const [total, setTotal] = useState(0);
 
-    useEffect(() => {
-        console.log("Cart items from Redux:", cartItems);
+    const handleRemoveFromCart = (id) => {
+        dispatch(removeFromCart(id));
+    };
+
+    useEffect(() => {    
+        const validItems = cartItems.filter(item => item && typeof item === 'object' && 'id' in item);
         const details = cartItems.map(item => {
-            const product = productsData.find(p => p.id === item.id);
+            const product = item.isCustom ? null : productsData.find(p => p.id === item.id);
             console.log("Product found:", product);
-            return product || item;
+            return product ? {...product, quantity: item.quantity} : {...item, quantity: item.quantity || 1};
         });
         console.log("Mapped product details:", details);
-        setCartProductDetails(details.filter(product => product.id));
+        setCartProductDetails(details.filter(product => product && product.id));
     }, [cartItems]);
-    
     
     
     useEffect(() => {
@@ -28,7 +31,6 @@ export default function Cart() {
         const newTotal = cartProductDetails.reduce((acc, product) => acc + product.price * product.quantity, 0);
         setTotal(newTotal);
     }, [cartProductDetails]);
-    
 
     const handleCheckout = () => {
         // Implement checkout functionality here
@@ -36,13 +38,15 @@ export default function Cart() {
     };
 
     const updateQuantity = (index, quantity) => {
+        const numericQuantity = Number(quantity) || 1;
         const updatedDetails = [...cartProductDetails];
         updatedDetails[index] = {
             ...updatedDetails[index],
-            quantity: Number(quantity),
+            quantity: numericQuantity,
         };
         setCartProductDetails(updatedDetails);
     }
+    
     
     return (
         <main>
@@ -53,7 +57,7 @@ export default function Cart() {
                             <div key={index} className="flex items-center justify-between mb-4 p-4 border-b">
                                 <div className="flex items-center">
                                     <Image
-                                        src={product.image || '/images/icons/raquet.svg'}
+                                        src={product.imageUrl}
                                         alt={product.name || 'item'}
                                         width={100}
                                         height={50}
@@ -73,6 +77,7 @@ export default function Cart() {
                                         onChange={e => updateQuantity(index, e.target.value)}
                                         className="ml-4 w-16 text-center border-2 border-gray-300 rounded-md"
                                     />
+                                    <button className='ml-5 text-sm bg-clay-red text-white py-1 px-3 rounded-md' onClick={() => handleRemoveFromCart(product.id)}>X</button>
                                 </div>
                             </div>
                         )) : (
@@ -83,7 +88,7 @@ export default function Cart() {
                         <h2 className="text-xl font-bold">Total: £{total.toFixed(2)}</h2>
                         <button
                             type="button"
-                            className="mt-4 px-6 py-2 bg-blue-600 text-white text-lg rounded-full hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+                            className="mt-4 px-6 py-2 bg-blue-600 text-white text-lg rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
                             onClick={handleCheckout}
                         >
                             Proceed to Checkout

@@ -3,83 +3,83 @@
         "id": 1,
         "name": "Babolat RPM Blast",
         "description": "High-quality polyester string",
-        "price": "£19.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "19.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 2,
         "name": "Hyper G 300x",
         "description": "Durable multi-fiber string",
-        "price": "£21.99",
-        "imageUrl": "/images/products/hyper_g_300x.jpg"
+        "price": "21.99",
+        "imageUrl": "/images/products/hyper_g_300x.webp"
     },{
         "id": 3,
         "name": "Wilson Natural Gut",
         "description": "Versatile natural gut string",
-        "price": "£25.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "25.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 4,
         "name": "Technifibre X-One",
         "description": "Responsive synthetic blend",
-        "price": "£23.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "23.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 5,
         "name": "Luxilon Alu Power",
         "description": "Soft feel for maximum comfort",
-        "price": "£20.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "20.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 6,
         "name": "Head Lynx Edge",
         "description": "Optimized for power players",
-        "price": "£26.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "26.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 7,
         "name": "Solinco Tour Bite",
         "description": "Lightweight for better playability",
-        "price": "£18.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "18.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 8,
         "name": "Yonex Poly Tour Pro",
         "description": "Enhanced durability and control",
-        "price": "£24.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "24.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 9,
         "name": "Volkl Cyclone",
         "description": "High tension stability",
-        "price": "£22.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "22.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 10,
         "name": "Prince Synthetic Gut",
         "description": "Designed for spin and precision",
-        "price": "£27.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "27.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 11,
         "name": "Gamma Live Wire",
         "description": "Exceptional feel and response",
-        "price": "£24.50",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "24.50",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     },
     {
         "id": 12,
         "name": "Dunlop Silk Pro",
         "description": "Superior playability and resilience",
-        "price": "£29.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.jpg"
+        "price": "29.99",
+        "imageUrl": "/images/products/babolat_rpm_blast.webp"
     }
 ]

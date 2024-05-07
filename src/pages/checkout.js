@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import productsData from '../../public/data/products.json';
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
 import Cart from '@/components/cart';

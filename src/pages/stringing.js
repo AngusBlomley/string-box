@@ -13,30 +13,35 @@ export default function Stringing() {
     const [crossing, setCrossing] = useState('main_top');
     const [message, setMessage] = useState('');
     const dispatch = useDispatch();
+    const stringID = `string-${tension}-${pattern}-${crossing}`;
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-    const stringPreferences = {
-        id: new Date().getTime(),
-        tension,
-        pattern,
-        crossing,
-        message,
-        image: '/images/icons/racquet.svg',
-        name: `Custom String - ${pattern}`,
-        price: 25,
-        quantity: 1
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const stringPreferences = {
+            id: stringID,
+            name: `Custom String - ${pattern}`,
+            price: 25,
+            quantity: 1,
+            imageUrl: '/images/icons/racquet.svg',
+            tension,
+            pattern,
+            crossing,
+            message,
+            isCustom: true
+        };
+    
+        console.log('Dispatching to cart:', stringPreferences);
+        dispatch(addToCart(stringPreferences));
+    
+        resetForm();
     };
-
-    console.log('Dispatching to cart:', stringPreferences);
-    dispatch(addToCart(stringPreferences));
-
-    // Reset form fields
-    setTension('50');
-    setPattern('standard');
-    setCrossing('main_top');
-    setMessage('');
-};
+    
+    const resetForm = () => {
+        setTension('50');
+        setPattern('standard');
+        setCrossing('main_top');
+        setMessage('');
+    };
 
     return (
         <main>

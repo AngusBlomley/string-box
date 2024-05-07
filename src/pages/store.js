@@ -1,12 +1,15 @@
-import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
+import { useDispatch } from 'react-redux';
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
 import ProductCard from "@/components/productCard";
+import { addToCart } from '@/store/actions/cartActions';
 
 export default function Store() {
+    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
+
     const [strings, setStrings] = useState({
         polyester: false,
         solidCore: false,
@@ -32,13 +35,29 @@ export default function Store() {
         Tecnifibre: false
     });
 
-    const [products, setProducts] = useState([]);
     useEffect(() => {
+        console.log("Fetching products...");
         fetch('/data/products.json')
-            .then(response => response.json())
-            .then(data => setProducts(data))
-            .catch(error => console.error('Error loading the products:', error));
+        .then(response => response.json())
+        .then(data => {
+            console.log("Products loaded:", data);
+            setProducts(data);
+        })
+        .catch(error => {
+            console.error('Error loading the products:', error);
+        });
     }, []);
+    
+    console.log("Products to render:", products);
+    
+    const handleAddToCart = (product) => {
+        const productToAdd = {
+            ...product,
+            quantity: 1
+        };
+        dispatch(addToCart(productToAdd));
+    };
+    
 
     const handleCheckboxChange = (event) => {
         const { name, checked } = event.target;
@@ -121,16 +140,23 @@ export default function Store() {
                                         {brand}
                                     </label>
                                 ))}
-
                             </form>
                         </div>
                     </div>
                 </section>
                 <section className="p-10 w-full max-lg:p-4">
                     <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2 bg-white">
-                        {products.map(product => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
+                        {products.length > 0 ? (
+                            products.map(product => (
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    addToCart={handleAddToCart}
+                                />
+                            ))
+                        ) : (
+                            <p>Loading products...</p>
+                        )}
                     </div>
                 </section>
             </div>

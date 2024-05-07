@@ -70,7 +70,7 @@ export default function Header_global() {
                     alt="logo"
                     width={100}
                     height={50}
-                    className="max-lg:ml-0 h-15"
+                    className="max-lg:ml-0"
                 />
             </Link>
 

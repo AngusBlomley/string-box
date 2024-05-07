@@ -3,25 +3,28 @@ const initialCartState = {
 };
 
 function cartReducer(state = initialCartState, action) {
-    console.log('Current state before update:', state); // Logs current state before update
-    console.log('Action received:', action); // Logs the action details
     switch (action.type) {
         case 'ADD_TO_CART':
-            // logic to add to cart
-            return {
+            const newItem = action.payload;
+            const existingItem = state.items.find(item => item.id === newItem.id);
+            if (existingItem) {
+                return {
+                    ...state,
+                    items: state.items.map(item =>
+                        item.id === newItem.id ? { ...item, quantity: (item.quantity || 0) + (newItem.quantity || 1)} : item
+                    ),
+                };
+            } else {
+                return {
                 ...state,
-                items: [...state.items, action.payload],
-            };
-            console.log('New state after ADD_TO_CART:', newState); // Logs state after adding an item
-
+                items: [...state.items, {...newItem, quantity: newItem.quantity || 1}],
+                };
+            }
         case 'REMOVE_FROM_CART':
-            // logic to remove from cart
             return {
                 ...state,
                 items: state.items.filter(item => item.id !== action.payload),
             };
-            console.log('New state after REMOVE_FROM_CART:', newState); // Logs state after removing an item
-        // Add other cart-related actions here
         default:
             return state;
     }
