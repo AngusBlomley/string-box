@@ -71,7 +71,7 @@ export default function Header() {
                         <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Sign Up</Link></li>
                     </>
                 )}
-                <li><Link href="/checkout" className="flex row px-2 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
+                <li><Link href="/checkoutPage" className="flex row px-2 py-1 top-6 fixed hover:bg-blue-500 duration-200 rounded-sm">
                     {/*Insert Cart Item Amount Value Here*/}
                     <img
                         alt="Checkout Image"
@@ -104,7 +104,7 @@ export default function Header() {
                             <li className="mb-2"><Link href="/register" className="hover:text-blue-500">Sign Up</Link></li>
                         </>
                     )}
-                    <li><Link href="/checkout" className="flex row hover:text-blue-500">
+                    <li><Link href="/checkoutPage" className="flex row hover:text-blue-500">
                         {/*Insert Cart Item Amount Value Here*/}
                         <img
                             alt="Checkout Image"

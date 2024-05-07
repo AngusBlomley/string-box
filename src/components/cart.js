@@ -4,7 +4,7 @@ import productsData from '../../public/data/products.json';
 import { removeFromCart } from '../store/actions/cartActions';
 import Image from 'next/image';
 
-export default function Cart() {    
+export default function Cart({ handleCheckout }) {    
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.items);
     const [cartProductDetails, setCartProductDetails] = useState([]);
@@ -31,11 +31,6 @@ export default function Cart() {
         const newTotal = cartProductDetails.reduce((acc, product) => acc + product.price * product.quantity, 0);
         setTotal(newTotal);
     }, [cartProductDetails]);
-
-    const handleCheckout = () => {
-        // Implement checkout functionality here
-        alert('Proceed to payment!');
-    };
 
     const updateQuantity = (index, quantity) => {
         const numericQuantity = Number(quantity) || 1;
