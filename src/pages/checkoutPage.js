@@ -6,7 +6,6 @@ import Cart from '@/components/cart';
 import Checkout from '@/components/checkout';
 
 export default function CheckoutPage() {
-    const cartItems = useSelector(state => state.cart.items);
     const [view, setView] = useState('cart');
 
     const handleCheckout = () => {

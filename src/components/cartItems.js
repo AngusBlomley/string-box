@@ -79,13 +79,6 @@ export default function CartItems({ handleCheckout }) {
             </div>
             <div className="mt-4">
                 <h2 className="text-xl font-bold">Total: £{total.toFixed(2)}</h2>
-                <button
-                    type="button"
-                    className="mt-4 px-6 py-2 bg-blue-600 text-white text-lg rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
-                    onClick={handleCheckout}
-                >
-                    Proceed to Checkout
-                </button>
             </div>
         </main>
     )

@@ -5,9 +5,8 @@ import { USER_SIGNUP_SUCCESS } from './types';
 import { USER_LOGIN_FAILURE } from './types';
 import { USER_LOGOUT } from './types';
 
-
-// In store/actions/authActions.js
 export const loginUser = (credentials) => async (dispatch) => {
+    
     try {
         const response = await axios.post('/api/login', credentials);
         if (response.data) {
