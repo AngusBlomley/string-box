@@ -7,14 +7,14 @@ import Checkout from '@/components/checkout';
 
 export default function CheckoutPage() {
     const cartItems = useSelector(state => state.cart.items);
-    const [view, setView] = useState('checkout'); // ####PUT THIS BACK TO CART AFTER EDITING CHECKOUT CODE#####
+    const [view, setView] = useState('cart');
 
     const handleCheckout = () => {
-        setView('checkout'); // Change view to checkout when the button is clicked
+        setView('checkout');
     };
 
     const handleBackToCart = () => {
-        setView('cart'); // Change view back to cart
+        setView('cart');
     };
 
     return (

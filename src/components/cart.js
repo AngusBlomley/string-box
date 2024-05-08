@@ -46,7 +46,7 @@ export default function Cart({ handleCheckout }) {
     return (
         <main>
             <div className="flex items-center justify-center min-h-screen bg-gray-100 p-10">
-                <div className="bg-white rounded-3xl p-10 w-full max-w-4xl">
+                <div className="bg-white p-10 w-full max-w-4xl">
                     <div className="overflow-y-auto h-full">
                         {cartProductDetails.length ? cartProductDetails.map((product, index) => (
                             <div key={index} className="flex items-center justify-between mb-4 p-4 border-b">
