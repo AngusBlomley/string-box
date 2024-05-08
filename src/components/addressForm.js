@@ -30,7 +30,7 @@ export default function AddressForm() {
                 setFormData(response.data); // Assuming response.data contains the address fields
                 setIsLoading(false);
             } catch (error) {
-                setMessage('Failed to fetch address');
+                setMessage('Please login to checkout.');
                 setIsLoading(false);
             }
         };
@@ -70,7 +70,7 @@ export default function AddressForm() {
     if (isLoading) return <p>Loading...</p>;
 
     return (
-        <form className="space-y-4 pb-10 border-b-2 border-gray-500" onSubmit={handleSubmit}>
+        <form className="space-y-4 pb-5" onSubmit={handleSubmit}>
             {isEditing ? (
                 <>
                 <input name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className="form-input mt-1 block w-full border-gray-500 border-2 p-2 shadow-sm" />
