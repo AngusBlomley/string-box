@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,10 +15,12 @@ export default function Header_global() {
     const [menuOpen, setMenuOpen] = useState(false);
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
+    const router = useRouter(); 
 
     const handleLogout = (e) => {
         e.preventDefault();
         dispatch(logoutUser());
+        router.push('/');
     };
 
     useEffect(() => {

@@ -26,10 +26,16 @@ export default async function handler(req, res) {
         }
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        return res.status(200).json({ token, userId: user._id.toString() });
+        return res.status(200).json({
+            token,
+            user: {
+                id: user._id.toString(),
+                email: user.email,
+                // Add any other user details you might want to expose to the client
+            }
+        });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Logging in failed.', error: error.message });
     }
 }
-

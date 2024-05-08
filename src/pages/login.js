@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../app/globals.css'
 import Footer from "@/components/footer";
 import Header_global from "@/components/headerGlobal";
@@ -21,7 +22,7 @@ export default function LoginForm() {
         if (user) {
             router.push('/');
         }
-    }, [user, router]);
+    }, [user, router]);    
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -31,6 +32,7 @@ export default function LoginForm() {
         }
         dispatch(loginUser({ email, password }));
     };
+    
 
     return (
         <main>

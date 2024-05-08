@@ -6,32 +6,43 @@ import { USER_LOGIN_FAILURE } from './types';
 import { USER_LOGOUT } from './types';
 
 export const loginUser = (credentials) => async (dispatch) => {
-    
     try {
         const response = await axios.post('/api/login', credentials);
-        if (response.data) {
+        if (response && response.data) {
+            localStorage.setItem('token', response.data.token);
             dispatch({
                 type: USER_LOGIN_SUCCESS,
-                payload: response.data
+                payload: response.data.user
             });
         } else {
-            throw new Error('Failed to login');
+            console.error('Invalid response from server');
+            throw new Error('Invalid response from server');
         }
+        
     } catch (error) {
-        dispatch({
-            type: USER_LOGIN_FAILURE,
-            payload: error.message || 'Unknown login error'
-        });
+        if (error.response && error.response.data && error.response.data.message) {
+            console.error('Login error:', error.response.data.message);
+            dispatch({
+                type: USER_LOGIN_FAILURE,
+                payload: error.response.data.message
+            });
+        } else {
+            console.error('Login error:', error.message);
+            dispatch({
+                type: USER_LOGIN_FAILURE,
+                payload: 'An error occurred during login'
+            });
+        }
     }
 };
 
 export const logoutUser = () => {
+    localStorage.removeItem('token');
     return {
         type: USER_LOGOUT
     };
 };
 
-// In userActions.js
 export const signupUser = (userData) => async (dispatch) => {
     console.log("Dispatching signup user with data:", userData);
     try {

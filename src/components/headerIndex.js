@@ -18,6 +18,7 @@ export default function Header() {
     const handleLogout = (e) => {
         e.preventDefault();
         dispatch(logoutUser());
+        router.push('/');
     };
 
     useEffect(() => {
@@ -31,8 +32,6 @@ export default function Header() {
         const cleanupMenuClicks = handleMenuClicks(() => toggleMenu(menuOpen, setMenuOpen));
         return cleanupMenuClicks;
     }, [menuOpen]);
-
-
 
     return (
         <header id="home" className="text-white flex items-center justify-between px-36 py-2 fixed top-0 left-0 right-0 h-20 max-lg:px-5 z-50" style={{ ...headerStyle, transition: 'background-color 0.2s, color 0.2s' }}>
