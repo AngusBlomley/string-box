@@ -1,5 +1,6 @@
 const initialCartState = {
     items: [],
+    total: 0
 };
 
 function cartReducer(state = initialCartState, action) {
@@ -24,6 +25,11 @@ function cartReducer(state = initialCartState, action) {
             return {
                 ...state,
                 items: state.items.filter(item => item.id !== action.payload),
+            };
+        case 'UPDATE_TOTAL':
+            return {
+                ...state,
+                total: action.payload
             };
         default:
             return state;

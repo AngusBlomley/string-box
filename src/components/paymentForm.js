@@ -1,44 +1,66 @@
 import Image from "next/image"
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useRouter } from 'next/router';
 
 export default function PaymentForm() {
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const total = useSelector(state => state.cart.total);
+    const router = useRouter();
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         if (!stripe || !elements) {
-            // Stripe.js has not loaded yet. Make sure to disable
-            // form submission until Stripe.js has loaded.
+            // Stripe.js has not loaded yet, or there's an internal error with loading Stripe elements
+            setError('Payment service is currently unavailable. Please try again later.');
             return;
         }
 
         setLoading(true);
+        setError('');
 
         try {
+            const cardElement = elements.getElement(CardElement);
             const { error, paymentMethod } = await stripe.createPaymentMethod({
                 type: 'card',
-                card: elements.getElement(CardElement),
+                card: cardElement,
             });
 
             if (error) {
-                console.error(error);
+                console.error('Error:', error);
+                setError(error.message);
+                setLoading(false);
             } else {
-                // Send paymentMethod.id to your server to process the payment
-                console.log(paymentMethod.id);
-                // Now you have the payment method ID, you can use it to initiate the payment process
-                // Replace 'your_payment_method_id' with paymentMethod.id in your API request
-                // Also, replace '1000' with the actual amount you want to charge
+                const response = await fetch('/api/stripe', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        paymentMethodId: paymentMethod.id,
+                        amount: total,
+                    }),
+                });
+                const paymentResult = await response.json();
+
+                if (response.ok) {
+                    router.push('/confirmationPage');
+                } else {
+                    console.error('Payment failed:', paymentResult.error);
+                    setError(paymentResult.error || 'Payment failed, please try again.');
+                    setLoading(false);
+                }
             }
         } catch (error) {
-            console.error('Error processing payment:', error);
+            console.error('Payment processing error:', error);
+            setError('Payment processing error. Please try again.');
+            setLoading(false);
         }
-
-        setLoading(false);
     };
+
     return(
         <form onSubmit={handleSubmit} className="space-y-4">
             {/* 
@@ -84,6 +106,7 @@ export default function PaymentForm() {
                 />
                 */}
             </div>
+            {error && <p className="error-message">{error}</p>}
             <CardElement />
             <button
                 type="submit"

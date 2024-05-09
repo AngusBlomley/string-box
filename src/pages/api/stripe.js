@@ -15,7 +15,7 @@ export default async function handler(req, res) {
       // Create a PaymentIntent on Stripe
       const paymentIntent = await stripe.paymentIntents.create({
         amount: amount,
-        currency: 'usd',
+        currency: 'gbp',
         payment_method: paymentMethodId,
         confirm: true,
       });

@@ -1,9 +1,42 @@
-import React from 'react';
-import AddressForm from './addressForm';
+import { useSelector } from 'react-redux';
 import PaymentForm from './paymentForm';
 import CartItems from './cartItems';
+import AddressForm from './addressForm';
 
 export default function Checkout({ handleBackToCart }) {
+    const totalAmount = useSelector(state => {
+        // Assuming 'total' from cartItems component's state includes subtotal, taxes, and shipping
+        const items = state.cart.items;
+        const subtotal = items.reduce((acc, item) => acc + item.price * (item.quantity || 1), 0);
+        const taxes = subtotal * 0.1;  // 10% tax rate
+        const shipping = 5;  // Assuming flat shipping rate
+        return subtotal + taxes + shipping;
+    });
+
+    const handlePaymentSubmit = async (paymentData) => {
+        try {
+            const response = await fetch('/api/stripe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    paymentData,
+                    totalAmount,
+                }),
+            });
+
+            if (response.ok) {
+                // Payment successful, handle success scenario
+                console.log('Payment successful');
+            } else {
+                // Payment failed, handle error scenario
+                console.error('Payment failed');
+            }
+        } catch (error) {
+            console.error('Error processing payment:', error);
+        }
+    };
     
     return (
         <main>
@@ -16,10 +49,9 @@ export default function Checkout({ handleBackToCart }) {
                 <div className="grid gap-6 grid-cols-2">
                     <div className="delivery-address">
                         <h2 className="font-semibold text-xl mb-4">Delivery Address</h2>
-                            <AddressForm />
-
-                        <h2 className="font-semibold text-xl mb-4 mt-10">Payment Details</h2>
-                        <PaymentForm />
+                        <AddressForm />
+                        <h2>Payment</h2>
+                        <PaymentForm totalAmount={totalAmount} onSubmit={handlePaymentSubmit} />
                     </div>
 
                     <div className="mt-4">

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import productsData from '../../public/data/products.json';
-import { removeFromCart } from '../store/actions/cartActions';
+import { removeFromCart, updateTotal } from '../store/actions/cartActions';
 import Image from 'next/image';
 
 export default function CartItems({ handleCheckout }) {    
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.items);
     const [cartProductDetails, setCartProductDetails] = useState([]);
+    const [subtotal, setSubtotal] = useState(0);
+    const [taxes, setTaxes] = useState(0);
+    const [shipping, setShipping] = useState(0);
     const [total, setTotal] = useState(0);
 
     const handleRemoveFromCart = (id) => {
@@ -27,10 +30,24 @@ export default function CartItems({ handleCheckout }) {
     
     
     useEffect(() => {
-        console.log("Final cart product details for rendering:", cartProductDetails);
-        const newTotal = cartProductDetails.reduce((acc, product) => acc + product.price * product.quantity, 0);
+        const newSubtotal = cartProductDetails.reduce((acc, product) => acc + product.price * product.quantity, 0);
+        setSubtotal(newSubtotal);
+    
+        // Calculate taxes (assuming a fixed tax rate of 10%)
+        const newTaxes = newSubtotal * 0.1;
+        setTaxes(newTaxes);
+    
+        // Calculate shipping (assuming a flat rate of £5)
+        const newShipping = 5; // Flat rate for shipping
+        setShipping(newShipping);
+    
+        // Calculate total including taxes and shipping
+        const newTotal = newSubtotal + newTaxes + newShipping;
         setTotal(newTotal);
-    }, [cartProductDetails]);
+    
+        // Convert total to pence and dispatch to Redux store
+        dispatch(updateTotal(Math.round(newTotal * 100))); // Ensure total is in pence
+    }, [cartProductDetails, dispatch]); // Add dispatch to dependency array
 
     const updateQuantity = (index, quantity) => {
         const numericQuantity = Number(quantity) || 1;
@@ -78,7 +95,23 @@ export default function CartItems({ handleCheckout }) {
                 )}
             </div>
             <div className="mt-4">
-                <h2 className="text-xl font-bold">Total: £{total.toFixed(2)}</h2>
+                <h2 className="text-xl font-bold">Summary</h2>
+                <div className="flex justify-between mt-2">
+                    <span>Subtotal:</span>
+                    <span>£{subtotal.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between">
+                    <span>Taxes (10%):</span>
+                    <span>£{taxes.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between">
+                    <span>Shipping:</span>
+                    <span>£{shipping.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between">
+                    <h3 className="text-xl font-bold">Total:</h3>
+                    <h3 className="text-xl font-bold">£{total.toFixed(2)}</h3>
+                </div>
             </div>
         </main>
     )
