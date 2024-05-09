@@ -17,7 +17,7 @@ export default function CheckoutPage() {
     };
 
     return (
-        <main>
+        <main className='bg-off-white'>
             <Header_global />
             {view === 'cart' ? <Cart handleCheckout={handleCheckout} /> : <Checkout handleBackToCart={handleBackToCart} />}
             <Footer />

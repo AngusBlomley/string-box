@@ -46,7 +46,7 @@ export default function Stringing() {
     return (
         <main>
             <Header_global />
-            <div className="flex items-center justify-center h-screen bg-gray-100">
+            <div className="flex items-center justify-center mt-20 min-h-screen bg-gray-100">
                 <div className="flex bg-white shadow-lg justify-between max-md:justify-center">
 
                     <div className="flex justify-center">

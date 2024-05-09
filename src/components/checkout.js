@@ -7,8 +7,8 @@ export default function Checkout({ handleBackToCart }) {
     
     return (
         <main>
-        <h1 className='mt-20 pt-5 bg-off-white font-hiraKakuW8 text-center text-3xl'>CHECKOUT</h1>
-        <div className="flex items-center -mt-20 mb-10 justify-center min-h-screen bg-off-white p-10">
+        <h1 className='mt-20 py-2 bg-off-white font-hiraKakuW8 text-center text-3xl'>CHECKOUT</h1>
+        <div className="flex items-center justify-center my-5 bg-off-white">
             <div className="bg-white py-8 px-10 w-full max-w-4xl">
                 <div className="w-full pb-1 mb-4 border-b-2"><button onClick={handleBackToCart} className=" text-black py-1 rounded focus:outline-none hover:opacity-60">
                     Return to Cart
