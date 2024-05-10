@@ -59,7 +59,13 @@ export default function Stringing() {
                         />
                         <form onSubmit={handleSubmit} className="w-[500px] space-y-4 p-10 max-sm:w-screen">
                             <h2 className="text-xl font-semibold text-gray-800 mb-4">String Preference</h2>
-                            <h3 className="text-md text-gray-600 mb-8">Choose your preference</h3>
+                            <div className="flex row justify-between">   
+                                <h3 className="text-md text-gray-600 mb-8">Choose your preference</h3>
+                                <div className="flex row">
+                                    <p className="text-md text-gray-600 mb-8 line-through">£34.50</p>
+                                    <p className="ml-4 font-bold text-clay-red">£25.00</p>
+                                </div>
+                            </div> 
                             <div>
                                 <label htmlFor="tension" className="block text-sm font-medium text-gray-700">Tension:</label>
                                 <select id="tension" name="tension" value={tension} onChange={e => setTension(e.target.value)} className="border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">

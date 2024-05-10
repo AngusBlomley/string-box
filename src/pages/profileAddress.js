@@ -3,6 +3,7 @@ import Header_global from "@/components/headerGlobal";
 import Footer from "@/components/footer";
 import Link from 'next/link';
 import axios from 'axios';
+import AddressForm from '@/components/addressForm';
 
 export default function ProfileDetails() {
     const [userData, setUserData] = useState({
@@ -126,52 +127,7 @@ export default function ProfileDetails() {
                         </div>
 
                         <div className="flex">
-                            <form className="w-full" onSubmit={handleSubmit}>
-                                <div className="flex flex-col space-y-4">
-                                    {[
-                                        { id: "country", type: "", label: "Country:", placeholder: "Select Country" },
-                                        { id: "address1", type: "text", label: "Address1:", placeholder: "Address 1" },
-                                        { id: "Address2", type: "text", label: "Address2:", placeholder: "Address 2" },
-                                        { id: "County", type: "text", label: "County:", placeholder: "County" },
-                                        { id: "city", type: "text", label: "City:", placeholder: "City" },
-                                        { id: "postcode", type: "text", label: "Postcode:", placeholder: "Postcode" }
-                                    ].map((field, index) => (
-                                        <div key={index} className="flex flex-col mb-3">
-                                            {field.id !== 'password' && field.id !== 'confirmPassword' && (
-                                                <div className="text-xs text-gray-500">
-                                                    Current: {userData[field.id] || 'N/A'}
-                                                </div>
-                                            )}
-                                            <div className="flex items-center">
-                                                <label htmlFor={field.id} className="text-gray-700 text-sm font-bold mr-4 w-1/3">
-                                                    {field.label}
-                                                </label>
-                                                <input
-                                                    type={field.type}
-                                                    id={field.id}
-                                                    name={field.id}
-                                                    placeholder={field.placeholder}
-                                                    className="flex-1 px-3 py-2 leading-tight text-gray-700 border rounded"
-                                                    value={userData[field.id]}
-                                                    onChange={handleChange}
-                                                    aria-describedby={field.id + "Error"}
-                                                />
-                                            </div>
-                                            {errors[field.id] && (
-                                                <p className="text-red-500 text-xs italic mt-1" id={field.id + "Error"}>
-                                                    {errors[field.id]}
-                                                </p>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="w-full mt-10 px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                                >
-                                Save
-                                </button>
-                            </form>
+                           <AddressForm /> 
                         </div>
                     </div>
                 </div>

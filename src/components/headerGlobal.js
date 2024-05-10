@@ -6,20 +6,23 @@ import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../store/actions/userActions';
+import { useSession, signOut } from 'next-auth/react';
+
+
 
 function toggleMenu(menuOpen, setMenuOpen) {
     setMenuOpen(!menuOpen);
 }
 
 export default function Header_global() {
+    const { data: session, status } = useSession();
+    const router = useRouter();
     const [menuOpen, setMenuOpen] = useState(false);
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
-    const router = useRouter(); 
 
-    const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(logoutUser());
+    const handleLogout = async () => {
+        await signOut({ redirect: false });
         router.push('/');
     };
 
@@ -77,7 +80,7 @@ export default function Header_global() {
                 />
             </Link>
 
-            <div id="togglebutton" className="hamburger z-10 text-2xl absolute top-5 right-4 cursor-pointer block lg:hidden" onClick={() => toggleMenu(menuOpen, setMenuOpen)}>
+            <div id="togglebutton" className="hamburger z-10 text-2xl absolute top-5 right-4 cursor-pointer block lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
                 {menuOpen ? '✖' : '☰'}
             </div>
 
@@ -88,14 +91,14 @@ export default function Header_global() {
                 <li><Link href="/stringing" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Re-String</Link></li>
                 <li><Link href="/#contact" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Contact</Link></li>
                 <li className="border-r-2 border-black mx-4 py-3"></li>
-                {user ? (
+                {session ? (
                     <>
                         <li>
-                            <Link href="#" onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Logout</Link>
+                            <button onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Logout</button>
                         </li>
                         <li><Link href="/profile" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Profile</Link></li>
                     </>
-                ) : (
+                    ) : (
                     <>
                         <li><Link href="/login" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Login</Link></li>
                         <li><Link href="/register" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Sign Up</Link></li>

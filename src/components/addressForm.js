@@ -98,13 +98,12 @@ export default function AddressForm() {
                 <>
                     <p>{`${formData.firstName} ${formData.lastName}`}</p>
                     <p>{formData.mobile}</p>
-                    <p>{`${formData.addressLine1}, ${formData.addressLine2}`}</p>
-                    <p>{`${formData.city}, ${formData.state} ${formData.postalCode}`}</p>
+                    <p>{`${formData.addressLine1} ${formData.addressLine2}`}</p>
+                    <p>{`${formData.city} ${formData.state} ${formData.postalCode}`}</p>
                     <p>{formData.country}</p>
                     <button onClick={() => setIsEditing(true)} className="w-full border-2 border-black text-black py-2 px-4 hover:bg-gray-100 focus:outline-none">Edit Address</button>
                 </>
             )}
-            {message && <p>{message}</p>}
         </form>
     );
 }

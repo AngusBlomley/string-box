@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../store/actions/userActions';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import SignInButton from '@/components/googleSignIn';
 
 
 export default function LoginForm() {
@@ -26,10 +27,6 @@ export default function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (!email || !password) {
-            alert('Please enter both email and password');
-            return;
-        }
         dispatch(loginUser({ email, password }));
     };
     
@@ -71,6 +68,7 @@ export default function LoginForm() {
                             >
                                 Sign In
                             </button>
+                            <SignInButton />
                         </form>
                     </div>
                 </div>
