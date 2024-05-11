@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import productsData from '../../public/data/products.json';
-import { removeFromCart, updateTotal } from '../store/actions/cartActions';
+import productsData from '../../../public/data/products.json';
+import { removeFromCart, updateTotal } from '../../store/actions/cartActions';
 import Image from 'next/image';
 
-export default function CartItems({ handleCheckout }) {    
+export default function CartItems({ handleCheckout }) {
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.items);
     const [cartProductDetails, setCartProductDetails] = useState([]);
@@ -17,34 +17,34 @@ export default function CartItems({ handleCheckout }) {
         dispatch(removeFromCart(id));
     };
 
-    useEffect(() => {    
+    useEffect(() => {
         const validItems = cartItems.filter(item => item && typeof item === 'object' && 'id' in item);
         const details = cartItems.map(item => {
             const product = item.isCustom ? null : productsData.find(p => p.id === item.id);
             console.log("Product found:", product);
-            return product ? {...product, quantity: item.quantity} : {...item, quantity: item.quantity || 1};
+            return product ? { ...product, quantity: item.quantity } : { ...item, quantity: item.quantity || 1 };
         });
         console.log("Mapped product details:", details);
         setCartProductDetails(details.filter(product => product && product.id));
     }, [cartItems]);
-    
-    
+
+
     useEffect(() => {
         const newSubtotal = cartProductDetails.reduce((acc, product) => acc + product.price * product.quantity, 0);
         setSubtotal(newSubtotal);
-    
+
         // Calculate taxes (assuming a fixed tax rate of 10%)
         const newTaxes = newSubtotal * 0.1;
         setTaxes(newTaxes);
-    
+
         // Calculate shipping (assuming a flat rate of £5)
         const newShipping = 5; // Flat rate for shipping
         setShipping(newShipping);
-    
+
         // Calculate total including taxes and shipping
         const newTotal = newSubtotal + newTaxes + newShipping;
         setTotal(newTotal);
-    
+
         // Convert total to pence and dispatch to Redux store
         dispatch(updateTotal(Math.round(newTotal * 100))); // Ensure total is in pence
     }, [cartProductDetails, dispatch]); // Add dispatch to dependency array
@@ -58,8 +58,8 @@ export default function CartItems({ handleCheckout }) {
         };
         setCartProductDetails(updatedDetails);
     }
-    
-    
+
+
     return (
         <main>
             <div className="overflow-y-auto h-full">

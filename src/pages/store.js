@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../app/globals.css'
 import { useDispatch } from 'react-redux';
-import Footer from "@/components/footer";
-import Header_global from "@/components/headerGlobal";
-import ProductCard from "@/components/productCard";
+import Footer from "@/components/globals/footer";
+import Header_global from "@/components/globals/headerGlobal";
+import ProductCard from "@/components/store/productCard";
 import { addToCart } from '@/store/actions/cartActions';
 
 export default function Store() {
@@ -38,18 +38,18 @@ export default function Store() {
     useEffect(() => {
         console.log("Fetching products...");
         fetch('/data/products.json')
-        .then(response => response.json())
-        .then(data => {
-            console.log("Products loaded:", data);
-            setProducts(data);
-        })
-        .catch(error => {
-            console.error('Error loading the products:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log("Products loaded:", data);
+                setProducts(data);
+            })
+            .catch(error => {
+                console.error('Error loading the products:', error);
+            });
     }, []);
-    
+
     console.log("Products to render:", products);
-    
+
     const handleAddToCart = (product) => {
         const productToAdd = {
             ...product,
@@ -57,7 +57,7 @@ export default function Store() {
         };
         dispatch(addToCart(productToAdd));
     };
-    
+
 
     const handleCheckboxChange = (event) => {
         const { name, checked } = event.target;

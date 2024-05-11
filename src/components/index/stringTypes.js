@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from 'react';
 import Image from 'next/image';
-import '../app/globals.css'
-import useFadeLeft from './animations';
+import '../../app/globals.css';
+import useFadeLeft from '../animations';
 
 function StringTypes() {
 

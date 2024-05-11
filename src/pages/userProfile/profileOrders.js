@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header_global from "@/components/headerGlobal";
-import Footer from "@/components/footer";
+import Header_global from "@/components/globals/headerGlobal";
+import Footer from "@/components/globals/footer";
 import Link from 'next/link';
 import axios from 'axios';
-import Orders from '@/components/orders';
+import Orders from '@/components/userDetails/orders';
 
 export default function ProfileDetails() {
     const [userData, setUserData] = useState({
@@ -58,32 +58,32 @@ export default function ProfileDetails() {
                                     <Link href="./profileDetails">
                                         My Details
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profileAddress">
                                         Address
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
-                                    <Link style={{fontWeight: '700'}} href="./profileOrders">
+                                    <Link style={{ fontWeight: '700' }} href="./profileOrders">
                                         Orders
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profileReturns">
                                         Returns
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profilePayment">
                                         Payment
                                     </Link>
-                                </li><br/>
+                                </li><br />
                             </ul>
                         </div>
 
                         <div className="flex">
-                           <Orders />
+                            <Orders />
                         </div>
                     </div>
                 </div>

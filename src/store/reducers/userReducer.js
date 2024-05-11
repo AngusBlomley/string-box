@@ -1,6 +1,5 @@
 import { USER_LOGIN_SUCCESS, USER_LOGOUT } from '../actions/types';
 import { USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILURE } from '../actions/types';
-import { USER_LOGIN_FAILURE } from '../actions/types';
 
 // Initial state for the user reducer
 const initialState = {

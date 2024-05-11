@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header_global from "@/components/headerGlobal";
-import Footer from "@/components/footer";
+import Header_global from "@/components/globals/headerGlobal";
+import Footer from "@/components/globals/footer";
 import Link from 'next/link';
 import axios from 'axios';
+import AddressForm from '@/components/userDetails/addressForm';
 
 export default function ProfileDetails() {
     const [userData, setUserData] = useState({
@@ -101,76 +102,32 @@ export default function ProfileDetails() {
                                     <Link href="./profileDetails">
                                         My Details
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
-                                    <Link href="./profileAddress">
+                                    <Link style={{ fontWeight: '700' }} href="./profileAddress">
                                         Address
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profileOrders">
                                         Orders
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profileReturns">
                                         Returns
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
-                                    <Link style={{fontWeight: '700'}} href="./profilePayment">
+                                    <Link href="./profilePayment">
                                         Payment
                                     </Link>
-                                </li><br/>
+                                </li><br />
                             </ul>
                         </div>
 
                         <div className="flex">
-                            <form className="w-full" onSubmit={handleSubmit}>
-                                <div className="flex flex-col space-y-4">
-                                    {[
-                                        { id: "name", type: "text", label: "Name:", placeholder: "Name" },
-                                        { id: "mobile", type: "tel", label: "Mobile:", placeholder: "Mobile" },
-                                        { id: "email", type: "email", label: "Email:", placeholder: "Email" },
-                                        { id: "password", type: "password", label: "Password:", placeholder: "Password" },
-                                        { id: "confirmPassword", type: "password", label: "Confirm Password:", placeholder: "Confirm Password" }
-                                    ].map((field, index) => (
-                                        <div key={index} className="flex flex-col mb-3">
-                                            {field.id !== 'password' && field.id !== 'confirmPassword' && (
-                                                <div className="text-xs text-gray-500">
-                                                    Current: {userData[field.id] || 'N/A'}
-                                                </div>
-                                            )}
-                                            <div className="flex items-center">
-                                                <label htmlFor={field.id} className="text-gray-700 text-sm font-bold mr-4 w-1/3">
-                                                    {field.label}
-                                                </label>
-                                                <input
-                                                    type={field.type}
-                                                    id={field.id}
-                                                    name={field.id}
-                                                    placeholder={field.placeholder}
-                                                    className="flex-1 px-3 py-2 leading-tight text-gray-700 border rounded"
-                                                    value={userData[field.id]}
-                                                    onChange={handleChange}
-                                                    aria-describedby={field.id + "Error"}
-                                                />
-                                            </div>
-                                            {errors[field.id] && (
-                                                <p className="text-red-500 text-xs italic mt-1" id={field.id + "Error"}>
-                                                    {errors[field.id]}
-                                                </p>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="w-full mt-10 px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                                >
-                                    Save Info and Change Password
-                                </button>
-                            </form>
+                            <AddressForm />
                         </div>
                     </div>
                 </div>

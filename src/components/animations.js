@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Link from "next/link";
 
 export default function useFadeLeft() {
 
@@ -31,15 +30,27 @@ export default function useFadeLeft() {
 export const updateHeaderOnScroll = (setHeaderStyle, setLogoSize) => {
     const scrollPosition = window.scrollY;
     const scrollThreshold = 80;
+    const originalAspectRatio = 1976 / 1192;
 
     if (scrollPosition > scrollThreshold) {
+        const smallerWidth = 120;
         setHeaderStyle({ backgroundColor: 'black', color: 'white' });
-        setLogoSize({ width: 120, height: 100, marginTop: 0 });
+        setLogoSize({
+            width: smallerWidth,
+            height: smallerWidth / originalAspectRatio,
+            marginTop: 0
+        });
     } else {
+        const originalWidth = 180;
         setHeaderStyle({ backgroundColor: 'transparent', color: 'white' });
-        setLogoSize({ width: 180, height: 150, marginTop: 36 });
+        setLogoSize({
+            width: originalWidth,
+            height: originalWidth / originalAspectRatio,
+            marginTop: 36
+        });
     }
 };
+
 
 export const handleHeaderScroll = (setHeaderStyle, setLogoSize) => {
     return () => updateHeaderOnScroll(setHeaderStyle, setLogoSize);

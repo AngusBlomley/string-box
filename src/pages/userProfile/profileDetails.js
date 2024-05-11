@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Header_global from "@/components/headerGlobal";
-import Footer from "@/components/footer";
+import Header_global from "@/components/globals/headerGlobal";
+import Footer from "@/components/globals/footer";
 import Link from 'next/link';
 import axios from 'axios';
 
@@ -98,30 +98,30 @@ export default function ProfileDetails() {
                         <div className=' flex items-center border-stone-800 border-r-2 text-center'>
                             <ul>
                                 <li>
-                                    <Link href="./profileDetails">
+                                    <Link style={{ fontWeight: '700' }} href="./profileDetails">
                                         My Details
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profileAddress">
                                         Address
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profileOrders">
                                         Orders
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
-                                    <Link style={{fontWeight: '700'}} href="./profileReturns">
+                                    <Link href="./profileReturns">
                                         Returns
                                     </Link>
-                                </li><br/>
+                                </li><br />
                                 <li>
                                     <Link href="./profilePayment">
                                         Payment
                                     </Link>
-                                </li><br/>
+                                </li><br />
                             </ul>
                         </div>
 

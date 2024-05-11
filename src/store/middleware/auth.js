@@ -1,23 +1,27 @@
-import jwt from 'jsonwebtoken';
+// middleware/auth.js
+const { verifyToken } = require('../../../lib/jwtTokenUtils');
 
-const auth = (req, res, next) => {
-    console.log("Auth middleware called");
-    const token = req.headers.authorization?.split(' ')[1];
-
-    if (!token) {
-        console.log("No token provided");
-        return res.status(403).json({ message: 'Not authenticated.' });
-    }
-
+const authMiddleware = async (req, res, next) => {
     try {
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-        console.log("Token decoded successfully:", decodedToken);
-        req.userId = decodedToken.userId;
+        const authHeader = req.headers['authorization'] || '';
+        const tokenParts = authHeader.split(' ');
+
+        if (tokenParts[0] !== 'Bearer' || tokenParts.length !== 2) {
+            return res.status(401).json({ message: 'Malformed token, Bearer token required' });
+        }
+
+        const token = tokenParts[1];
+        const decoded = await verifyToken(token, process.env.JWT_ACCESS_TOKEN_SECRET);
+        req.user = decoded;
         next();
     } catch (error) {
-        console.error("Invalid token:", error);
-        res.status(401).json({ message: 'Invalid token.' });
+        const status = error.name === 'TokenExpiredError' ? 401 : 403;
+        return res.status(status).json({
+            message: error.name === 'TokenExpiredError' ? 'Token expired' : 'Invalid token',
+            expiredAt: error.expiredAt || null,
+            error: error.message
+        });
     }
 };
 
-export default auth;
+module.exports = authMiddleware;

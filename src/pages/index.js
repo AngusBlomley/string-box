@@ -1,17 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import '../app/globals.css'
 import React, { useState, useEffect } from 'react';
-import ContactForm from "../components/contact";
-import Footer from "../components/footer";
-import Header from "../components/headerIndex";
-import Service from "../components/service";
-import StringTypes from "../components/stringTypes";
-import useFadeLeft from "../components/animations";
-import About from "../components/about";
+import ContactForm from "../components/index/contact";
+import Footer from "../components/globals/footer";
+import Header from "../components/index/headerIndex";
+import Service from "../components/index/service";
+import StringTypes from "../components/index/stringTypes";
+import About from "../components/index/about";
 
 export default function Index() {
-
-  useFadeLeft();
 
   return (
     <main>
@@ -38,16 +35,6 @@ export default function Index() {
             <p>Re-Stringing your racquet can improve performance and prolong its life.
               <br></br>With 40 years of professional hand stringing experience.</p>
           </div>
-
-          {/*<div className="font-karla flex flex-wrap mt-10">
-                        <Link href="store" className="lg:hidden text-white border-2 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Store</Link>
-                        <Link href="/stringing" className="lg:hidden text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link>
-                        <Link href="#contact" className="lg:hidden text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact</Link>
-
-                        <Link href="/store" className="hidden lg:block text-white border-2 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Visit The Store</Link>
-                        <Link href="/stringing" className="hidden lg:block text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Re-String</Link>
-                        <Link href="#contact" className="hidden lg:block text-white border-2 ml-5 hover:bg-blue-500 hover:border-blue-500 duration-200 px-4 py-2 rounded-sm">Contact Us</Link>
-                    </div>*/}
         </section>
       </div>
 

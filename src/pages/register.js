@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Footer from "@/components/footer";
-import Header_global from "@/components/headerGlobal";
+import Footer from "@/components/globals/footer";
+import Header_global from "@/components/globals/headerGlobal";
 import { signupUser } from '../store/actions/userActions';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import '../app/globals.css'
-import useFadeLeft from "./animations";
+import '../../app/globals.css'
+import useFadeLeft from "../animations";
 import Image from 'next/image';
 
 export default function About() {

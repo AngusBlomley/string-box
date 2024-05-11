@@ -1,38 +1,25 @@
-import axios from 'axios';
-import { USER_LOGIN_SUCCESS } from './types';
-import { USER_SIGNUP_FAILURE } from './types';
-import { USER_SIGNUP_SUCCESS } from './types';
-import { USER_LOGIN_FAILURE } from './types';
-import { USER_LOGOUT } from './types';
+import { USER_LOGIN_SUCCESS, USER_SIGNUP_FAILURE, USER_SIGNUP_SUCCESS, USER_LOGIN_FAILURE, USER_LOGOUT } from './types';
+import authService from '../services/authService'; // Assuming this is the path to your authService
 
 export const loginUser = (credentials) => async (dispatch) => {
     try {
-        const response = await axios.post('/api/login', credentials);
-        if (response && response.data) {
-            localStorage.setItem('token', response.data.token);
+        const response = await authService.login(credentials);
+        if (response && response.token) {
+            localStorage.setItem('token', response.token);
             dispatch({
                 type: USER_LOGIN_SUCCESS,
-                payload: response.data.user
+                payload: response.user
             });
         } else {
             console.error('Invalid response from server');
             throw new Error('Invalid response from server');
         }
-        
     } catch (error) {
-        if (error.response && error.response.data && error.response.data.message) {
-            console.error('Login error:', error.response.data.message);
-            dispatch({
-                type: USER_LOGIN_FAILURE,
-                payload: error.response.data.message
-            });
-        } else {
-            console.error('Login error:', error.message);
-            dispatch({
-                type: USER_LOGIN_FAILURE,
-                payload: 'An error occurred during login'
-            });
-        }
+        console.error('Login error:', error.message);
+        dispatch({
+            type: USER_LOGIN_FAILURE,
+            payload: error.message || 'An error occurred during login'
+        });
     }
 };
 
@@ -44,21 +31,17 @@ export const logoutUser = () => {
 };
 
 export const signupUser = (userData) => async (dispatch) => {
-    console.log("Dispatching signup user with data:", userData);
     try {
-        const response = await axios.post('/api/signup', userData);
-        console.log("Signup response:", response.data);
-        dispatch(userSignedUp(response.data));
+        const response = await authService.signup(userData);  // Assuming there's a signup method in authService
+        dispatch({
+            type: USER_SIGNUP_SUCCESS,
+            payload: response.user
+        });
     } catch (error) {
-        console.error("Signup failed:", error);
+        console.error("Signup failed:", error.message);
         dispatch({
             type: USER_SIGNUP_FAILURE,
-            payload: error.response ? error.response.data : { message: 'Signup failed' },
+            payload: error.message || { message: 'Signup failed' }
         });
     }
 };
-
-export const userSignedUp = (userData) => ({
-    type: USER_SIGNUP_SUCCESS,
-    payload: userData
-});

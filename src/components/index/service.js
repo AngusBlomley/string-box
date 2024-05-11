@@ -1,12 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
-import React, { useState, useEffect } from 'react';
-import '../app/globals.css'
-import useFadeLeft from "./animations";
+import '../../app/globals.css';
 
 export default function Service() {
-
-    useFadeLeft();
 
     return (
         <section id="service" className="section py-0 mx-auto w-8/12 max-lg:w-full px-0">

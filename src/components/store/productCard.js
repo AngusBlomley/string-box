@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/actions/cartActions';
+import { addToCart } from '../../store/actions/cartActions';
 
 function ProductCard({ product }) {
     const dispatch = useDispatch();

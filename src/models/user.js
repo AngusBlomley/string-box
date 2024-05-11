@@ -6,7 +6,14 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     mobile: { type: String, required: false },
-    address: { type: String, required: false },
+    address: [{
+        addressLine1: { type: String, required: true },
+        addressLine2: { type: String, required: false },
+        city: { type: String, required: true },
+        state: { type: String, required: true },
+        postalCode: { type: String, required: true },
+        country: { type: String, required: true }
+    }],
     orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }]
 });
 
