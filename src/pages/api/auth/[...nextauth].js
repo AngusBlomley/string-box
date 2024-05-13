@@ -2,7 +2,8 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcryptjs';
-import { connectToServer } from "../../../../lib/dbConnect";
+import jwt from 'jsonwebtoken';
+import connectToDatabase from "lib/dbConnect";
 import User from "@/models/user";
 
 export default NextAuth({
@@ -18,19 +19,26 @@ export default NextAuth({
         password: { label: "Password", type: "password" }
       },
       authorize: async (credentials) => {
-        try {
-          console.log('Credentials:', credentials);
-          await connectToServer();
-          const user = await User.findOne({ email: credentials.email }).exec();
-          if (user && await bcrypt.compare(credentials.password, user.password)) {
-            return { name: user.name, email: user.email, id: user._id.toString() }; // Ensure ID is a string
-          } else {
-            return null;
-          }
-        } catch (error) {
-          console.error("Authentication error:", error);
-          return null;
+        const db = await connectToDatabase(); // Connect to the database
+        const User = db.collection('users'); // Assuming your collection is named 'users'
+
+        // Check if the user already exists
+        const existingUser = await User.findOne({ email: credentials.email });
+        if (existingUser) {
+          throw new Error("User already exists");
         }
+
+        // Create a new user
+        const hashedPassword = await bcrypt.hash(credentials.password, 10);
+        const newUser = {
+          email: credentials.email,
+          password: hashedPassword,
+          // You can include additional fields here if needed
+        };
+        await User.insertOne(newUser);
+
+        // Return user data
+        return { email: newUser.email, id: newUser._id.toString() };
       }
     }),
   ],
@@ -38,16 +46,24 @@ export default NextAuth({
   site: process.env.NEXTAUTH_URL,
   callbacks: {
     jwt: async ({ token, user, account }) => {
-      // Only update the token when a user logs in directly via credentials or provider
       if (user) {
-        token.userId = user.id;  // Make sure it is the user ID in string format if needed
+        token.userId = user.id;
+        token.accessToken = jwt.sign({ id: user.id }, process.env.NEXTAUTH_SECRET, { expiresIn: '1h' });
       }
       return token;
     },
     session: async ({ session, token }) => {
-      // Make sure the session includes the userId from the token
       session.user.userId = token.userId;
+      session.accessToken = token.accessToken;
       return session;
+    },
+    signIn: async (user, account) => {
+      if (account.provider === 'credentials') {
+        const isValidCredentials = await validateCredentials(user.email, user.password);
+        return !!isValidCredentials;
+      }
+      // Additional signIn logic if necessary
+      return true;
     }
   },
   pages: {

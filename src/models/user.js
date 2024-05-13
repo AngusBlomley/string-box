@@ -1,9 +1,20 @@
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken'; // Import jwt for token verification
 
 const userSchema = new mongoose.Schema({
     name: { type: String, required: false },
     secondName: { type: String, required: false },
-    email: { type: String, required: true, unique: true },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        validate: {
+            validator: function (v) {
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+            },
+            message: props => `${props.value} is not a valid email!`
+        }
+    },
     password: { type: String, required: true },
     mobile: { type: String, required: false },
     address: [{
@@ -17,9 +28,22 @@ const userSchema = new mongoose.Schema({
     orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }]
 });
 
-export default mongoose.models.User || mongoose.model('User', userSchema);
+const User = mongoose.models && mongoose.models.User ? mongoose.models.User : mongoose.model('User', userSchema);
 
-export async function getServerSideProps(context) {
+export default User;
+
+async function mongooseConnect() {
+    try {
+        await mongoose.connect("mongodb+srv://your_connection_string");
+        console.log("Connected to MongoDB with Mongoose!");
+    } catch (error) {
+        console.error("Mongoose connection error:", error);
+    }
+}
+
+export { mongooseConnect };
+
+async function getServerSideProps(context) {
     const token = context.req.cookies.token;
 
     if (!token) {
@@ -33,10 +57,9 @@ export async function getServerSideProps(context) {
 
     try {
         jwt.verify(token, process.env.JWT_SECRET);
-        // Token is valid, proceed to render the page
-        return { props: {} };
+        return { props: {} }; // Token is valid
     } catch (error) {
-        // Invalid token, redirect to login
+        console.error('JWT verification failed:', error.message);
         return {
             redirect: {
                 destination: '/login',
@@ -45,3 +68,6 @@ export async function getServerSideProps(context) {
         };
     }
 }
+
+
+export { getServerSideProps };

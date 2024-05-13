@@ -1,4 +1,4 @@
-import { connectToServer, getDb } from '../../../lib/dbConnect';
+import { connectToServer, getDb } from 'lib/dbConnect';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 

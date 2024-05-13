@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 
 export default function AddressForm() {
     const [address, setAddress] = useState({
@@ -21,30 +21,40 @@ export default function AddressForm() {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        const fetchUser = async () => {
-            if (status !== "authenticated") {
-                setError('User not authenticated');
-                return;
-            }
+        if (status === "authenticated") {
             setIsLoading(true);
-            try {
-                const userId = session.user.userId;
-                console.log("UserID:", userId);
-                const response = await axios.get(`/api/user?userId=${userId}`);
-                if (response.data && response.data.address) {
-                    setAddress(response.data.address); // Set the address if it's part of the user object
+            const fetchUser = async () => {
+                try {
+                    const userId = session.user.userId;
+                    const response = await axios.get(`/api/user?userId=${userId}`, {
+                        headers: {
+                            'Authorization': `Bearer ${session.accessToken}`
+                        }
+                    });
+                    const fetchedAddress = response.data.address;
+                    const updatedAddress = {
+                        firstName: fetchedAddress.firstName || '',
+                        lastName: fetchedAddress.lastName || '',
+                        mobile: fetchedAddress.mobile || '',
+                        addressLine1: fetchedAddress.addressLine1 || '',
+                        addressLine2: fetchedAddress.addressLine2 || '',
+                        city: fetchedAddress.city || '',
+                        state: fetchedAddress.state || '',
+                        postalCode: fetchedAddress.postalCode || '',
+                        country: fetchedAddress.country || '',
+                    };
+                    setAddress(updatedAddress);
+                    setError('');
+                } catch (error) {
+                    console.error('Error fetching user:', error);
+                    setError('Error fetching user. Please try again.');
+                } finally {
+                    setIsLoading(false);
                 }
-                setError('');
-            } catch (error) {
-                console.error('Error fetching user:', error);
-                setError('Error fetching user. Please try again.');
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        if (session) {
+            };
             fetchUser();
+        } else {
+            setError('User not authenticated');
         }
     }, [session, status]);
 
@@ -54,6 +64,10 @@ export default function AddressForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!session) {
+            setError('User is not authenticated');
+            return;
+        }
         setIsLoading(true);
         try {
             const response = await axios.post('/api/user', {
@@ -61,7 +75,6 @@ export default function AddressForm() {
                 address
             }, {
                 headers: {
-                    // Assuming you are using Bearer token; adjust based on your authentication method
                     'Authorization': `Bearer ${session.accessToken}`
                 }
             });
@@ -72,13 +85,11 @@ export default function AddressForm() {
             console.error('Error saving address:', error);
             setError('Error saving address. Please try again.');
             if (error.response && error.response.status === 401) {
-                // Redirect user to login page or handle unauthorized access
             }
         } finally {
             setIsLoading(false);
         }
     };
-
 
     return (
         <div>

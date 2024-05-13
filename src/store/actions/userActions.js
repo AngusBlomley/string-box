@@ -1,6 +1,7 @@
 import { USER_LOGIN_SUCCESS, USER_SIGNUP_FAILURE, USER_SIGNUP_SUCCESS, USER_LOGIN_FAILURE, USER_LOGOUT } from './types';
-import authService from '../services/authService'; // Assuming this is the path to your authService
+import authService from 'next-auth'; // Ensure authService has login and signup methods.
 
+// Action to log in a user
 export const loginUser = (credentials) => async (dispatch) => {
     try {
         const response = await authService.login(credentials);
@@ -11,11 +12,9 @@ export const loginUser = (credentials) => async (dispatch) => {
                 payload: response.user
             });
         } else {
-            console.error('Invalid response from server');
             throw new Error('Invalid response from server');
         }
     } catch (error) {
-        console.error('Login error:', error.message);
         dispatch({
             type: USER_LOGIN_FAILURE,
             payload: error.message || 'An error occurred during login'
@@ -23,25 +22,28 @@ export const loginUser = (credentials) => async (dispatch) => {
     }
 };
 
+// Action to log out a user
 export const logoutUser = () => {
     localStorage.removeItem('token');
-    return {
-        type: USER_LOGOUT
-    };
+    return { type: USER_LOGOUT };
 };
 
+// Action to sign up a user
 export const signupUser = (userData) => async (dispatch) => {
     try {
-        const response = await authService.signup(userData);  // Assuming there's a signup method in authService
-        dispatch({
-            type: USER_SIGNUP_SUCCESS,
-            payload: response.user
-        });
+        const response = await authService.signup(userData);  // Assuming authService includes a signup method.
+        if (response && response.user) {
+            dispatch({
+                type: USER_SIGNUP_SUCCESS,
+                payload: response.user
+            });
+        } else {
+            throw new Error('Signup failed');
+        }
     } catch (error) {
-        console.error("Signup failed:", error.message);
         dispatch({
             type: USER_SIGNUP_FAILURE,
-            payload: error.message || { message: 'Signup failed' }
+            payload: error.message || 'Signup failed'
         });
     }
 };
