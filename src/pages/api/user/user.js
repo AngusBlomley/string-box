@@ -1,58 +1,76 @@
-import jwt from 'jsonwebtoken';
-import User from '@/models/user';
-const { connectToDatabase } = require('lib/dbConnect');
-import { getSession } from 'next-auth/react';
-import 'dotenv/config';
+import { connectToDatabase } from 'lib/dbConnect';
+import { User } from '@/models/User';
+import bcrypt from 'bcryptjs';
 
 export default async function handler(req, res) {
-    await connectToDatabase().catch(error => {
-        console.error('Database connection failed', error);
-        return res.status(500).json({ message: 'Database connection failed', error });
-    });
+    await connectToDatabase();
 
-    const session = await getSession({ req });
-    if (!session) {
-        return res.status(401).json({ message: 'Unauthorized - Session Missing' });
+    switch (req.method) {
+        case 'POST': // Create a new user
+            try {
+                const { username, email, password } = req.body;
+                if (!username || !email || !password) {
+                    return res.status(400).json({ message: 'Username, email, and password are required fields.' });
+                }
+                const hashedPassword = bcrypt.hashSync(password, 10);
+                const newUser = new User({ username, email, password: hashedPassword });
+                const savedUser = await newUser.save();
+                res.status(201).json({ success: true, user: savedUser });
+            } catch (error) {
+                console.error('Error creating user:', error);
+                res.status(500).json({ message: 'Internal Server Error', error: error.message });
+            }
+            break;
+
+        case 'GET': // Fetch user details
+            try {
+                const { userId } = req.query;
+                const user = await User.findById(userId);
+                if (!user) {
+                    return res.status(404).json({ message: 'User not found.' });
+                }
+                res.status(200).json(user);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+                res.status(500).json({ message: 'Internal Server Error', error: error.message });
+            }
+            break;
+
+        case 'PUT': // Update user details
+            try {
+                const { userId } = req.query;
+                const { address } = req.body;
+
+                const user = await User.findById(userId);
+                if (!user) {
+                    return res.status(404).json({ message: 'User not found.' });
+                }
+
+                // Validate address fields
+                const { addressLine1, addressLine2, city, state, postalCode, country } = address;
+                if (!addressLine1 || !city || !state || !postalCode || !country) {
+                    return res.status(400).json({ message: 'Please fill in all required address fields.' });
+                }
+
+                // Update address fields
+                user.address = [{
+                    addressLine1,
+                    addressLine2,
+                    city,
+                    state,
+                    postalCode,
+                    country,
+                }];
+
+                const updatedUser = await user.save();
+                res.status(200).json({ success: true, user: updatedUser });
+            } catch (error) {
+                console.error('Error updating user:', error);
+                res.status(500).json({ message: 'Internal Server Error', error: error.message });
+            }
+            break;
+
+        default:
+            res.status(405).json({ message: 'Method Not Allowed' });
     }
-
-    const token = session.accessToken;
-    if (!token) {
-        return res.status(401).json({ message: 'Unauthorized - Token Missing' });
-    }
-
-    try {
-        jwt.verify(token, process.env.JWT_SECRET);
-    } catch (error) {
-        if (error instanceof jwt.TokenExpiredError) {
-            return res.status(401).json({ message: 'Token expired', expiredAt: error.expiredAt });
-        } else {
-            return res.status(403).json({ message: 'Invalid Token' });
-        }
-    }
-
-    const { userId } = req.query;
-    if (!userId || !mongoose.Types.ObjectId.isValid(userId) || (session.user.userId !== userId)) {
-        return res.status(400).json({ message: 'Invalid userId provided or user mismatch' });
-    }
-
-    const user = await User.findById(userId);
-    if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-    }
-
-    const refreshToken = process.env.REFRESH_TOKEN; // Load the refresh token from environment variable
-    if (!refreshToken) {
-        console.error('Refresh token not found in environment.');
-        return res.status(500).json({ message: 'Server configuration error' });
-    }
-
-    res.cookie('next-auth.refresh-token', refreshToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production', // Use environment condition
-        sameSite: 'Strict',
-        path: '/',
-        maxAge: 7 * 24 * 60 * 60 * 1000  // 7 days
-    });
-
-    res.status(200).json(user);
 }

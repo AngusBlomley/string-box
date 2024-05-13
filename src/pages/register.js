@@ -17,7 +17,7 @@ export default function SignUp() {
     const { data: session, status } = useSession();
 
     if (status === 'authenticated') {
-        router.push('/dashboard');
+        router.push('/');
     }
 
     const handleSignUp = async (e) => {
@@ -32,7 +32,7 @@ export default function SignUp() {
         }
 
         try {
-            const response = await axios.post('/api/user/signup', {
+            const response = await axios.post('/api/user/user', {
                 username,
                 email,
                 password

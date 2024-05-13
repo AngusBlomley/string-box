@@ -1,7 +1,11 @@
-import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
-const { connectToDatabase } = require('lib/dbConnect');
+import NextAuth from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt from 'bcryptjs';
+import { connectToDatabase } from 'lib/dbConnect';
+import generateToken from './generateToken';
+import { User } from '@/models/User';
+require('dotenv').config();
 
 export default NextAuth({
   providers: [
@@ -12,36 +16,47 @@ export default NextAuth({
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        email: { label: "Email", type: "email", placeholder: "jane.doe@example.com" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" }
       },
       authorize: async (credentials) => {
-        const { db } = await connectToDatabase();
-        const user = await db.collection('users').findOne({
-          email: credentials.email
-        });
-
-        if (user && user.password === credentials.password) {
-          return { id: user._id, name: user.username, email: user.email };
-        } else {
-          return null;
+        await connectToDatabase();
+        const user = await User.findOne({ email: credentials.email }).exec();
+        if (user && bcrypt.compareSync(credentials.password, user.password)) {
+          const accessToken = generateToken(user);
+          return {
+            id: user._id.toString(),
+            name: user.username,
+            email: user.email,
+            accessToken: accessToken,
+          };
         }
+        return null;
       }
     })
   ],
-  session: {
-    strategy: "jwt"
-  },
   callbacks: {
-    jwt: async ({ token, user }) => {
+    jwt: async ({ token, user, account }) => {
+      if (account && user) {
+        token.accessToken = user.accessToken;
+      }
       if (user) {
         token.id = user.id;
+        token.user = {
+          id: user.id,
+          name: user.name,
+          email: user.email
+        };
       }
       return token;
     },
     session: async ({ session, token }) => {
+      session.user = token.user ? token.user : session.user;
+      session.accessToken = token.accessToken;
       session.user.id = token.id;
       return session;
     }
+  },
+  session: {
   }
 });

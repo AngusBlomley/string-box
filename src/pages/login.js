@@ -3,8 +3,8 @@ import '../app/globals.css';
 import Footer from "@/components/globals/footer";
 import Header_global from "@/components/globals/headerGlobal";
 import { useRouter } from 'next/router';
-import SignInButton from '@/components/userDetails/googleSignIn';
 import { signIn, useSession } from 'next-auth/react';
+import SignInButton from '@/components/userDetails/googleSignIn';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -13,9 +13,8 @@ export default function SignIn() {
     const router = useRouter();
     const { data: session } = useSession();
 
-    // Redirect if already logged in
     if (session) {
-        router.replace('/'); // Change this to redirect the user to their dashboard or home page
+        router.replace('/');
         return null;
     }
 

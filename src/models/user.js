@@ -1,47 +1,50 @@
 import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken'; // Import jwt for token verification
+import jwt from 'jsonwebtoken';
+require('dotenv').config();
 
 const userSchema = new mongoose.Schema({
     name: { type: String, required: false },
     secondName: { type: String, required: false },
     email: {
         type: String,
-        required: true,
+        required: false,
         unique: true,
-        validate: {
-            validator: function (v) {
-                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-            },
-            message: props => `${props.value} is not a valid email!`
-        }
     },
-    password: { type: String, required: true },
+    password: { type: String, required: false },
     mobile: { type: String, required: false },
     address: [{
-        addressLine1: { type: String, required: true },
+        addressLine1: { type: String, required: false },
         addressLine2: { type: String, required: false },
-        city: { type: String, required: true },
-        state: { type: String, required: true },
-        postalCode: { type: String, required: true },
-        country: { type: String, required: true }
+        city: { type: String, required: false },
+        state: { type: String, required: false },
+        postalCode: { type: String, required: false },
+        country: { type: String, required: false }
     }],
-    orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }]
+    orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+    sessions: [{
+        sessionId: {
+            type: String,
+            required: false,
+            unique: false,
+            index: false,
+        },
+        sessionDate: {
+            type: Date,
+            default: Date.now
+        }
+    }]
 });
 
-const User = mongoose.models && mongoose.models.User ? mongoose.models.User : mongoose.model('User', userSchema);
-
-export default User;
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 async function mongooseConnect() {
     try {
-        await mongoose.connect("mongodb+srv://your_connection_string");
+        await mongoose.connect(process.env.MONGODB_URI);
         console.log("Connected to MongoDB with Mongoose!");
     } catch (error) {
         console.error("Mongoose connection error:", error);
     }
 }
-
-export { mongooseConnect };
 
 async function getServerSideProps(context) {
     const token = context.req.cookies.token;
@@ -57,7 +60,7 @@ async function getServerSideProps(context) {
 
     try {
         jwt.verify(token, process.env.JWT_SECRET);
-        return { props: {} }; // Token is valid
+        return { props: {} };
     } catch (error) {
         console.error('JWT verification failed:', error.message);
         return {
@@ -70,4 +73,4 @@ async function getServerSideProps(context) {
 }
 
 
-export { getServerSideProps };
+export { User, getServerSideProps, mongooseConnect };
