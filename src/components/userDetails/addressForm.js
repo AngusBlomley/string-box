@@ -26,7 +26,7 @@ export default function AddressForm() {
             const fetchUser = async () => {
                 try {
                     const userId = session.user.userId;
-                    const response = await axios.get(`/api/user?userId=${userId}`, {
+                    const response = await axios.get(`/api/user/user?userId=${userId}`, {
                         headers: {
                             'Authorization': `Bearer ${session.accessToken}`
                         }

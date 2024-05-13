@@ -9,7 +9,7 @@ const stripePromise = loadStripe('pk_test_51PECVeP4ks6btmvuWTAssR46txSFp3QOdSMLI
 function UserInfo() {
     const { data: session } = useSession();
     if (session) {
-        console.log("User ID:", session.user.userId); // This logs the userId if available
+        console.log("User ID:", session.user.id);
     }
     return <div>{session ? `Logged in as ${session.user.email}` : "Not logged in"}</div>;
 }

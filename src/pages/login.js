@@ -4,36 +4,34 @@ import Footer from "@/components/globals/footer";
 import Header_global from "@/components/globals/headerGlobal";
 import { useRouter } from 'next/router';
 import SignInButton from '@/components/userDetails/googleSignIn';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 
-export default function LoginForm() {
+export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [submitting, setSubmitting] = useState(false);
-    const [loginError, setLoginError] = useState('');
+    const [error, setError] = useState('');
     const router = useRouter();
-    const [error, setError] = useState(''); // Initialize the error state
+    const { data: session } = useSession();
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        setSubmitting(true);
-        setError('');  // Clear previous errors
+    // Redirect if already logged in
+    if (session) {
+        router.replace('/'); // Change this to redirect the user to their dashboard or home page
+        return null;
+    }
 
+    const handleSignIn = async (e) => {
+        e.preventDefault();
         const result = await signIn('credentials', {
             redirect: false,
             email,
-            password
+            password,
         });
 
         if (result.error) {
-            console.error('Sign-in error:', result.error);
             setError(result.error);
-            setSubmitting(false);
-        } else if (result.ok) {
-            router.push('/'); // Redirect on successful login
+        } else if (result.url) {
+            router.push("/");
         } else {
-            setError('Unexpected error occurred. Please try again.');
-            setSubmitting(false);
         }
     };
 
@@ -47,8 +45,8 @@ export default function LoginForm() {
                         <br />
                         <label htmlFor="username">Enter your name and password<br />to login.</label>
                     </div>
-                    <div className="flex justify-center flex-col items-center"> {/* Modified */}
-                        <form className="p-8 w-10/12" onSubmit={handleSubmit}>
+                    <div className="flex justify-center flex-col items-center">
+                        <form className="p-8 w-10/12" onSubmit={handleSignIn}>
                             <input
                                 placeholder="Email"
                                 type="email"
@@ -68,15 +66,13 @@ export default function LoginForm() {
                                 className="mt-5 w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded"
                                 required
                             />
-                            {error && <p className="text-red-500">Error: {error}</p>}
                             <button
                                 type="submit"
                                 className="mt-5 w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                                disabled={submitting}
                             >
-                                {submitting ? 'Submitting...' : 'Sign In'}
+                                Sign In
                             </button>
-                            {loginError && <div className="error">{loginError}</div>}
+                            {error && <p className="text-red-500">Error: {error}</p>}
                         </form>
                         <div className="px-8 w-10/12">
                             <SignInButton />

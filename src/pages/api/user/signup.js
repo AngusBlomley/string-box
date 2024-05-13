@@ -11,18 +11,15 @@ export default async function handler(req, res) {
         try {
             const { db } = await connectToDatabase();
 
-            // Check if the db object is defined
             if (!db) {
                 throw new Error('Database connection not established');
             }
 
-            // Check if a user with the same email or username already exists
             const existingUser = await db.collection('users').findOne({ $or: [{ email }, { username }] });
             if (existingUser) {
                 return res.status(409).json({ success: false, message: 'User already exists' });
             }
 
-            // Insert the user document into the 'users' collection
             const result = await db.collection('users').insertOne({ username, email, password });
             return res.status(201).json({ success: true, message: 'User created', userId: result.insertedId });
 

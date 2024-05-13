@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
 import User from '@/models/user';
-import { connectToServer } from 'lib/dbConnect';
+const { connectToDatabase } = require('lib/dbConnect');
 import { getSession } from 'next-auth/react';
 import 'dotenv/config';
 
 export default async function handler(req, res) {
-    await connectToServer().catch(error => {
+    await connectToDatabase().catch(error => {
         console.error('Database connection failed', error);
         return res.status(500).json({ message: 'Database connection failed', error });
     });
