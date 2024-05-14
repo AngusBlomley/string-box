@@ -1,3 +1,4 @@
+// /pages/api/users/index.js
 import { connectToDatabase } from 'lib/dbConnect';
 import { User } from '@/models/userModel';
 import bcrypt from 'bcryptjs';
