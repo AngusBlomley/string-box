@@ -4,7 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { connectToDatabase } from 'lib/dbConnect';
 import generateToken from './generateToken';
-import { User } from '@/models/User';
+import { User } from '@/models/userModel';
 require('dotenv').config();
 
 export default NextAuth({

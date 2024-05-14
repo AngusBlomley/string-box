@@ -1,5 +1,5 @@
 import { connectToDatabase } from 'lib/dbConnect';
-import { User } from '@/models/User';
+import { User } from '@/models/userModel';
 import bcrypt from 'bcryptjs';
 
 export default async function handler(req, res) {
