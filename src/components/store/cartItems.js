@@ -71,7 +71,7 @@ export default function CartItems({ handleCheckout }) {
                                 alt={product.name || 'item'}
                                 width={100}
                                 height={50}
-                                className="h-20 w-20 object-cover rounded-full mr-4"
+                                className="h-20 w-20 object-cover mr-4"
                             />
                             <div>
                                 <h3 className="text-lg font-semibold">{product.name}</h3>

@@ -15,6 +15,21 @@ export default function Stringing() {
     const dispatch = useDispatch();
     const stringID = `string-${tension}-${pattern}-${crossing}`;
 
+    const handleAddToCartClick = (event) => {
+        const button = event.target;
+        animateButton(button);
+    };
+
+    // Function to animate the button
+    const animateButton = (button) => {
+        if (button) {
+            button.classList.add('animate-pulse');
+            setTimeout(() => {
+                button.classList.remove('animate-pulse');
+            }, 300);
+        }
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const stringPreferences = {
@@ -46,7 +61,7 @@ export default function Stringing() {
     return (
         <main>
             <Header_global />
-            <div className="flex items-center justify-center mt-20 min-h-screen bg-gray-100">
+            <div className="flex items-center justify-center min-h-screen bg-gray-100">
                 <div className="flex bg-white shadow-lg justify-between max-md:justify-center">
 
                     <div className="flex justify-center">
@@ -97,7 +112,7 @@ export default function Stringing() {
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message:</label>
                                 <textarea id="message" name="message" placeholder="Special requests, messages, notes. Custom string pattern." rows="5" value={message} onChange={e => setMessage(e.target.value)} className="border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"></textarea>
                             </div>
-                            <button type="submit" className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">Add to cart</button>
+                            <button onClick={handleAddToCartClick} type="submit" className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline">Add to cart</button>
                         </form>
                     </div>
                 </div>

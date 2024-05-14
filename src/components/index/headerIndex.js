@@ -15,6 +15,8 @@ export default function Header() {
     const [headerStyle, setHeaderStyle] = useState({ backgroundColor: 'transparent', color: 'white' });
     console.log('Session status:', status);
     const [logoSize, setLogoSize] = useState({ width: 180, height: 150, marginTop: 36 });
+    const cartCount = useSelector((state) => state.cart.totalCount);
+
 
     useEffect(() => {
         const scrollHandler = handleHeaderScroll(setHeaderStyle, setLogoSize);
@@ -64,7 +66,7 @@ export default function Header() {
                         <li>
                             <button onClick={handleLogout} className="hover:bg-blue-500 duration-200 px-2 py-0 rounded-sm">Logout</button>
                         </li>
-                        <li><Link href="/profile" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Profile</Link></li>
+                        <li><Link href="/userProfile/profile" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm">Profile</Link></li>
                     </>
                 ) : (
                     <>
@@ -80,7 +82,7 @@ export default function Header() {
                         height={24}
                         width={24}
                         style={{ width: 'auto', height: '24px' }}
-                    /><span>Basket</span>
+                    /><span id="cart-count">Basket ({cartCount})</span>
                 </Link>
                 </li>
             </ul>
@@ -91,13 +93,15 @@ export default function Header() {
                     <li className="mb-2"><Link href="#service" className="hover:text-blue-500">Service</Link></li>
                     <li className="mb-2"><Link href="/store" className="hover:text-blue-500">Store</Link></li>
                     <li className="mb-2"><Link href="#contact" className="hover:text-blue-500">Contact</Link></li>
-                    {user ? (
+                    {session ? (
                         <>
                             <li className="mb-2">
                                 <a href="#" onClick={handleLogout} className="hover:text-blue-500">Logout</a>
                             </li>
                             <li className="mb-2">
-                                <span className="hover:text-blue-500"><Link href="/profile" className="hover:bg-blue-500 duration-200 px-2 py-2 rounded-sm"></Link>Profile</span>
+                                <Link href="/userProfile/profile" className="hover:text-blue-500">
+                                    Profile
+                                </Link>
                             </li>
                         </>
                     ) : (
@@ -107,14 +111,8 @@ export default function Header() {
                         </>
                     )}
                     <li><Link href="/checkoutPage" className="flex row hover:text-blue-500">
-                        {/*Insert Cart Item Amount Value Here*/}
-                        <Image
-                            alt="Checkout Image"
-                            src="/images/icons/blackCart.png"
-                            height={24}
-                            width={24}
-                            style={{ width: 'auto', height: '24px' }}
-                        /><span>Basket</span>
+                        <span id="cart-count"> Cart ({cartCount})</span>
+
                     </Link>
                     </li>
                 </ul>

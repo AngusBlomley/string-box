@@ -1,92 +1,110 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSession } from 'next-auth/react';
 import Header_global from "@/components/globals/headerGlobal";
 import Footer from "@/components/globals/footer";
 import Link from 'next/link';
 import axios from 'axios';
 
 export default function ProfileDetails() {
-    const [userData, setUserData] = useState({
-        name: '',
-        mobile: '',
-        email: '',
+    const [address, setAddress] = useState({
+        firstName: '',
+        lastName: '',
         password: '',
-        confirmPassword: '',
-        currentData: {}  // Store the fetched user data separately
+        mobile: '',
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        country: 'UK',
     });
-    const [errors, setErrors] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    const { data: session, status } = useSession();
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
 
-
-    useEffect(() => {
-        async function fetchUserData() {
-            try {
-                const response = await axios.get('/api/user');
-                setUserData(data => ({
-                    ...data,
-                    currentData: response.data,  // Populate currentData with fetched data
-                    ...response.data  // Populate input fields if you want them pre-filled
-                }));
-                setIsLoading(false);
-            } catch (error) {
-                console.error('Failed to fetch user data:', error);
-            }
-        }
-
-        fetchUserData();
-    }, []);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUserData(prevData => ({
-            ...prevData,
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setAddress(prevState => ({
+            ...prevState,
             [name]: value
         }));
     };
 
+    const fetchUser = useCallback(async () => {
+        if (status === "authenticated") {
+            setIsLoading(true);
+            try {
+                const userId = session.user.id;
+                const response = await axios.get(`/api/user/user?userId=${userId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${session.accessToken}`
+                    }
+                });
+                const fetchedAddress = response.data.address[0];
+                if (fetchedAddress) {
+                    setAddress(prevState => ({ ...prevState, ...fetchedAddress }));
+                }
+                setError('');
+            } catch (error) {
+                console.error('Error fetching user:', error);
+                setError('Error fetching user. Please try again.');
+            } finally {
+                setIsLoading(false);
+            }
+        } else {
+            setError('User not authenticated');
+        }
+    }, [session, status]);
+
+    useEffect(() => {
+        fetchUser();
+    }, [fetchUser]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validateForm()) {
-            try {
-                const response = await axios.post('/api/user/update', {
-                    name: userData.name,
-                    mobile: userData.mobile,
-                    email: userData.email,
-                    password: userData.password  // Ensure you handle password changes securely
-                });
-                alert('Information updated successfully!');
-                setUserData(data => ({
-                    ...data,
-                    currentData: {
-                        ...data.currentData,
-                        name: data.name,
-                        mobile: data.mobile,
-                        email: data.email
-                    }
-                }));
-            } catch (error) {
-                console.error('Update failed:', error);
+        if (!session) {
+            setError('User is not authenticated.');
+            return;
+        }
+
+        console.log('Address state before submission:', address);
+
+        if (!address.firstName || !address.lastName || !address.mobile || !address.addressLine1 || !address.city || !address.state || !address.postalCode || !address.country) {
+            setError('Please fill in all required fields.');
+            return;
+        }
+
+        setIsLoading(true);
+        const userId = session.user.id;
+        try {
+            const response = await axios.put(`/api/user/user?userId=${userId}`, { address }, {
+                headers: {
+                    'Authorization': `Bearer ${session.accessToken}`
+                }
+            });
+            setAddress(response.data.user.address[0]); // Adjust according to response structure
+            setMessage('Address saved successfully.');
+            setError('');
+            setIsEditing(false); // Switch to view mode after saving
+        } catch (error) {
+            console.error('Error saving address:', error);
+            setError('Error saving address. Please try again.');
+            if (error.response) {
+                if (error.response.status === 401) {
+                    setError('You are not authorized to perform this operation.');
+                } else if (error.response.status >= 400 && error.response.status < 500) {
+                    setError(`Failed to save address due to a client error: ${error.response.data?.message}`);
+                } else if (error.response.status >= 500) {
+                    setError('Server error, please try again later.');
+                }
             }
+        } finally {
+            setIsLoading(false);
         }
     };
 
-    // Validate the form inputs
-    const validateForm = () => {
-        let valid = true;
-        let newErrors = {};
-
-        // Password validation
-        if (userData.password !== userData.confirmPassword) {
-            valid = false;
-            newErrors.confirmPassword = "Passwords do not match!";
-        }
-        if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(userData.password)) {
-            valid = false;
-            newErrors.password = "Password must be at least 8 characters long and include at least one letter and one number.";
-        }
-
-        setErrors(newErrors);
-        return valid;
-    };
     return (
         <main>
             <Header_global />
@@ -127,46 +145,130 @@ export default function ProfileDetails() {
 
                         <div className="flex">
                             <form className="w-full" onSubmit={handleSubmit}>
-                                <div className="flex flex-col space-y-4">
-                                    {[
-                                        { id: "name", type: "text", label: "Name:", placeholder: "Name" },
-                                        { id: "mobile", type: "tel", label: "Mobile:", placeholder: "Mobile" },
-                                        { id: "email", type: "email", label: "Email:", placeholder: "Email" },
-                                        { id: "password", type: "password", label: "Password:", placeholder: "Password" },
-                                        { id: "confirmPassword", type: "password", label: "Confirm Password:", placeholder: "Confirm Password" }
-                                    ].map((field, index) => (
-                                        <div key={index} className="flex flex-col mb-3">
-                                            {field.id !== 'password' && field.id !== 'confirmPassword' && (
-                                                <div className="text-xs text-gray-500">
-                                                    Current: {userData[field.id] || 'N/A'}
-                                                </div>
-                                            )}
-                                            <div className="flex items-center">
-                                                <label htmlFor={field.id} className="text-gray-700 text-sm font-bold mr-4 w-1/3">
-                                                    {field.label}
-                                                </label>
-                                                <input
-                                                    type={field.type}
-                                                    id={field.id}
-                                                    name={field.id}
-                                                    placeholder={field.placeholder}
-                                                    className="flex-1 px-3 py-2 leading-tight text-gray-700 border rounded"
-                                                    value={userData[field.id]}
-                                                    onChange={handleChange}
-                                                    aria-describedby={field.id + "Error"}
-                                                />
-                                            </div>
-                                            {errors[field.id] && (
-                                                <p className="text-red-500 text-xs italic mt-1" id={field.id + "Error"}>
-                                                    {errors[field.id]}
-                                                </p>
-                                            )}
-                                        </div>
-                                    ))}
+                                <div className="flex flex-col mb-3">
+                                    <div className="text-xs text-gray-500">
+                                        First Name: {address.firstName || 'N/A'}
+                                    </div>
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        name="firstName"
+                                        placeholder="First Name"
+                                        className="px-3 py-2 leading-tight text-gray-700 border rounded"
+                                        value={address.firstName}
+                                        onChange={handleChange}
+                                        aria-describedby="firstNameError"
+                                    />
+                                    {error.firstName && (
+                                        <p className="text-red-500 text-xs italic mt-1" id="firstNameError">
+                                            {error.firstName}
+                                        </p>
+                                    )}
                                 </div>
+                                <div className="flex flex-col mb-3">
+                                    <div className="text-xs text-gray-500">
+                                        Last Name: {address.lastName || 'N/A'}
+                                    </div>
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        name="lastName"
+                                        placeholder="Last Name"
+                                        className="px-3 py-2 leading-tight text-gray-700 border rounded"
+                                        value={address.lastName}
+                                        onChange={handleChange}
+                                        aria-describedby="lastNameError"
+                                    />
+                                    {error.lastName && (
+                                        <p className="text-red-500 text-xs italic mt-1" id="lastNameError">
+                                            {error.lastName}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="flex flex-col mb-3">
+                                    <div className="text-xs text-gray-500">
+                                        Mobile: {address.mobile || 'N/A'}
+                                    </div>
+                                    <input
+                                        type="tel"
+                                        id="mobile"
+                                        name="mobile"
+                                        placeholder="Mobile"
+                                        className="px-3 py-2 leading-tight text-gray-700 border rounded"
+                                        value={address.mobile}
+                                        onChange={handleChange}
+                                        aria-describedby="mobileError"
+                                    />
+                                    {error.mobile && (
+                                        <p className="text-red-500 text-xs italic mt-1" id="mobileError">
+                                            {error.mobile}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="flex flex-col mb-3">
+                                    <div className="text-xs text-gray-500">
+                                        Email: {address.email || 'N/A'}
+                                    </div>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        className="px-3 py-2 leading-tight text-gray-700 border rounded"
+                                        value={address.email}
+                                        onChange={handleChange}
+                                        aria-describedby="emailError"
+                                    />
+                                    {error.email && (
+                                        <p className="text-red-500 text-xs italic mt-1" id="emailError">
+                                            {error.email}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="flex flex-col mb-3">
+                                    <div className="text-xs text-gray-500">
+                                        Password: {address.password || 'N/A'}
+                                    </div>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        className="px-3 py-2 leading-tight text-gray-700 border rounded"
+                                        value={address.password}
+                                        onChange={handleChange}
+                                        aria-describedby="passwordError"
+                                    />
+                                    {error.password && (
+                                        <p className="text-red-500 text-xs italic mt-1" id="passwordError">
+                                            {error.password}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="flex flex-col mb-3">
+                                    <div className="text-xs text-gray-500">
+                                        Confirm Password: {address.confirmPassword || 'N/A'}
+                                    </div>
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        placeholder="Confirm Password"
+                                        className="px-3 py-2 leading-tight text-gray-700 border rounded"
+                                        value={address.confirmPassword}
+                                        onChange={handleChange}
+                                        aria-describedby="confirmPasswordError"
+                                    />
+                                    {error.confirmPassword && (
+                                        <p className="text-red-500 text-xs italic mt-1" id="confirmPasswordError">
+                                            {error.confirmPassword}
+                                        </p>
+                                    )}
+                                </div>
+
                                 <button
                                     type="submit"
-                                    className="w-full mt-10 px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                                    className="w-full mt-10 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                                 >
                                     Save Info and Change Password
                                 </button>

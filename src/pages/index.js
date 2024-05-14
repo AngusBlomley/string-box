@@ -15,7 +15,7 @@ export default function Index() {
       <div className="px-40 max-lg:px-5">
         <video
           src="videos/video.mp4"
-          className="w-full h-full object-cover absolute top-0 left-0 -z-10 filter brightness-50"
+          className="w-full h-full object-cover absolute top-0 left-0 -z-10 filter brightness-75"
           autoPlay
           loop
           muted

@@ -1,33 +1,56 @@
 import React from 'react';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../store/actions/cartActions';
+import { addToCart } from '@/store/actions/cartActions';
+
 
 function ProductCard({ product }) {
     const dispatch = useDispatch();
 
     const handleAddToCartClick = () => {
+        const button = document.getElementById(`button-${product.id}`);
+        if (button) {
+            button.classList.add('animate-pulse');
+            setTimeout(() => {
+                button.classList.remove('animate-pulse');
+            }, 300);
+        }
         dispatch(addToCart(product));
+
+        const cartCountElement = document.getElementById('cart-count');
+        if (cartCountElement) {
+            cartCountElement.classList.add('animate-scale');
+            setTimeout(() => {
+                cartCountElement.classList.remove('animate-scale');
+            }, 300);
+        }
     };
 
     return (
-        <div className="border rounded shadow-sm p-4 flex flex-col items-center">
+        <div className="box-shadow duration-200 border rounded shadow-sm p-4 flex flex-col justify-between items-center h-full">
             <Image
                 src={product.imageUrl || "/images/icons/racquet.svg"}
                 alt={product.name}
                 width={200}
                 height={200}
-                className="mb-3"
+                className="mb-3 product-image"
                 unoptimized={true}
             />
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <p className="text-sm text-gray-600 mb-2">{product.description}</p>
-            <p className="text-lg font-bold">£{product.price}</p>
-            <button onClick={handleAddToCartClick} className="bg-blue-500 text-white w-full px-4 py-2 rounded hover:bg-blue-700">
+            <div className="flex flex-col items-center">
+                <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2 text-center">{product.description}</p>
+                <p className="text-lg font-bold mb-4">£{product.price}</p>
+            </div>
+            <button
+                id={`button-${product.id}`}
+                onClick={handleAddToCartClick}
+                className="bg-blue-500 text-white w-full px-4 py-2 rounded hover:bg-blue-700 mt-auto"
+            >
                 Add to Cart
             </button>
         </div>
     );
+
 }
 
 export default ProductCard;

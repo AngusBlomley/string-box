@@ -38,7 +38,7 @@ export default function Checkout({ handleBackToCart }) {
     };
 
     return (
-        <main>
+        <main className='min-h-screen'>
             <h1 className='mt-20 py-2 bg-off-white font-hiraKakuW8 text-center text-3xl'>CHECKOUT</h1>
             <div className="flex items-center justify-center my-5 bg-off-white">
                 <div className="bg-white py-8 px-10 w-full max-w-4xl">

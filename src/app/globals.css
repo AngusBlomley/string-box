@@ -130,3 +130,61 @@
   width: 100%;
   height: auto;
 }
+
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 0.3s ease-in-out;
+}
+
+
+@keyframes scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-scale {
+  animation: scale 0.3s ease-in-out;
+}
+
+.product-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-image:hover {
+  transform: scale(1.1);
+}
+
+.box-shadow {
+  box-shadow:0;
+}
+
+.box-shadow:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 20px -5px, rgba(0, 0, 0, 0.3) 0px 10px 60px -30px;
+}
+
+.header-link {
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.header-link:hover {
+  opacity: 1;
+  background-color: transparent;
+}
+
+.active-link {
+  opacity: 1 !important;
+}

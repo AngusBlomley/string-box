@@ -4,82 +4,107 @@
         "name": "Babolat RPM Blast",
         "description": "High-quality polyester string",
         "price": "19.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/babolat_rpm_blast.webp",
+        "brand": "Babolat",
+        "stringType": "polyester"
     },
     {
         "id": 2,
         "name": "Hyper G 300x",
         "description": "Durable multi-fiber string",
         "price": "21.99",
-        "imageUrl": "/images/products/hyper_g_300x.webp"
-    },{
+        "imageUrl": "/images/products/hyper_g_300x.webp",
+        "brand": "Hyper",
+        "stringType": "multi-fiber"
+    },
+    {
         "id": 3,
         "name": "Wilson Natural Gut",
         "description": "Versatile natural gut string",
         "price": "25.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/wilson_natural_gut.webp",
+        "brand": "Wilson",
+        "stringType": "natural gut"
     },
     {
         "id": 4,
         "name": "Technifibre X-One",
         "description": "Responsive synthetic blend",
         "price": "23.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/technifibre_x_one.webp",
+        "brand": "Technifibre",
+        "stringType": "synthetic blend"
     },
     {
         "id": 5,
         "name": "Luxilon Alu Power",
         "description": "Soft feel for maximum comfort",
         "price": "20.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/luxilon_alu_power.webp",
+        "brand": "Luxilon",
+        "stringType": "other"
     },
     {
         "id": 6,
         "name": "Head Lynx Edge",
         "description": "Optimized for power players",
         "price": "26.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/head_lynx_edge.webp",
+        "brand": "Head",
+        "stringType": "polyester"
     },
     {
         "id": 7,
         "name": "Solinco Tour Bite",
         "description": "Lightweight for better playability",
         "price": "18.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/solinco_tour_bite.webp",
+        "brand": "Solinco",
+        "stringType": "other"
     },
     {
         "id": 8,
         "name": "Yonex Poly Tour Pro",
         "description": "Enhanced durability and control",
         "price": "24.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/yonex_poly_tour_pro.webp",
+        "brand": "Yonex",
+        "stringType": "polyester"
     },
     {
         "id": 9,
         "name": "Volkl Cyclone",
         "description": "High tension stability",
         "price": "22.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/volkl_cyclone.webp",
+        "brand": "Volkl",
+        "stringType": "polyester"
     },
     {
         "id": 10,
         "name": "Prince Synthetic Gut",
         "description": "Designed for spin and precision",
         "price": "27.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/prince_synthetic_gut.webp",
+        "brand": "Prince",
+        "stringType": "synthetic blend"
     },
     {
         "id": 11,
         "name": "Gamma Live Wire",
         "description": "Exceptional feel and response",
         "price": "24.50",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/gamma_live_wire.webp",
+        "brand": "Gamma",
+        "stringType": "multi-fiber"
     },
     {
         "id": 12,
         "name": "Dunlop Silk Pro",
         "description": "Superior playability and resilience",
         "price": "29.99",
-        "imageUrl": "/images/products/babolat_rpm_blast.webp"
+        "imageUrl": "/images/products/dunlop_silk_pro.webp",
+        "brand": "Dunlop",
+        "stringType": "polyester"
     }
 ]
