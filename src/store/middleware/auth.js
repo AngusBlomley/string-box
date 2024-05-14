@@ -1,5 +1,3 @@
-import { verifyToken } from 'lib/jwtTokenUtils';
-
 const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers['authorization'] || '';
     if (!authHeader.startsWith('Bearer ')) {
