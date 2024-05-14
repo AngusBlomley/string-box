@@ -21,7 +21,7 @@ export default function ProfileDetails() {
     useEffect(() => {
         async function fetchUserData() {
             try {
-                const response = await axios.get('/api/user');
+                const response = await axios.get('/api/user/index');
                 setUserData(data => ({
                     ...data,
                     currentData: response.data,  // Populate currentData with fetched data
@@ -48,7 +48,7 @@ export default function ProfileDetails() {
         e.preventDefault();
         if (validateForm()) {
             try {
-                const response = await axios.post('/api/user/update', {
+                const response = await axios.post('/api/user/index', {
                     name: userData.name,
                     mobile: userData.mobile,
                     email: userData.email,

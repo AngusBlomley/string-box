@@ -37,7 +37,7 @@ export default function ProfileDetails() {
             setIsLoading(true);
             try {
                 const userId = session.user.id;
-                const response = await axios.get(`/api/user/user?userId=${userId}`, {
+                const response = await axios.get(`/api/user/index?userId=${userId}`, {
                     headers: {
                         'Authorization': `Bearer ${session.accessToken}`
                     }
@@ -79,7 +79,7 @@ export default function ProfileDetails() {
         setIsLoading(true);
         const userId = session.user.id;
         try {
-            const response = await axios.put(`/api/user/user?userId=${userId}`, { address }, {
+            const response = await axios.put(`/api/user/index?userId=${userId}`, { address }, {
                 headers: {
                     'Authorization': `Bearer ${session.accessToken}`
                 }

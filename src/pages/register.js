@@ -32,7 +32,7 @@ export default function SignUp() {
         }
 
         try {
-            const response = await axios.post('/api/user/user', {
+            const response = await axios.post('/api/user/index', {
                 username,
                 email,
                 password
