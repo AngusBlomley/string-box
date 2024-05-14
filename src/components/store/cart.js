@@ -5,7 +5,7 @@ export default function Cart({ handleCheckout }) {
 
     return (
         <main>
-            <div className="flex items-center justify-center min-h-screen bg-gray-100 p-10">
+            <div className="flex items-center justify-center min-h-screen bg-gray-100 p-10 max-md:p-0">
                 <div className="bg-white p-10 w-full max-w-4xl">
                     <CartItems />
                     <button

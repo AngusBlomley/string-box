@@ -112,7 +112,7 @@ export default function Store() {
     return (
         <main className="bg-off-white">
             <Header_global cartCount={cart.totalCount} />
-            <section className="mt-10 p-4 w-full border lg:hidden">
+            <section className="mt-20 p-4 w-full border lg:hidden">
                 <div className="flex justify-between items-center">
                     <h3 className="text-lg font-semibold text-[#0d0d0d] mb-2">Filters</h3>
                     <button onClick={toggleMobileFilter} className="focus:outline-none">
@@ -208,7 +208,7 @@ export default function Store() {
                 </div>
             </section>
             <div className="flex row mt-20 mb-20 justify-between px-40 max-xl:p-10 max-lg:p-0">
-                <section className="mt-10 p-10 w-80 h-full border max-lg:hidden max-lg:p-0">
+                <section className="bg-white mt-10 p-10 w-80 h-full border max-lg:hidden max-lg:p-0">
                     <div className="space-y-4">
                         <div>
                             <h3 className="text-lg font-semibold text-[#0d0d0d] mb-2">String Type</h3>

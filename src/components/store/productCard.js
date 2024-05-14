@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/actions/cartActions';
+import Link from 'next/link';
 
 
 function ProductCard({ product }) {
@@ -28,23 +29,26 @@ function ProductCard({ product }) {
 
     return (
         <div className="box-shadow duration-200 border rounded shadow-sm p-4 flex flex-col justify-between items-center h-full">
-            <Image
-                src={product.imageUrl || "/images/icons/racquet.svg"}
-                alt={product.name}
-                width={200}
-                height={200}
-                className="mb-3 product-image"
-                unoptimized={true}
-            />
-            <div className="flex flex-col items-center">
-                <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
-                <p className="text-sm text-gray-600 mb-2 text-center">{product.description}</p>
-                <p className="text-lg font-bold mb-4">£{product.price}</p>
-            </div>
+            <Link href={`/product/${product.id}`}>
+                <Image
+                    src={product.imageUrl || "/images/icons/racquet.svg"}
+                    alt={product.name}
+                    width={200}
+                    height={200}
+                    className="mb-3 product-image"
+                    unoptimized={true}
+                />
+
+                <div className="flex flex-col items-center">
+                    <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
+                    <p className="text-sm text-gray-600 mb-2 text-center">{product.description}</p>
+                    <p className="text-lg font-bold mb-4">£{product.price}</p>
+                </div>
+            </Link>
             <button
                 id={`button-${product.id}`}
                 onClick={handleAddToCartClick}
-                className="bg-blue-500 text-white w-full px-4 py-2 rounded hover:bg-blue-700 mt-auto"
+                className=" bg-grass-green text-white px-4 py-2 rounded hover:bg-green-700 mt-auto"
             >
                 Add to Cart
             </button>

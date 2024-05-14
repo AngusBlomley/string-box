@@ -6,7 +6,18 @@
         "price": "19.99",
         "imageUrl": "/images/products/babolat_rpm_blast.webp",
         "brand": "Babolat",
-        "stringType": "polyester"
+        "stringType": "polyester",
+        "detailedDescription": "The Babolat RPM Blast is a high-quality polyester tennis string designed for players who seek maximum spin and control. Its octagonal structure provides an exceptional grip on the ball, allowing for more spin and precision in every shot. This string is preferred by many professional players for its durability and performance on the court, making it an ideal choice for competitive play.",
+        "specifications": {
+            "Type": "Polyester",
+            "Colour": "Black",
+            "Profile": "Octagonal",
+            "Gauge": "1.25mm",
+            "Length": "12m",
+            "Series": "RPM Blast",
+            "Made In": "France",
+            "Manufacturer SKU": "241101-105"
+        }
     },
     {
         "id": 2,
@@ -15,7 +26,18 @@
         "price": "21.99",
         "imageUrl": "/images/products/hyper_g_300x.webp",
         "brand": "Hyper",
-        "stringType": "multi-fiber"
+        "stringType": "multi-fiber",
+        "detailedDescription": "The Hyper G 300x is a durable multi-fiber string that combines power and comfort. Its construction provides excellent shock absorption, reducing arm fatigue during intense matches. The string’s resilience and tension maintenance make it a reliable option for players looking for a balance of performance and longevity. Ideal for both recreational and competitive players, the Hyper G 300x enhances your game with its consistent performance.",
+        "specifications": {
+            "Type": "Multi-fiber",
+            "Colour": "Green",
+            "Profile": "Round",
+            "Gauge": "1.20mm",
+            "Length": "12m",
+            "Series": "Hyper G",
+            "Made In": "Japan",
+            "Manufacturer SKU": "SF0101-01"
+        }
     },
     {
         "id": 3,
@@ -24,7 +46,18 @@
         "price": "25.99",
         "imageUrl": "/images/products/wilson_natural_gut.webp",
         "brand": "Wilson",
-        "stringType": "natural gut"
+        "stringType": "natural gut",
+        "detailedDescription": "Wilson Natural Gut is renowned for its exceptional feel and playability. This versatile natural gut string offers unparalleled touch and comfort, making it a favorite among professional and amateur players alike. Its natural elasticity provides superior tension maintenance, ensuring consistent performance over time. Whether you’re seeking power, control, or a combination of both, Wilson Natural Gut delivers a premium playing experience.",
+        "specifications": {
+            "Type": "Natural Gut",
+            "Colour": "Natural",
+            "Profile": "Round",
+            "Gauge": "1.30mm",
+            "Length": "12m",
+            "Series": "Natural Gut",
+            "Made In": "USA",
+            "Manufacturer SKU": "WRZ995200"
+        }
     },
     {
         "id": 4,
@@ -33,7 +66,18 @@
         "price": "23.99",
         "imageUrl": "/images/products/technifibre_x_one.webp",
         "brand": "Technifibre",
-        "stringType": "synthetic blend"
+        "stringType": "synthetic blend",
+        "detailedDescription": "The Technifibre X-One is a responsive synthetic blend string that offers a perfect mix of power and control. Its advanced construction ensures a lively feel and excellent ball feedback, making it suitable for players of all levels. The string’s durability and resistance to wear provide long-lasting performance, while its high-quality materials deliver a comfortable hitting experience. Ideal for players looking for a versatile and reliable string.",
+        "specifications": {
+            "Type": "Synthetic Blend",
+            "Colour": "Red",
+            "Profile": "Round",
+            "Gauge": "1.24mm",
+            "Length": "12m",
+            "Series": "X-One Biphase",
+            "Made In": "France",
+            "Manufacturer SKU": "01GOTN124R"
+        }
     },
     {
         "id": 5,
@@ -42,7 +86,18 @@
         "price": "20.99",
         "imageUrl": "/images/products/luxilon_alu_power.webp",
         "brand": "Luxilon",
-        "stringType": "other"
+        "stringType": "other",
+        "detailedDescription": "Luxilon Alu Power is a top choice for players seeking a soft feel and maximum comfort. This string is known for its unique ability to combine power and control, providing an exceptional playing experience. Its advanced materials offer superior tension maintenance and durability, making it ideal for frequent players. Luxilon Alu Power enhances your game with its consistent performance and comfortable feel, perfect for all playing styles.",
+        "specifications": {
+            "Type": "Polyester",
+            "Colour": "Silver",
+            "Profile": "Round",
+            "Gauge": "1.25mm",
+            "Length": "12m",
+            "Series": "Alu Power",
+            "Made In": "Belgium",
+            "Manufacturer SKU": "WRZ990200"
+        }
     },
     {
         "id": 6,
@@ -51,7 +106,18 @@
         "price": "26.99",
         "imageUrl": "/images/products/head_lynx_edge.webp",
         "brand": "Head",
-        "stringType": "polyester"
+        "stringType": "polyester",
+        "detailedDescription": "The Head Lynx Edge is optimized for power players who demand explosive performance and precision. Its unique design enhances spin potential and control, allowing for aggressive play on the court. The string’s durability and tension stability make it a reliable choice for intense matches. With Head Lynx Edge, players can expect a powerful and consistent playing experience, ideal for those who want to dominate their opponents.",
+        "specifications": {
+            "Type": "Polyester",
+            "Colour": "Blue",
+            "Profile": "Hexagonal",
+            "Gauge": "1.25mm",
+            "Length": "12m",
+            "Series": "Lynx",
+            "Made In": "Austria",
+            "Manufacturer SKU": "281104-BL"
+        }
     },
     {
         "id": 7,
@@ -60,7 +126,18 @@
         "price": "18.99",
         "imageUrl": "/images/products/solinco_tour_bite.webp",
         "brand": "Solinco",
-        "stringType": "other"
+        "stringType": "other",
+        "detailedDescription": "Solinco Tour Bite is a lightweight string designed for superior playability and control. Its innovative construction provides exceptional grip and spin, making it a favorite among aggressive players. The string’s responsiveness and feel enhance shot accuracy and power, while its durability ensures long-lasting performance. Solinco Tour Bite is perfect for players seeking a high-performance string that delivers on every shot.",
+        "specifications": {
+            "Type": "Polyester",
+            "Colour": "Silver",
+            "Profile": "Square",
+            "Gauge": "1.20mm",
+            "Length": "12m",
+            "Series": "Tour Bite",
+            "Made In": "USA",
+            "Manufacturer SKU": "1920207"
+        }
     },
     {
         "id": 8,
@@ -69,7 +146,18 @@
         "price": "24.99",
         "imageUrl": "/images/products/yonex_poly_tour_pro.webp",
         "brand": "Yonex",
-        "stringType": "polyester"
+        "stringType": "polyester",
+        "detailedDescription": "Yonex Poly Tour Pro offers enhanced durability and control, making it an ideal choice for competitive players. Its advanced polyester construction provides excellent tension maintenance and resistance to wear, ensuring consistent performance over time. The string’s ability to deliver powerful shots with precise control makes it a reliable option for high-level play. Yonex Poly Tour Pro is designed to meet the demands of modern tennis, offering exceptional performance and feel.",
+        "specifications": {
+            "Type": "Polyester",
+            "Colour": "Yellow",
+            "Profile": "Round",
+            "Gauge": "1.25mm",
+            "Length": "12m",
+            "Series": "Poly Tour",
+            "Made In": "Japan",
+            "Manufacturer SKU": "PTG125-2"
+        }
     },
     {
         "id": 9,
@@ -78,7 +166,18 @@
         "price": "22.99",
         "imageUrl": "/images/products/volkl_cyclone.webp",
         "brand": "Volkl",
-        "stringType": "polyester"
+        "stringType": "polyester",
+        "detailedDescription": "Volkl Cyclone is known for its high tension stability and exceptional spin potential. Its unique shape and construction provide a secure grip on the ball, allowing for precise and powerful shots. The string’s durability and consistent performance make it a top choice for aggressive players. Volkl Cyclone offers a balance of control and power, making it suitable for various playing styles and skill levels.",
+        "specifications": {
+            "Type": "Polyester",
+            "Colour": "Black",
+            "Profile": "Gear-Shaped",
+            "Gauge": "1.25mm",
+            "Length": "12m",
+            "Series": "Cyclone",
+            "Made In": "Germany",
+            "Manufacturer SKU": "V23209"
+        }
     },
     {
         "id": 10,
@@ -87,7 +186,18 @@
         "price": "27.99",
         "imageUrl": "/images/products/prince_synthetic_gut.webp",
         "brand": "Prince",
-        "stringType": "synthetic blend"
+        "stringType": "synthetic blend",
+        "detailedDescription": "Prince Synthetic Gut is designed for players who seek spin and precision in their game. Its synthetic blend construction provides a comfortable feel and excellent ball feedback, enhancing shot accuracy. The string’s durability and tension maintenance make it a reliable option for both recreational and competitive players. Prince Synthetic Gut delivers a versatile and consistent playing experience, ideal for players looking to improve their game.",
+        "specifications": {
+            "Type": "Synthetic Blend",
+            "Colour": "White",
+            "Profile": "Round",
+            "Gauge": "1.30mm",
+            "Length": "12m",
+            "Series": "Duraflex",
+            "Made In": "USA",
+            "Manufacturer SKU": "7J882010"
+        }
     },
     {
         "id": 11,
@@ -96,7 +206,18 @@
         "price": "24.50",
         "imageUrl": "/images/products/gamma_live_wire.webp",
         "brand": "Gamma",
-        "stringType": "multi-fiber"
+        "stringType": "multi-fiber",
+        "detailedDescription": "Gamma Live Wire offers exceptional feel and response, making it a favorite among players seeking a premium string. Its multi-fiber construction provides superior shock absorption and comfort, reducing the risk of arm fatigue. The string’s resilience and playability make it an ideal choice for players who want to enhance their game with a reliable and high-performing string. Gamma Live Wire delivers consistent performance and a comfortable hitting experience.",
+        "specifications": {
+            "Type": "Multi-fiber",
+            "Colour": "Natural",
+            "Profile": "Round",
+            "Gauge": "1.27mm",
+            "Length": "12m",
+            "Series": "Live Wire",
+            "Made In": "USA",
+            "Manufacturer SKU": "GLW127"
+        }
     },
     {
         "id": 12,
@@ -105,6 +226,17 @@
         "price": "29.99",
         "imageUrl": "/images/products/dunlop_silk_pro.webp",
         "brand": "Dunlop",
-        "stringType": "polyester"
+        "stringType": "polyester",
+        "detailedDescription": "Dunlop Silk Pro is designed for superior playability and resilience, offering a premium playing experience. Its advanced polyester construction provides excellent tension maintenance and durability, ensuring long-lasting performance. The string’s soft feel and responsiveness enhance shot precision and power, making it suitable for players of all skill levels. Dunlop Silk Pro is perfect for those who demand high-quality performance and comfort on the court.",
+        "specifications": {
+            "Type": "Polyester",
+            "Colour": "Gold",
+            "Profile": "Round",
+            "Gauge": "1.30mm",
+            "Length": "12m",
+            "Series": "Silk",
+            "Made In": "China",
+            "Manufacturer SKU": "DS130G"
+        }
     }
 ]

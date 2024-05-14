@@ -90,7 +90,7 @@ export default function Header_global() {
                 <li><Link href="/store" className="header-link duration-200 px-2 py-2 rounded-sm">Store</Link></li>
                 <li><Link href="/stringing" className="header-link duration-200 px-2 py-2 rounded-sm">Re-String</Link></li>
                 <li><Link href="/#contact" className="header-link duration-200 px-2 py-2 rounded-sm">Contact</Link></li>
-                <li className="border-r-2 border-black mx-4 py-3"></li>
+                <li className="border-r-2 border-black mx-4 py-3 opacity-50"></li>
                 {session ? (
                     <>
                         <li>

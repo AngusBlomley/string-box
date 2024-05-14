@@ -62,9 +62,9 @@ export default function CartItems({ handleCheckout }) {
 
     return (
         <main>
-            <div className="overflow-y-auto h-full">
+            <div className="overflow-y-auto h-full max-md:mt-10">
                 {cartProductDetails.length ? cartProductDetails.map((product, index) => (
-                    <div key={index} className="flex items-center justify-between mb-4 p-4 border-b">
+                    <div key={index} className="flex items-center justify-between mb-4 p-4 border-b max-lg:px-0">
                         <div className="flex items-center">
                             <Image
                                 src={product.imageUrl}
@@ -79,13 +79,13 @@ export default function CartItems({ handleCheckout }) {
                             </div>
                         </div>
                         <div className="flex items-center">
-                            <span className="text-lg font-semibold">£{product.price}</span>
+                            <span className="text-lg font-semibold max-md:hidden">£{product.price}</span>
                             <input
                                 type="number"
                                 min="1"
                                 value={product.quantity}
                                 onChange={e => updateQuantity(index, e.target.value)}
-                                className="ml-4 w-16 text-center border-2 border-gray-300 rounded-md"
+                                className="ml-4 w-16 text-center border-2 border-gray-300 rounded-md max-md:w-8"
                             />
                             <button className='ml-5 text-sm bg-clay-red text-white py-1 px-3 rounded-md' onClick={() => handleRemoveFromCart(product.id)}>X</button>
                         </div>
